@@ -1,0 +1,10 @@
+
+.no-widows {
+	white-space: nowrap;
+}
+
+.no-transitions {
+	* {
+		transition: 0s 0s !important;
+	}
+}

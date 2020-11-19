@@ -1,0 +1,39 @@
+{
+  "name": "boilerplate-theme",
+  "version": "1.0.0",
+  "description": "Simple Webpack implementation for building WordPress themes.",
+  "main": "index.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=development webpack --watch --config webpack.develop.js",
+    "build": "cross-env NODE_ENV=production webpack --config webpack.production.js"
+  },
+  "keywords": [],
+  "author": "Stephen Griffin <notepadwebdev@gmail.com> (http://notepadwebdevelopment.com/)",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/preset-env": "^7.12.1",
+    "autoprefixer": "^10.0.1",
+    "babel-loader": "^8.1.0",
+    "browser-sync": "^2.26.13",
+    "browser-sync-webpack-plugin": "^2.2.2",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^6.2.1",
+    "cross-env": "^7.0.2",
+    "css-loader": "^5.0.0",
+    "file-loader": "^6.2.0",
+    "glob": "^7.1.6",
+    "html-webpack-plugin": "^4.5.0",
+    "mini-css-extract-plugin": "^1.2.1",
+    "node-sass": "^4.14.1",
+    "postcss-loader": "^4.0.4",
+    "postcss-preset-env": "^6.7.0",
+    "raw-loader": "^4.0.2",
+    "sass-loader": "^10.0.4",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.3.2",
+    "webpack-cli": "^4.1.0",
+    "webpack-merge": "^5.3.0"
+  }
+}

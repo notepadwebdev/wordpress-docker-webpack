@@ -1,0 +1,8 @@
+wp-config*
+
+db_data/
+
+wp-content/uploads
+wp-content/languages/
+wp-content/plugins/akismet/
+wp-content/plugins/hello.php

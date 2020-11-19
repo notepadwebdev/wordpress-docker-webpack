@@ -1,0 +1,25 @@
+
+// Layout
+@mixin v-align {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	-ms-flex-align: center;
+}
+
+@mixin max-centered($width) {
+	max-width: $width;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+// Utils
+@mixin no-select {
+	cursor: default;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}

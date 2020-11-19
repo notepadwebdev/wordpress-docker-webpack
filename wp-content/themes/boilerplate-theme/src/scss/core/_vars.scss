@@ -1,0 +1,27 @@
+
+// FONTS
+$f-title: sans-serif;
+$f-body: sans-serif;
+
+// COLOURS
+$c-body: #666;
+$c-border: #c2c2c2;
+
+// LAYOUT
+$l-max-width: 1440px;
+$l-gutter-width: 28px;
+$l-body-pad: 28px;
+$l-block-pad: 60px;
+
+// Z-indexing
+$z-layers: (
+  background: 0,
+  top: 999
+);
+
+// MEDIA QUERIES
+$mq-mob-max: 599px;
+$mq-tablet-min: 600px;
+$mq-tablet-max: 1023px;
+$mq-desktop-min: 1024px;
+$mq-desktop-large-min: 1200px;
