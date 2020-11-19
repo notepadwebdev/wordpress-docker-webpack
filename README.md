@@ -5,7 +5,7 @@ WordPress CMS running in Docker and using Webpack for theme development.
 ## Setup
 
 ```
-git clone git@github.com:zzzzzz
+git clone git@github.com:notepadwebdev/wordpress-docker-webpack.git
 ```
 
 ### Install and set up WordPress
