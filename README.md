@@ -32,6 +32,15 @@ From the root directory, run the following command to start the Docker container
 docker-compose up -d
 ```
 
+Navigate to the Boilerplate theme root, gather dependencies, and then start the dev server...
+
+```bash
+cd wp-content/themes/boilerplate-theme
+npm i
+npm run start
+```
+
+
 ### Boilerplate theme
 
 - ACF Local JSON enabled.
