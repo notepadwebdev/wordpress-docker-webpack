@@ -44,7 +44,6 @@ npm run start
 ### Boilerplate theme
 
 - ACF Local JSON enabled.
-- Classic Editor instead of Gutenberg.
 - A reduced Admin UI.
 - Docker volume for `./wp-content` for your plugins, themes, and uploads.
 
