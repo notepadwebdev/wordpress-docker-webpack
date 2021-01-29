@@ -1,27 +1,40 @@
-
-// FONTS
-$f-title: sans-serif;
-$f-body: sans-serif;
-
-// COLOURS
-$c-body: #666;
-$c-border: #c2c2c2;
-
-// LAYOUT
-$l-max-width: 1440px;
-$l-gutter-width: 28px;
-$l-body-pad: 28px;
-$l-block-pad: 60px;
-
-// Z-indexing
-$z-layers: (
-  background: 0,
-  top: 999
-);
-
-// MEDIA QUERIES
-$mq-mob-max: 599px;
+// Media Queries.
+$mq-mobile-max: 599px;
 $mq-tablet-min: 600px;
+$mq-tablet-large-min: 760px;
 $mq-tablet-max: 1023px;
 $mq-desktop-min: 1024px;
 $mq-desktop-large-min: 1200px;
+
+:root {
+  // FONTS
+  --f-title: Arial, sans-serif;
+  --f-body: Arial, sans-serif;
+  --f-h1-size: clamp(1.5rem, 2vw, 1.875rem);  // 24px -> 30px
+  --f-h2-size: clamp(1.5rem, 2vw, 1.875rem);  // 24px -> 30px
+  --f-h3-size: clamp(1.5rem, 2vw, 1.875rem);  // 24px -> 30px
+  --f-h4-size: clamp(1.5rem, 2vw, 1.875rem);  // 24px -> 30px
+  --f-h5-size: clamp(1.5rem, 2vw, 1.875rem);  // 24px -> 30px
+  --f-h6-size: clamp(1.5rem, 2vw, 1.875rem);  // 24px -> 30px
+  --f-body-size: clamp(1rem, 1.5vw, 1.25rem);  // 16px -> 20px
+  
+  // COLOURS
+  --c-body: #222A41;    // Text colour.
+  --c-body-bg: #fff;    // Background colour.
+  --c-border: grey;
+  
+  --c-brand-a: red;
+  --c-brand-b: green;
+  --c-brand-c: blue;
+
+  // LAYOUT  
+  --l-body-pad: clamp(20px, 8vw, 30px);    // Horizontal spacing.
+  --l-block-pad: clamp(2rem, 5vw, 100px);  // Verical spacing.
+  --l-gutter-width: Min(5vw, 10px);
+  --l-max-width: 1230px;
+  --l-max-content: Min(var(--l-max-width), calc(100vw - var(--l-body-pad) * 2));
+  
+  // Universal styles.
+  --s-border-radius: 1.875rem;
+  --s-box-shadow: 5px 5px 20px rgba(0,0,0,0.2);
+}

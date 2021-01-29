@@ -1,89 +1,69 @@
 
-body {
-    font: 500 100%/1.4 $f-body;
-    color: $c-body;
+body,
+body .block-editor-block-list__layout {
+  font: 100 100%/1.5 var(--f-body) !important;
+  color: var(--c-body);
 }
 
-h1, .h1,
-h2, .h2,
-h3, .h3,
-h4, .h4,
-h5, .h5,
-h6, .h6 {
-    margin: 0 0 0.4em;
-    font-family: $f-title;
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+  margin: 0.8em 0 0.6em;
+  font-weight: 100;
+  line-height: 1;
+  color: var(--c-brand-a);
+}
+
+h1,
+.h1,
+h2,
+.h2 {
+  font-family: var(--f-title);
+  font-weight: 400;
 }
 
 h1,
 .h1 {
-    @media (min-width: $mq-tablet-min) {
-
-    }
-
-    @media (min-width: $mq-desktop-min) {
-
-    }
+  font-size: var(--f-h1-size);
 }
+
 h2,
 .h2 {
-    @media (min-width: $mq-tablet-min) {
-
-    }
-
-    @media (min-width: $mq-desktop-min) {
-
-    }
+  font-size: var(--f-h2-size);
 }
+
 h3,
 .h3 {
-    @media (min-width: $mq-tablet-min) {
-
-    }
-
-    @media (min-width: $mq-desktop-min) {
-
-    }
+  font-size: var(--f-h3-size);
 }
+
 h4,
 .h4 {
-    @media (min-width: $mq-tablet-min) {
-
-    }
-
-    @media (min-width: $mq-desktop-min) {
-
-    }
+  font-size: var(--f-h4-size);
 }
+
 h5,
 .h5 {
-    @media (min-width: $mq-tablet-min) {
-
-    }
-
-    @media (min-width: $mq-desktop-min) {
-
-    }
+  font-size: var(--f-h5-size);
 }
+
 h6,
 .h6 {
-    @media (min-width: $mq-tablet-min) {
-
-    }
-
-    @media (min-width: $mq-desktop-min) {
-
-    }
+  font-size: var(--f-h6-size);
 }
 
 p,
 address,
 table,
 li {
-    @media (min-width: $mq-tablet-min) {
-
-    }
-
-    @media (min-width: $mq-desktop-min) {
-
-    }
+  font-size: var(--f-body-size);     // 15px -> 24px
 }

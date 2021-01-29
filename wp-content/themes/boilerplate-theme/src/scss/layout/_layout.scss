@@ -4,5 +4,7 @@ main {
 }
 
 .container {
-  padding: 0 $l-body-pad;
+  padding: 0 var(--l-body-pad);
+  max-width: var(--l-max-width);
+  margin: 0 auto;
 }
