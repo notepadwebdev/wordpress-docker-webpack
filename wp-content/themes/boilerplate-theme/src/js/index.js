@@ -1,11 +1,6 @@
-const App = class {
-
-  constructor() {
+document.addEventListener("DOMContentLoaded", function(event) {
     
-    console.log(`Let's do this, yeah?!`);
+  console.log(`Let's do this, yeah?!`);
     
-  }
-  
-};
-
-new App();
+  document.documentElement.classList.remove('no-js');
+});

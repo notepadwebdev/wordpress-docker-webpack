@@ -1,0 +1,23 @@
+
+iframe,
+#tinymce,
+.block-editor-writing-flow {
+  background-color: white;
+}
+
+.wp-block {
+  max-width: none !important;
+}
+
+.alignleft {
+  text-align: left: !important;
+}
+
+.block-editor-block-list__block {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.block-editor-inserter__tips {
+  display: none !important;
+}
