@@ -1,31 +1,27 @@
-<?php
-  $title = get_field('title');
-  $description = get_field('description');
-?>
 
-<section class="hero full-bleed">
+<section class="hero block block--full-width">
+  <div class="container">
+      
+    <?php if (get_field('title') || get_field('description')) : ?>
+    
+      <?php if (get_field('title')) : ?>
+        <h1 class="hero__title">
+          <?php the_field('block_title'); ?>
+        </h1>
+      <?php endif; ?>
+      
+      <?php if (get_field('description')) : ?>
+        <div class="hero__description">
+          <?php the_field('description'); ?>
+        </div>
+      <?php endif; ?>
 
-  <div class="flexible-container">
-    <div class="hero__grid">
+    <?php else: ?>
+          
+      <?php /* Initial display after adding the unpopulated block */ ?>
+      <h2 class="block__placeholder">Hero Block</h2>  
       
-      <h1 class="hero__title">
-        <?php if (get_field('title')) : ?>
-          <?php echo get_field('title'); ?>        
-        <?php elseif (is_admin()): ?>
-          Hero Title Here
-        <?php endif; ?> 
-      </h1>
+    <?php endif; ?> 
       
-      <div class="hero__description">
-        <?php if (get_field('description')) : ?>
-          <?php echo get_field('description'); ?>        
-        <?php elseif (is_admin()): ?>
-          Lorem ipsum...
-        <?php endif; ?> 
-      </div>
-      
-      
-    </div>
   </div>
-  
 </section>

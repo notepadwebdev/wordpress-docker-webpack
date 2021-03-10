@@ -10,13 +10,13 @@ wp.domReady( () => {
 	// 	}
 	// });
 	
-	wp.data.dispatch('core/edit-post').removeEditorPanel('discussion-panel'); // Discussion
-	wp.data.dispatch('core/edit-post').removeEditorPanel('taxonomy-panel-post_tag'); // Tags
+	// wp.data.dispatch('core/edit-post').removeEditorPanel('discussion-panel'); // Discussion
+	// wp.data.dispatch('core/edit-post').removeEditorPanel('taxonomy-panel-post_tag'); // Tags
 	
-	wp.blocks.unregisterBlockStyle('core/image', 'default');
-	wp.blocks.unregisterBlockStyle('core/image', 'rounded');
+	// wp.blocks.unregisterBlockStyle('core/image', 'default');
+	// wp.blocks.unregisterBlockStyle('core/image', 'rounded');
 	
-	wp.blocks.unregisterBlockStyle('core/pullquote', 'default');
-	wp.blocks.unregisterBlockStyle('core/pullquote', 'solid-color');
+	// wp.blocks.unregisterBlockStyle('core/pullquote', 'default');
+	// wp.blocks.unregisterBlockStyle('core/pullquote', 'solid-color');
 
 });

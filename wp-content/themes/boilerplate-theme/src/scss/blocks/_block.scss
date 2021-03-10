@@ -1,0 +1,21 @@
+
+.block {
+  > .container {
+    max-width: var(--l-max-content);
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  &--full-width {
+    > .container {
+      max-width: none; 
+    }
+  }
+  
+  &__placeholder {
+    width: 100%;
+    padding: var(--l-block-pad);
+    text-align: center;
+    color: var(--c-brand-a);
+  }
+}

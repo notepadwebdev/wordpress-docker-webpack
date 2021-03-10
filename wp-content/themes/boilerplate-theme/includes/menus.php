@@ -13,8 +13,12 @@ function register_menus() {
 add_action( 'admin_menu', 'admin_clean');
 function admin_clean() {
   remove_menu_page('edit-comments.php');
-  // remove_menu_page('edit.php?post_type=acf-field-group');
-  // remove_menu_page('plugins.php');
+  
+  // Webmaster only admin links!
+  if (get_current_user_id() !== 1) {
+    remove_menu_page('edit.php?post_type=acf-field-group');
+    remove_menu_page('plugins.php');
+  }
 }
 
 /**

@@ -1,12 +1,5 @@
 
 // Layout
-@mixin v-align {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	-ms-flex-align: center;
-}
-
 @mixin max-centered($width) {
 	max-width: $width;
 	margin-left: auto;

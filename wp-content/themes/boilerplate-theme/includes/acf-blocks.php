@@ -2,10 +2,13 @@
 /**
  *    ACF Blocks.
  */
+
 add_theme_support('editor-styles');
 add_theme_support('align-wide');
 remove_theme_support('core-block-patterns');
 
+add_editor_style( 'dist/css/main.css' ); 
+add_editor_style( 'admin.css' ); 
 
 function theme_gutenberg_scripts() {
 	wp_enqueue_script( 
@@ -18,18 +21,9 @@ function theme_gutenberg_scripts() {
 }
 add_action( 'enqueue_block_editor_assets', 'theme_gutenberg_scripts' );
 
-
-// add_action( 'init', 'remove_block_style' );
-// function remove_block_style() {
-// 	// Register the block editor script.
-// 	wp_register_script( 'theme-blocks-script', get_template_directory_uri() . '/src/js/blocks.js', [ 'wp-blocks', 'wp-edit-post' ] );
-// 	// register block editor script.
-// 	register_block_type( 'theme-blocks-script', [
-// 		'editor_script' => 'theme-blocks-script',
-// 	]);
-// }
-
-// Custom Block Categories.
+/**
+ *    Custom Block Categories.
+ */
 add_filter( 'block_categories', 'theme_block_categories', 10, 2 );
 function theme_block_categories( $categories, $post ) {
   return array_merge(
@@ -44,6 +38,9 @@ function theme_block_categories( $categories, $post ) {
   );
 }
 
+/**
+ *    Custom Blocks.
+ */
 add_action('acf/init', 'my_acf_init_block_types');
 function my_acf_init_block_types() {
 
@@ -71,16 +68,18 @@ function my_acf_init_block_types() {
   }
 }
 
-// Hide all and use whitelist to show custom theme blocks.
+/**
+ *    Use whitelist for allowed blocks.
+ */
 add_filter( 'allowed_block_types', 'theme_allowed_block_types' );
 function theme_allowed_block_types( $allowed_blocks ) {
  
 	return array(
-    'core/columns',
     'core/heading',
-    'core/paragraph',
-    'core/pullquote',
+    'core/paragraph',    
     'core/image',
+    // 'core/columns',
+    // 'core/pullquote',
     'acf/hero',
     // Add each custom block here...
 	);

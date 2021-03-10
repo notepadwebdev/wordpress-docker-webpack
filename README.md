@@ -54,3 +54,11 @@ WordPress (CMS only): http://localhost:8888/wp-admin/
 phpMyAdmin: http://localhost:3333/   
 ***user: wordpress***    
 ***pass: wordpress***
+
+## Production
+
+Build and minify assets to the dist folder from the root of the theme
+
+```bash
+npm run build 
+```

@@ -66,4 +66,14 @@ address,
 table,
 li {
   font-size: var(--f-body-size);     // 15px -> 24px
+  
+  .lede &,
+  &.lede {
+    font-size: var(--f-lede-size);
+  }
+}
+
+small,
+.small {
+  font-size: var(--f-small-size);
 }
