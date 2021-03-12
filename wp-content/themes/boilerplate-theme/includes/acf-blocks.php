@@ -13,9 +13,9 @@ add_editor_style( 'admin.css' );
 function theme_gutenberg_scripts() {
 	wp_enqueue_script( 
     'theme-blocks-script', 
-    get_template_directory_uri() . '/src/js/blocks.js', 
+    get_template_directory_uri() . '/dist/js/blocks.js', 
     array( 'wp-blocks' ), 
-    get_template_directory_uri() . '/src/js/blocks.js',  
+    get_template_directory_uri() . '/dist/js/blocks.js',  
     true
   );
 }
