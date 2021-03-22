@@ -1,13 +1,23 @@
 const path = require('path')
+const glob = require('glob')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
+// One bundle per ACF block.
+const blocksJs = glob.sync('./template-parts/blocks/**/*.js').reduce((acc, path) => {
+    const entry = path.split('/').pop().replace('.js', '')
+    acc[entry] = path
+    return acc
+}, {});
+
 module.exports = {
-  entry: [
-    './src/js/index.js', 
-    './src/scss/main.scss'
-  ],
+  entry: {
+    ...blocksJs,
+    'main': './src/js/index.js', 
+    'cms': './src/js/cms.js',
+    'styles': './src/scss/main.scss',
+  },
   output: {
     path: path.resolve(__dirname, './dist'),
     filename: 'js/[name].bundle.js',
@@ -57,7 +67,6 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [
         { from: './src/images/', to: 'images/' },
-        { from: './src/js/', to: 'js/' },
       ],
     }),  
   ],

@@ -10,13 +10,30 @@ wp.domReady( () => {
 	// 	}
 	// });
 	
+	// Remove editor panels.
 	// wp.data.dispatch('core/edit-post').removeEditorPanel('discussion-panel'); // Discussion
 	// wp.data.dispatch('core/edit-post').removeEditorPanel('taxonomy-panel-post_tag'); // Tags
 	
+	// Unregister block styles.
 	// wp.blocks.unregisterBlockStyle('core/image', 'default');
 	// wp.blocks.unregisterBlockStyle('core/image', 'rounded');
-	
-	// wp.blocks.unregisterBlockStyle('core/pullquote', 'default');
-	// wp.blocks.unregisterBlockStyle('core/pullquote', 'solid-color');
 
+});
+
+
+/**
+ * 	Custom JavaScript.
+ */
+window.addEventListener(`load`, () => {
+
+  /**
+   * 	Embed blocks.
+   */
+	// const allowedEmbedBlocks = ['spotify', 'youtube'];
+  // wp.blocks.getBlockVariations('core/embed').forEach(function (blockVariation) {
+  //   if (-1 === allowedEmbedBlocks.indexOf(blockVariation.name)) {
+  //     wp.blocks.unregisterBlockVariation('core/embed', blockVariation.name);
+  //   }
+  // });
+	
 });
