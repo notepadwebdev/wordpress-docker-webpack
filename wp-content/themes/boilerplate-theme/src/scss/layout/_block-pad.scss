@@ -1,0 +1,38 @@
+// Vertical spacing.
+.block-pad {
+  padding-top: var(--l-block-pad);
+  padding-bottom: var(--l-block-pad);
+  
+  &--top {
+    padding-top: var(--l-block-pad);
+  }
+  
+  &--bottom {
+    padding-bottom: var(--l-block-pad);
+  }
+  
+  &--top-0 {
+    padding-top: 0;
+  }
+  
+  &--bottom-0 {
+    padding-bottom: 0;
+  }
+  
+  &--top-half {
+    padding-top: calc(0.5 * var(--l-block-pad));
+  }
+  
+  &--bottom-half {
+    padding-bottom: calc(0.5 * var(--l-block-pad));
+  }
+  
+  &--top-quarter {
+    padding-top: calc(0.25 * var(--l-block-pad));
+  }
+  
+  &--bottom-quarter {
+    padding-bottom: calc(0.25 * var(--l-block-pad));
+  }
+}
+
