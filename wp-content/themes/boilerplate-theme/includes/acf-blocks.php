@@ -10,16 +10,12 @@ remove_theme_support('core-block-patterns');
 add_editor_style( 'dist/css/main.css' ); 
 add_editor_style( 'admin.css' ); 
 
-function theme_gutenberg_scripts() {
-	wp_enqueue_script( 
-    'theme-blocks-script', 
-    get_template_directory_uri() . '/dist/js/blocks.js', 
-    array( 'wp-blocks' ), 
-    get_template_directory_uri() . '/dist/js/blocks.js',  
-    true
-  );
+add_action('admin_head', 'theme_admin_styles');
+function theme_admin_styles() {
+  echo '<style>
+    
+  </style>';
 }
-add_action( 'enqueue_block_editor_assets', 'theme_gutenberg_scripts' );
 
 /**
  *    Custom Block Categories.
@@ -64,7 +60,6 @@ function my_acf_init_block_types() {
         'multiple' => false,
       ),
     ));
-  
   }
 }
 
@@ -73,16 +68,11 @@ function my_acf_init_block_types() {
  */
 add_filter( 'allowed_block_types', 'theme_allowed_block_types' );
 function theme_allowed_block_types( $allowed_blocks ) {
- 
-	return array(
-    'core/heading',
-    'core/paragraph',    
+   return array(   
     'core/image',
-    // 'core/columns',
-    // 'core/pullquote',
     'acf/hero',
     // Add each custom block here...
-	);
+  );
 }
 
 ?>

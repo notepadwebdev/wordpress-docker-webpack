@@ -10,18 +10,6 @@ if( function_exists('acf_add_options_page') ) {
 		'capability'	=> 'edit_posts',
 		'redirect'		=> false,
     'show_in_graphql' => true
-	));
-  acf_add_options_sub_page(array(
-		'page_title' 	=> 'Footer Settings',
-		'menu_title'	=> 'Footer Settings',
-		'parent_slug'	=> 'theme-general-settings',
-    'show_in_graphql' => true
-	));
-  acf_add_options_sub_page(array(
-		'page_title' 	=> 'Social Settings',
-		'menu_title'	=> 'Social Links',
-		'parent_slug'	=> 'theme-general-settings',
-    'show_in_graphql' => true
-	));
+  ));
 }
 ?>
