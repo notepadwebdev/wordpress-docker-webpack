@@ -2,8 +2,9 @@
 Contributors: elliotcondon
 Tags: acf, fields, custom fields, meta, repeater
 Requires at least: 4.7
-Tested up to: 5.6
+Tested up to: 5.8
 Requires PHP: 5.6
+Stable tag: 5.9.9
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -51,8 +52,6 @@ From your WordPress dashboard
 
 = What kind of support do you provide? =
 
-**Help Desk.** Support is currently provided via our email help desk. Questions are generally answered within 24 hours, with the exception of weekends and holidays. We answer questions related to ACF, its usage and provide minor customization guidance. We cannot guarantee support for questions which include custom theme code, or 3rd party plugin conflicts & compatibility. [Open a Support Ticket](https://www.advancedcustomfields.com/support/)
-
 **Support Forums.** Our Community Forums provide a great resource for searching and finding previously answered and asked support questions. You may create a new thread on these forums, however, it is not guaranteed that you will receive an answer from our support team. This is more of an area for developers to talk to one another, post ideas, plugins and provide basic help. [View the Support Forum](https://support.advancedcustomfields.com/)
 
 
@@ -66,6 +65,54 @@ From your WordPress dashboard
 
 
 == Changelog ==
+
+= 5.9.9 =
+*Release Date - 20 July 2021*
+
+* Fix - Fixed warning when deleting fields which don't exist
+* Fix - Fixed issues with older browsers and the blocks JavaScript
+* Fix - Fixed file size & file type validation for front end forms using the basic uploader
+
+= 5.9.8 =
+*Release Date - 08 July 2021*
+
+* Fix - Fixed bug causing multiple image fields to not validate files properly
+* Fix - Fixed bug preventing case-sensitive HTML tags from working in blocks
+* Fix - Fixed bug causing JSX-enabled blocks to improperly remove whitespace in preview
+* Fix - Fixed bug causing text fields to remove HTML entities when editing saved fields
+* Fix - Fixed deprecated jQuery notices on "Add Field Group" page
+
+= 5.9.7 =
+*Release Date - 22 June 2021*
+
+* Fix - Fixed PHP warnings logged due to incorrect parameter type for `add_menu_page()`/`add_submenu_page()`
+* Fix - Fixed bug causing WYSIWYG field to not keep line breaks
+* Fix - Fixed bug causing Email field to incorrectly invalidate emails with unicode characters
+* Fix - Fixed bug causing file type validation to fail in some cases
+* Fix - Fixed bug where newly uploaded or selected images do not contain custom preview size data
+
+= 5.9.6 =
+*Release Date - 20 May 2021*
+
+* Enhancement - Added 'position' setting compatibility for Options Page submenus.
+* Enhancement - Visually highlight "High" metabox area when dragging metaboxes.
+* Fix - Fixed compatibility issue between Block matrix alignment setting and the latest version of Gutenberg (10.6).
+* Fix - Fixed bug breaking WYSIWYG field after reordering a child block via the block's toolbar up/down buttons.
+* Fix - Added missing "readonly" and "disabled" attributes to DateTime and Time picker fields.
+* Fix - Fixed bug incorrectly validating Email field values containing special characters.
+* Fix - Fixed missing "dashicons" asset dependency from front-end forms.
+* Fix - Fixed bug causing Review JSON diff modal to appear with narrow column since WP 5.7.
+* Dev - Added label elements to Repeater, Flexible Content and Clone field's table header titles.
+* Dev - Added new `ACF_EXPERIMENTAL_ESC_HTML` constant. [Read more](https://github.com/AdvancedCustomFields/acf/issues/500)
+
+= 5.9.5 =
+*Release Date - 11 February 2021*
+
+* Fix - Fixed regression preventing blocks from loading correctly within the editor in WordPress 5.5.
+* Fix - Fixed bug causing incorrect post_status properties when restoring a Field Group from trash in WordPress 5.6.
+* Fix - Fixed edge case bug where a taxonomy named "options" could interfere with saving and loading option values.
+* Fix - Fixed additional PHP 8.0 warnings.
+* i18n - Updated Finnish translation thanks to Mikko Kekki
 
 = 5.9.4 =
 *Release Date - 14 January 2021*
