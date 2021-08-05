@@ -3,24 +3,23 @@
  *    ACF Blocks.
  */
 
-add_theme_support('editor-styles');
-add_theme_support('align-wide');
-remove_theme_support('core-block-patterns');
-
-add_editor_style( 'dist/css/main.css' ); 
-add_editor_style( 'admin.css' ); 
+ add_theme_support('align-wide');
+ add_theme_support( 'editor-styles' );
+ remove_theme_support('core-block-patterns');
+ add_editor_style( 'dist/css/styles.css' );
+ add_editor_style( 'admin.css' );
 
 add_action('admin_head', 'theme_admin_styles');
 function theme_admin_styles() {
   echo '<style>
-    
+
   </style>';
 }
 
 /**
  *    Custom Block Categories.
  */
-add_filter( 'block_categories', 'theme_block_categories', 10, 2 );
+add_filter( 'block_categories_all', 'theme_block_categories', 10, 2 );
 function theme_block_categories( $categories, $post ) {
   return array_merge(
     $categories,
@@ -29,6 +28,11 @@ function theme_block_categories( $categories, $post ) {
         'slug' => 'custom-blocks',
         'title' => __( 'Custom Blocks', 'custom-blocks' ),
         'icon'  => 'arrow-right-alt2',
+      ),
+      array(
+        'slug' => 'archive-blocks',
+        'title' => __( 'Archives', 'archive-blocks' ),
+        'icon'  => 'portfolio',
       ),
     )
   );
@@ -42,7 +46,7 @@ function my_acf_init_block_types() {
 
   // Check function exists.
   if( function_exists('acf_register_block_type') ) {
-    
+
     // Hero.
     acf_register_block_type(array(
       'name'              => 'hero',
@@ -66,9 +70,9 @@ function my_acf_init_block_types() {
 /**
  *    Use whitelist for allowed blocks.
  */
-add_filter( 'allowed_block_types', 'theme_allowed_block_types' );
+add_filter( 'allowed_block_types_all', 'theme_allowed_block_types' );
 function theme_allowed_block_types( $allowed_blocks ) {
-   return array(   
+   return array(
     'core/image',
     'acf/hero',
     // Add each custom block here...
