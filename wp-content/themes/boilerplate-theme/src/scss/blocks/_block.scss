@@ -6,6 +6,12 @@
     margin-right: auto;
   }
   
+  &--wide {
+    > .container {
+      @include max-centered(1360px);
+    }
+  }
+  
   &--full-width {
     > .container {
       max-width: none; 
@@ -14,6 +20,7 @@
   
   &__placeholder {
     width: 100%;
+    margin: 0;
     padding: var(--l-block-pad);
     text-align: center;
     color: var(--c-brand-a);

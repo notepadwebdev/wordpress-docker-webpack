@@ -3,18 +3,8 @@
  *    ACF Blocks.
  */
 
- add_theme_support('align-wide');
- add_theme_support( 'editor-styles' );
- remove_theme_support('core-block-patterns');
- add_editor_style( 'dist/css/styles.css' );
- add_editor_style( 'admin.css' );
-
-add_action('admin_head', 'theme_admin_styles');
-function theme_admin_styles() {
-  echo '<style>
-
-  </style>';
-}
+add_theme_support('align-wide');
+remove_theme_support('core-block-patterns');
 
 /**
  *    Custom Block Categories.

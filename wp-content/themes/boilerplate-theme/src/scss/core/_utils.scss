@@ -8,3 +8,11 @@
 		transition: 0s 0s !important;
 	}
 }
+
+.text-center {
+	text-align: center;
+}
+
+.visually-hidden {
+	@include visually-hidden;
+} 

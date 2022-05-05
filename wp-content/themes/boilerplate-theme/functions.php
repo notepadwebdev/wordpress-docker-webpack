@@ -4,6 +4,7 @@
  * 
  */
 
+// include_once('includes/ajax.php');
 include_once('includes/acf-blocks.php');
 include_once('includes/acf-options.php');
 include_once('includes/clean-up.php');
@@ -13,4 +14,5 @@ include_once('includes/images.php');
 include_once('includes/menus.php');
 include_once('includes/taxonomies.php');
 include_once('includes/tiny-mce.php');
+include_once('includes/admin-styles.php');
 ?>

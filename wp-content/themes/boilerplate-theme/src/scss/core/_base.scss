@@ -1,12 +1,11 @@
-
 html,
 body {
-    padding: 0;
-    margin: 0;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: antialiased;
-    font-smoothing: antialiased;
-    background: white;
+  padding: 0;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  background: white;
 }
 
 *,
@@ -15,10 +14,23 @@ body {
 input,
 select,
 textarea {
-    box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+:target {
+  scroll-margin-top: var(--l-header-height);
 }
 
 img {
-    max-width: 100%;
-    image-rendering: -webkit-optimize-contrast;
+  max-width: 100%;
+  image-rendering: -webkit-optimize-contrast;
+}
+
+blockquote {
+  margin: 0 0 1em;
+  padding: 0;
+}
+
+address {
+  font-style: normal;
 }

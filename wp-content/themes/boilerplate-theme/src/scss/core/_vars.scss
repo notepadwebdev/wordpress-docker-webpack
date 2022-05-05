@@ -21,8 +21,8 @@ $mq-desktop-large-min: 1200px;
   --f-small-size: clamp(0.625rem, calc(0.625rem + 0.139vw), 0.75rem); // 10px -> 12px
   
   // COLOURS
-  --c-body: #222A41;    // Text colour.
-  --c-body-bg: #fff;    // Background colour.
+  --c-text: #222A41;    // Text colour.
+  --c-bg: #fff;    // Background colour.
   --c-border: grey;
   
   --c-brand-a: red;
