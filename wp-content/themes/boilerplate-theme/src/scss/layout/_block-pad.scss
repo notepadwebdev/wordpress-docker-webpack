@@ -1,8 +1,38 @@
 // Vertical spacing.
 .block-pad {
+
+  // Quarter.
+  &--quarter {
+    padding-top: calc(0.25 * var(--l-block-pad));
+    padding-bottom: calc(0.25 * var(--l-block-pad));
+  }
+  
+  &--quarter-top {
+    padding-top: calc(0.25 * var(--l-block-pad));
+  }
+  
+  &--quarter-bottom {
+    padding-bottom: calc(0.25 * var(--l-block-pad));
+  }
+  
+  // Half.
+  &--half {
+    padding-top: calc(0.5 * var(--l-block-pad));
+    padding-bottom: calc(0.5 * var(--l-block-pad));
+  }
+
+  &--half-top {
+    padding-top: calc(0.5 * var(--l-block-pad));
+  }
+  
+  &--half-bottom {
+    padding-bottom: calc(0.5 * var(--l-block-pad));
+  }
+
+  // Default.
   padding-top: var(--l-block-pad);
   padding-bottom: var(--l-block-pad);
-  
+
   &--top {
     padding-top: var(--l-block-pad);
   }
@@ -10,29 +40,42 @@
   &--bottom {
     padding-bottom: var(--l-block-pad);
   }
+
+  // Double.
+  &--double {
+    padding-top: calc(2 * var(--l-block-pad));
+    padding-bottom: calc(2 * var(--l-block-pad));
+  }
+
+  &--double-top {
+    padding-top: calc(2 * var(--l-block-pad));
+  }
   
-  &--top-0 {
+  &--double-bottom {
+    padding-bottom: calc(2 * var(--l-block-pad));
+  }
+
+  // Triple.
+  &--triple {
+    padding-top: calc(3 * var(--l-block-pad));
+    padding-bottom: calc(3 * var(--l-block-pad));
+  }
+
+  &--triple-top {
+    padding-top: calc(3 * var(--l-block-pad));
+  }
+  
+  &--triple-bottom {
+    padding-bottom: calc(3 * var(--l-block-pad));
+  }
+
+  // Suppress - zero.
+  &--zero-top {
     padding-top: 0;
   }
   
-  &--bottom-0 {
+  &--zero-bottom {
     padding-bottom: 0;
-  }
-  
-  &--top-half {
-    padding-top: calc(0.5 * var(--l-block-pad));
-  }
-  
-  &--bottom-half {
-    padding-bottom: calc(0.5 * var(--l-block-pad));
-  }
-  
-  &--top-quarter {
-    padding-top: calc(0.25 * var(--l-block-pad));
-  }
-  
-  &--bottom-quarter {
-    padding-bottom: calc(0.25 * var(--l-block-pad));
   }
 }
 
