@@ -11,9 +11,17 @@ const blocksJs = glob.sync('./template-parts/blocks/**/*.js').reduce((acc, path)
     return acc
 }, {});
 
+// One bundle per shared module.
+const modulesJs = glob.sync('./src/js/modules/*.js').reduce((acc, path) => {
+  const entry = path.split('/').pop().replace('.js', '')
+  acc[entry] = path
+  return acc
+}, {});
+
 module.exports = {
   entry: {
     ...blocksJs,
+    ...modulesJs,
     'main': './src/js/index.js', 
     'cms': './src/js/cms.js',
     'styles': './src/scss/main.scss',
