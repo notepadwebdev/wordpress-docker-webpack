@@ -5,9 +5,9 @@
     "location": [
         [
             {
-                "param": "post_type",
+                "param": "options_page",
                 "operator": "==",
-                "value": "post"
+                "value": "theme-general-settings"
             }
         ]
     ],
@@ -20,5 +20,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1684403865
+    "modified": 1684405279
 }

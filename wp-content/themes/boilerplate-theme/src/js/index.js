@@ -9,6 +9,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
    */
   const aoes = document.querySelectorAll('.animate-on-enter');
   [...aoes].forEach(aoe => new AnimateOnEnter(aoe));
+
+  /** 
+   *       Share Links.
+   */
+  const shareLinks = document.querySelectorAll('.share');
+  [...shareLinks].forEach(shareLink => new Share(shareLink));
   
     
   document.documentElement.classList.remove('no-js');
