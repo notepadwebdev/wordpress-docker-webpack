@@ -12,23 +12,37 @@
       $url = $args['url'];
       break;
 
+    case 'file':
+      $url = $args['file']['url'];
+      break;
+
     case 'hash':
       $url = '#'.$args['target_id'];
       break;
 
-    // case 'file':
-    //   $url = $args['file']['url'];
-    //   break;
+    case 'mailto':
+      $url = 'mailto:'.$args['email'];
+      break;
+  }
+
+  // Append a hash to the link?
+  if ($args['type'] !== 'hash' && $args['type'] !== 'file' && isset($args['target_id'])) {
+    $url .= '#'.$args['target_id'];
   }
   
-  $class = (isset($args['style'])) ? 'btn--'.$args['style'] : '';
+  $class = 'btn';
+  $class .= (isset($args['colour'])) ? ' btn--'.$args['colour'] : '';
+  $class .= (isset($args['style'])) ? ' btn--'.$args['style'] : '';
 ?>
 
-<a href="<?php echo $url; ?>" class="btn <?php echo $class; ?>">
+<a 
+  href="<?php echo $url; ?>" 
+  class="<?php echo $class; ?>" 
+  <?php if ($args['new_tab']) : ?>
+    target="_blank" 
+  <?php endif; ?>
+>
   <span>
     <?php echo $args['label']; ?>
   </span>
-  <svg width="15" height="9" viewBox="0 0 15 9" fill="none">
-    <path d="M1 1L7.5 7L14 1" stroke="#011627" stroke-width="2"/>
-  </svg>
 </a>

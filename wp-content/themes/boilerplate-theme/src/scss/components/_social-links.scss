@@ -1,0 +1,39 @@
+.social-links {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  gap: 5px;
+  //justify-content: center;
+  align-items: center;
+
+  li {
+    margin: 0 1em 1em 0;
+  }
+
+  a {
+    display: block;
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    background-color: var(--c-brand-a);
+
+    svg,
+    img {
+      display: block;
+      height: 22px !important;
+      width: 22px !important;
+    }
+
+    svg {
+      path {
+        fill: white;
+      }
+    }
+
+    span {
+      display: none;
+    }
+  }
+}
