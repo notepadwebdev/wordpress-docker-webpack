@@ -30,6 +30,9 @@ module.exports = {
     path: path.resolve(__dirname, './dist'),
     filename: 'js/[name].bundle.js',
   },
+  resolve: {
+    preferRelative: true,
+  },
   module: {
     rules: [
       {
