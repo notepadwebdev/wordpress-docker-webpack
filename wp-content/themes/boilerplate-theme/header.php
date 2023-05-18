@@ -15,3 +15,4 @@
   </header>
   
   <main id="site-content" role="main">
+    <div id="scroll-pixel" class="scroll-pixel"></div>

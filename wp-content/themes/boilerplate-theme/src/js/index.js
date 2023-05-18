@@ -3,6 +3,8 @@ import AnimateOnEnter from "./modules/animate-on-enter";
 document.addEventListener("DOMContentLoaded", function(event) {
     
   console.log(`Let's do this, yeah?!`);
+
+  // new ScrollPixel();
   
   /** 
    *       Animate on Enter.
