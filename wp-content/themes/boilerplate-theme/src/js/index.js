@@ -1,4 +1,6 @@
 import AnimateOnEnter from "./modules/animate-on-enter";
+import ScrollPixel from "./modules/scroll-pixel";
+import Share from './modules/share';
 
 document.addEventListener("DOMContentLoaded", function(event) {
     
