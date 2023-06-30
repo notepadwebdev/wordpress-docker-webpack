@@ -6,16 +6,16 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 // One bundle per ACF block.
 const blocksJs = glob.sync('./template-parts/blocks/**/*.js').reduce((acc, path) => {
-    const entry = path.split('/').pop().replace('.js', '')
-    acc[entry] = path
-    return acc
+  const entry = path.split('\\').pop().replace('.js', '')
+  acc[entry] = `./${path}`
+  return acc
 }, {});
 
 // One bundle per shared module.
 const modulesJs = glob.sync('./src/js/modules/*.js').reduce((acc, path) => {
-  const entry = path.split('/').pop().replace('.js', '')
-  acc[entry] = path
-  return acc
+const entry = path.split('\\').pop().replace('.js', '')
+acc[entry] = `./${path}`
+return acc
 }, {});
 
 module.exports = {
@@ -29,9 +29,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, './dist'),
     filename: 'js/[name].bundle.js',
-  },
-  resolve: {
-    preferRelative: true,
+    assetModuleFilename: 'fonts/[hash][ext][query]'
   },
   module: {
     rules: [
@@ -69,16 +67,11 @@ module.exports = {
       },
       {
         test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name].[ext]',
-              outputPath: 'fonts/',
-              publicPath: './../fonts',
-            }
-          }
-        ]
+        type: 'asset/resource',
+        dependency: { not: ['url'] },
+        generator: {
+          filename: 'fonts/[hash][ext][query]'
+        }
       },
     ],
   },
