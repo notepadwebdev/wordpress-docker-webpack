@@ -4,6 +4,7 @@
  */
 
 add_theme_support('post-thumbnails');
+add_theme_support('custom-logo');
 
 if ( function_exists( 'add_image_size' ) ) {
 

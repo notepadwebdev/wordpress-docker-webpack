@@ -12,7 +12,10 @@
 @import "layout/site-header";
 @import "layout/site-footer";
 
-@import "components/component";
+@import "components/address";
+@import "components/btn";
+@import "components/scroll-pixel";
+@import "components/social-links";
+@import "components/video";
 
 @import "blocks/block";
-@import "blocks/hero";

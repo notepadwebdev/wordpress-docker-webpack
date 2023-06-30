@@ -11,5 +11,35 @@ if( function_exists('acf_add_options_page') ) {
 		'redirect'		=> false,
     'show_in_graphql' => true
   ));
+
+	acf_add_options_sub_page(array(
+		'page_title' 	=> 'Contact Details',
+		'menu_title'	=> 'Contact Details',
+		'parent_slug'	=> 'theme-general-settings',
+	));
+
+	acf_add_options_sub_page(array(
+		'page_title' 	=> 'Social Links',
+		'menu_title'	=> 'Social Links',
+		'parent_slug'	=> 'theme-general-settings',
+	));
+
+	acf_add_options_sub_page(array(
+		'page_title' 	=> 'Header Settings',
+		'menu_title'	=> 'Header Settings',
+		'parent_slug'	=> 'theme-general-settings',
+	));
+
+	acf_add_options_sub_page(array(
+		'page_title' 	=> 'Footer Settings',
+		'menu_title'	=> 'Footer Settings',
+		'parent_slug'	=> 'theme-general-settings',
+	));
+
+	acf_add_options_sub_page(array(
+		'page_title' 	=> '404 Page',
+		'menu_title'	=> '404 Page',
+		'parent_slug'	=> 'theme-general-settings',
+	));
 }
 ?>

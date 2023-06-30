@@ -30,7 +30,7 @@ function reorder_admin_menu( $__return_true ) {
   return array(
     'index.php', // Dashboard
     'edit.php?post_type=page', // Pages
-    'edit.php?post_type=products', // Products
+    //'edit.php?post_type=products', // Products
     'edit.php', // Posts
     'upload.php', // Media
     'themes.php', // Appearance

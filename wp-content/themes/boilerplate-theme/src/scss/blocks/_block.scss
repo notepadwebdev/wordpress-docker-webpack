@@ -5,8 +5,14 @@
     margin-left: auto;
     margin-right: auto;
   }
+
+  &--center-width {
+    > .container {
+      @include max-centered(660px);
+    }
+  }
   
-  &--wide {
+  &--wide-width {
     > .container {
       @include max-centered(1360px);
     }
@@ -17,12 +23,14 @@
       max-width: none; 
     }
   }
+
   
   &__placeholder {
     width: 100%;
+    grid-column: 1 / -1;
     margin: 0;
     padding: var(--l-block-pad);
     text-align: center;
-    color: var(--c-brand-a);
+    color: var(--c-purple);
   }
 }

@@ -5,6 +5,7 @@ $mq-tablet-large-min: 760px;
 $mq-tablet-max: 1023px;
 $mq-desktop-min: 1024px;
 $mq-desktop-large-min: 1200px;
+$mq-desktop-huge-min: 1400px;
 
 :root {
   // FONTS
@@ -37,6 +38,8 @@ $mq-desktop-large-min: 1200px;
   --l-max-content: min(var(--l-max-width), calc(100vw - var(--l-body-pad) * 2));
   
   // Universal styles.
-  --s-border-radius: 1.875rem;
+  --s-border-radius: 5px;
   --s-box-shadow: 5px 5px 20px rgba(0,0,0,0.2);
+  --s-filter-light: brightness(0) invert(1);
+  --s-filter-dark: brightness(10%) saturate(0);
 }
