@@ -219,11 +219,12 @@
                 "id": ""
             },
             "choices": {
-                "purple": "purple",
-                "yellow": "yellow"
+                "brand-a": "Brand A",
+                "brand-b": "Brand B",
+                "white": "White"
             },
-            "default_value": "purple",
-            "return_format": "",
+            "default_value": "brand-a",
+            "return_format": "value",
             "multiple": 0,
             "allow_null": 0,
             "ui": 0,
@@ -275,5 +276,5 @@
     "active": false,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1684406529
+    "modified": 1691107896
 }

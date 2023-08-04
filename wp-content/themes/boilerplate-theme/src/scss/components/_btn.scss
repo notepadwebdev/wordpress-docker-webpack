@@ -38,65 +38,61 @@
   /**
   *     Style.
   **/
-  &--orange {
+  &--brand-a {
     --text-color: white;
-    --bg-color: var(--c-orange);
-    --border-color: var(--c-orange);
+    --bg-color: var(--c-brand-a);
+    --border-color: var(--c-brand-a);
 
     &:hover,
     &:focus {
-      --text-color: var(--c-orange);
+      --text-color: var(--c-brand-a);
       --bg-color: white;
       --border-color: white;
     }
 
     &:active {
       --text-color: white;
-      --bg-color: var(--c-orange-dark);
-      --border-color: var(--c-orange);
+      --bg-color: var(--c-brand-a);
+      --border-color: var(--c-brand-a);
     }
   }
 
 
-  &--transparent {
-    --text-color: var(--c-orange);
-    --bg-color: transparent;
-    --border-color: var(--c-orange);
-
-    [data-theme="on-blue"] & {
-      --text-color: white;
-    }
+  &--brand-b {
+    --text-color: white;
+    --bg-color: var(--c-brand-b);
+    --border-color: var(--c-brand-b);
 
     &:hover,
     &:focus {
-      --text-color: var(--c-orange);
+      --text-color: var(--c-brand-b);
       --bg-color: white;
       --border-color: white;
     }
 
     &:active {
       --text-color: white;
-      --bg-color: var(--c-orange-dark);
-      --border-color: var(--c-orange);
+      --bg-color: var(--c-brand-b);
+      --border-color: var(--c-brand-b);
     }
   }
 
   &--white {
-    --text-color: var(--c-orange);
+    --text-color: var(--c-brand-a);
     --bg-color: white;
-    --border-color: var(--c-orange);
+    --border-color: var(--c-brand-a);
 
     &:hover,
     &:focus {
       --text-color: white;
-      --bg-color: var(--c-orange);
-      --border-color: white;
+      --bg-color: var(--c-brand-a);
+      --border-color: var(--c-brand-a);
     }
 
     &:active{
       --text-color: white;
-      --bg-color: var(--c-orange);
-      --border-color: var(--c-orange);
+      --bg-color: var(--c-brand-a);
+      --border-color: var(--c-brand-a);
     }
   }
 
