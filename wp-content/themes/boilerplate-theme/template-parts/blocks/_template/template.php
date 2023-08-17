@@ -1,11 +1,14 @@
 <?php
-  $className = 'named-block block';
+  $className = 'temlpate block';
   
   if (!empty($block['align'])) {
     $className .= ' block--'.$block['align'].'-width';
   }
   if (!empty($block['align_text'])) {
-    $className .= ' text-' . $block['align_text'];
+    $className .= ' align-text-' . $block['align_text'];
+  }
+  if (!empty($block['align_content'])) {
+    $className .= ' align-content-' . $block['align_content'];
   }
 
   if (!empty($block['className'])) {
@@ -13,7 +16,10 @@
   }
 ?>
 
-<section class="<?php echo esc_attr($className); ?> body-pad block-pad">
+<section 
+  <?php if ($block['anchor']) { echo "id='{$block['anchor']}'"; } ?> 
+  class="<?php echo esc_attr($className); ?> body-pad block-pad"
+>
   <div class="container">
 
     <?php if (get_field('title')) : ?>
@@ -25,7 +31,7 @@
     <?php else: ?>
 
       <?php /* Initial display after adding the unpopulated block. */ ?>
-      <h2 class="block__placeholder">Named Block</h2>
+      <h2 class="block__placeholder">Template Block</h2>
 
     <?php endif; ?>
 

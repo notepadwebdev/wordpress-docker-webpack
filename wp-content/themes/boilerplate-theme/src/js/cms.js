@@ -1,7 +1,7 @@
 /**
  * 	Gutenberg tidy up.
  */
-wp.domReady( () => {
+// wp.domReady( () => {
 	
 	// Find blocks styles.
 	// wp.blocks.getBlockTypes().forEach((block) => {
@@ -18,7 +18,7 @@ wp.domReady( () => {
 	// wp.blocks.unregisterBlockStyle('core/image', 'default');
 	// wp.blocks.unregisterBlockStyle('core/image', 'rounded');
 
-});
+// });
 
 
 /**

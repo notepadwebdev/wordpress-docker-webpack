@@ -1,0 +1,26 @@
+{
+  "name": "template",
+  "title": "Template Block",
+  "description": "Block description here.",
+  "renderTemplate": "file:./template-parts/blocks/template/template.php",
+  "category": "custom-blocks",
+  "icon": "arrow-right-alt2",
+  "keywords": [
+    "content"
+  ],
+  "supports": {
+    "anchor": false,
+    "align": false,
+    "alignContent": false,
+    "alignText": false,
+    "multiple": true
+  },
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "template.php",
+    "postTypes": [
+      "page"
+    ]
+  },
+  "script": [ "block-template" ]
+}

@@ -9,8 +9,11 @@ remove_theme_support('core-block-patterns');
 add_editor_style( 'dist/css/styles.css' );
 add_editor_style( 'admin.css' );
 
+
 /**
+ * 
  *    Custom Block Categories.
+ * 
  */
 add_filter( 'block_categories_all', 'theme_block_categories', 10, 2 );
 function theme_block_categories( $categories, $post ) {
@@ -31,44 +34,38 @@ function theme_block_categories( $categories, $post ) {
   );
 }
 
+
 /**
+ * 
  *    Custom Blocks.
+ * 
  */
-add_action('acf/init', 'my_acf_init_block_types');
-function my_acf_init_block_types() {
+add_action( 'init', 'register_acf_blocks', 5 );
+function register_acf_blocks() {
 
-  // Check function exists.
-  if( function_exists('acf_register_block_type') ) {
+  $parentDir = realpath(__DIR__ . '/..');
 
-    // Hero.
-    // acf_register_block_type(array(
-    //   'name'              => 'hero',
-    //   'title'             => __('Hero'),
-    //   'description'       => __('Hero'),
-    //   'render_template'   => 'template-parts/blocks/hero/hero.php',
-    //   'category'          => 'custom-blocks',
-    //   'icon'              => 'arrow-right-alt2',
-    //   'keywords'          => array( 'content' ),
-    //   'align'             => 'full',
-    //   'supports'          => array(
-    //     'align_text' => false,
-    //     'align_content' => false,
-    //     'align'		=> array('full'),
-    //     'multiple' => false,
-    //   ),
-    // ));
-  }
+  /**
+   *  Register block specific scripts.
+   */
+  wp_register_script('block-template', get_template_directory_uri() . '/dist/js/template.bundle.js', array('jquery'), '', true);
+  
+  /**
+   *  Register custom blocks.
+   */ 
+  register_block_type( $parentDir . '/template-parts/blocks/_template' );
 }
 
+
 /**
+ * 
  *    Use whitelist for allowed blocks.
+ * 
  */
 add_filter( 'allowed_block_types_all', 'theme_allowed_block_types' );
 function theme_allowed_block_types( $allowed_blocks ) {
    return array(
-    'core/image',
-    // 'acf/hero',
-    // Add each custom block here...
+    'acf/template',
   );
 }
 

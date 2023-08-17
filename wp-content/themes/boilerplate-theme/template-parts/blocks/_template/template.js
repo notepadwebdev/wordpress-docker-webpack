@@ -2,13 +2,13 @@
     
     var initializeBlock = function( $block ) {
         
-      const block = ($block.hasClass('named-block')) ? $block.get(0) : $block.find('.named-block').get(0);
+      const block = ($block.hasClass('temlpate')) ? $block.get(0) : $block.find('.temlpate').get(0);
       
-      const thing = block.querySelector('.named-block__thing');
-      if (thing) {        
+      const container = block.querySelector('.container');
+      if (container) {        
         
         // Do something with thing.
-        console.log('named-block', thing);
+        console.log('temlpate', container);
         
         // // Timeline.
         // var blockTL = gsap.timeline({paused: true});
@@ -25,14 +25,14 @@
 
     // Initialize each block on page load (front end).
     $(document).ready(function(){
-        $('.named-block').each(function(){
+        $('.temlpate').each(function(){
             initializeBlock( $(this) );
         });
     });
 
     // Initialize dynamic block preview (editor).
     if( window.acf ) {
-        window.acf.addAction( 'render_block_preview/type=named-block', initializeBlock );
+        window.acf.addAction( 'render_block_preview/type=temlpate', initializeBlock );
     }
 
 })(jQuery);
