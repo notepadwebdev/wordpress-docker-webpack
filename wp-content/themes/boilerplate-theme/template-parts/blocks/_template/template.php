@@ -17,7 +17,7 @@
 ?>
 
 <section 
-  <?php if ($block['anchor']) { echo "id='{$block['anchor']}'"; } ?> 
+  <?php if (array_key_exists('anchor', $block)) { echo "id='{$block['anchor']}'"; } ?>
   class="<?php echo esc_attr($className); ?> body-pad block-pad"
 >
   <div class="container">
