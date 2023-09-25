@@ -70,6 +70,7 @@ function theme_allowed_block_types( $allowed_blocks ) {
   // echo '<pre>' . print_r( $registered_block_slugs, true ) . '</pre>';
   
   return array(
+    'core/block', // Required for reusable blocks functionality.
     'acf/template',
   );
 }
