@@ -64,7 +64,12 @@ function register_acf_blocks() {
  */
 add_filter( 'allowed_block_types_all', 'theme_allowed_block_types' );
 function theme_allowed_block_types( $allowed_blocks ) {
-   return array(
+  
+  // Dump a list of all block slugs.
+  // $registered_block_slugs = array_keys( WP_Block_Type_Registry::get_instance()->get_all_registered() );
+  // echo '<pre>' . print_r( $registered_block_slugs, true ) . '</pre>';
+  
+  return array(
     'acf/template',
   );
 }
