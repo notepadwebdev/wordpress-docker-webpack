@@ -26,7 +26,7 @@
   }
 
   // Append a hash to the link?
-  if ($args['type'] !== 'hash' && $args['type'] !== 'file' && isset($args['target_id'])) {
+  if ($args['target_id']) {
     $url .= '#'.$args['target_id'];
   }
   
