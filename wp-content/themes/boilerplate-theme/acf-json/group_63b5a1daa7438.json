@@ -219,9 +219,7 @@
                 "id": ""
             },
             "choices": {
-                "brand-a": "Brand A",
-                "brand-b": "Brand B",
-                "white": "White"
+                "brand-a": "Brand A"
             },
             "default_value": "brand-a",
             "return_format": "value",
@@ -246,10 +244,10 @@
                 "id": ""
             },
             "choices": {
-                "transparent": "transparent",
-                "solid": "solid"
+                "solid": "solid",
+                "transparent": "transparent"
             },
-            "default_value": "transparent",
+            "default_value": "solid",
             "return_format": "value",
             "multiple": 0,
             "allow_null": 0,
@@ -276,5 +274,5 @@
     "active": false,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1691107896
+    "modified": 1700479870
 }

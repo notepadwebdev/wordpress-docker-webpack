@@ -42,16 +42,7 @@
                 "id": ""
             },
             "choices": {
-                "full": "Full",
-                "square_206": "206px square (crop)",
-                "1440w": "1440px (resize)",
-                "1240w": "1240px (resize)",
-                "1024w": "1024px (resize)",
-                "960w": "960px (resize)",
-                "800w": "800px (resize)",
-                "660w": "660px (resize)",
-                "400w": "400px (resize)",
-                "320w": "320px (resize)"
+                "full": "Full"
             },
             "default_value": "full",
             "return_format": "value",
@@ -126,28 +117,6 @@
             "default_value": "rgba(0,11,78,0.5)",
             "enable_opacity": 1,
             "return_format": "string"
-        },
-        {
-            "key": "field_641c4c6dc712f",
-            "label": "Parallax",
-            "name": "parallax",
-            "aria-label": "",
-            "type": "number",
-            "instructions": "Amount of movement, percentage of image height.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": 0,
-            "min": "",
-            "max": "",
-            "placeholder": "",
-            "step": "",
-            "prepend": "",
-            "append": "%"
         }
     ],
     "location": [
@@ -168,5 +137,5 @@
     "active": false,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1684405976
+    "modified": 1700480099
 }
