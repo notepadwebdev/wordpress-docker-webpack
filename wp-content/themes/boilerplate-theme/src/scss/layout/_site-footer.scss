@@ -1,4 +1,8 @@
 
 .site-footer {
   
+  .container {
+    @include max-centered(var(--l-max-width));
+  }
+
 }

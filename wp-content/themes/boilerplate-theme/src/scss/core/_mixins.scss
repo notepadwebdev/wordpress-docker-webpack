@@ -1,5 +1,27 @@
 
 // Layout
+@mixin theme-grid {
+	--grid-gap: var(--l-gutter-width);
+
+  @media (min-width: $mq-desktop-min) {
+    --grid-cols: repeat(12, 1fr);
+  }
+
+  display: grid;
+  gap: var(--grid-gap);
+  grid-template-columns: var(--grid-cols, 1fr);
+}
+
+@mixin body-pad {
+  padding-left: var(--l-body-pad);
+  padding-right: var(--l-body-pad);
+}
+
+@mixin block-pad {
+	padding-top: var(--l-block-pad);
+  padding-bottom: var(--l-block-pad);
+}
+
 @mixin max-centered($width) {
 	max-width: $width;
 	margin-left: auto;
@@ -26,6 +48,14 @@
   margin: -1px; 
 	padding: 0; 
 	border: 0; 
+}
+
+@mixin hide-scrollbar {
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+	&::-webkit-scrollbar { 
+		display: none;  /* Safari and Chrome */
+	}
 }
 
 

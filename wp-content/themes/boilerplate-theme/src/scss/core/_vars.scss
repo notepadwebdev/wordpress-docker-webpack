@@ -34,8 +34,7 @@ $mq-desktop-huge-min: 1400px;
   --l-body-pad: clamp(15px, 5vw, 30px);    // Horizontal spacing.
   --l-block-pad: clamp(2rem, 10vw, 60px);  // Verical spacing.
   --l-gutter-width: min(5vw, 20px);
-  --l-max-width: 1240px;
-  --l-max-content: min(var(--l-max-width), calc(100vw - var(--l-body-pad) * 2));
+  --l-max-width: 1440px;
   
   // Universal styles.
   --s-border-radius: 5px;

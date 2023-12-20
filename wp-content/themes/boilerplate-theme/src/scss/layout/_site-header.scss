@@ -1,4 +1,8 @@
 
 .site-header {
+  
+  .container {
+    @include body-pad;
+  }
 
 }

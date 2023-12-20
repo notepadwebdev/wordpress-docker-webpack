@@ -48,12 +48,12 @@ function register_acf_blocks() {
   /**
    *  Register block specific scripts.
    */
-  wp_register_script('block-template', get_template_directory_uri() . '/dist/js/template.bundle.js', array('jquery'), '', true);
+  //wp_register_script('block-template', get_template_directory_uri() . '/dist/js/template.bundle.js', array('jquery'), '', true);
   
   /**
    *  Register custom blocks.
    */ 
-  register_block_type( $parentDir . '/template-parts/blocks/_template' );
+  //register_block_type( $parentDir . '/template-parts/blocks/_template' );
 }
 
 
@@ -71,7 +71,7 @@ function theme_allowed_block_types( $allowed_blocks ) {
   
   return array(
     'core/block', // Required for reusable blocks functionality.
-    'acf/template',
+    //'acf/template',
   );
 }
 

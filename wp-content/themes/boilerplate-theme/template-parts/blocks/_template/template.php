@@ -22,10 +22,10 @@
 >
   <div class="container">
 
-    <?php if (get_field('title')) : ?>
+    <?php if (get_field('block_title')) : ?>
 
-      <?php if (get_field('title')) : ?>
-        <h2><?php the_field('title'); ?></h2>
+      <?php if (get_field('block_title')) : ?>
+        <h2><?php the_field('block_title'); ?></h2>
       <?php endif; ?>
 
     <?php else: ?>

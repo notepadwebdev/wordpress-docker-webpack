@@ -1,7 +1,7 @@
 
 .block {
   > .container {
-    max-width: var(--l-max-content);
+    max-width: var(--l-max-width);
     margin-left: auto;
     margin-right: auto;
   }
@@ -31,6 +31,6 @@
     margin: 0;
     padding: var(--l-block-pad);
     text-align: center;
-    color: var(--c-purple);
+    color: red;
   }
 }

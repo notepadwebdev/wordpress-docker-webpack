@@ -1,5 +1,4 @@
 // Horizontal spacing.
 .body-pad {
-  padding-left: var(--l-body-pad);
-  padding-right: var(--l-body-pad);
+  @include body-pad;
 }
