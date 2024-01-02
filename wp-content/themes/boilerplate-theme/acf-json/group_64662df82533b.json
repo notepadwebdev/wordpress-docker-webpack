@@ -1,0 +1,64 @@
+{
+    "key": "group_64662df82533b",
+    "title": "Clone Fields",
+    "fields": [
+        {
+            "key": "field_64662ed4e6535",
+            "label": "Block Padding",
+            "name": "block_padding",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "CTRL + CLICK to select multiple options.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "block-pad--quarter": "Quarter (top and bottom)",
+                "block-pad__half": "Half (top and bottom)",
+                "block-pad": "Default (top and bottom)",
+                "block-pad--double": "Double (top and bottom)",
+                "block-pad--triple": "Triple (top and bottom)",
+                "block-pad--double-top": "Double (top)",
+                "block-pad--double-bottom": "Double (bottom)",
+                "block-pad--top": "Default (top)",
+                "block-pad--bottom": "Default (bottom)",
+                "block-pad--half-top": "Half (top)",
+                "block-pad--half-bottom": "Half (bottom)",
+                "block-pad--zero-top": "Zero (top)",
+                "block-pad--zero-bottom": "Zero (bottom)"
+            },
+            "default_value": [
+                "block-pad"
+            ],
+            "return_format": "value",
+            "multiple": 1,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": false,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1704209904
+}

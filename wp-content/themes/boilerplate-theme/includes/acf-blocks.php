@@ -53,7 +53,7 @@ function register_acf_blocks() {
   /**
    *  Register custom blocks.
    */ 
-  //register_block_type( $parentDir . '/template-parts/blocks/_template' );
+  register_block_type( $parentDir . '/template-parts/blocks/content-block' );
 }
 
 
@@ -71,7 +71,7 @@ function theme_allowed_block_types( $allowed_blocks ) {
   
   return array(
     'core/block', // Required for reusable blocks functionality.
-    //'acf/template',
+    'acf/content-block',
   );
 }
 

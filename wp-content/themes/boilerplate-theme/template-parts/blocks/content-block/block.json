@@ -1,0 +1,25 @@
+{
+  "name": "content-block",
+  "title": "Content Block",
+  "description": "Text and images presented in a range of layout options.",
+  "renderTemplate": "file:./template-parts/blocks/content-block/content-block.php",
+  "category": "custom-blocks",
+  "icon": "edit",
+  "keywords": [
+    "content"
+  ],
+  "supports": {
+    "anchor": true,
+    "align": true,
+    "alignContent": true,
+    "alignText": true,
+    "multiple": true
+  },
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "content-block.php",
+    "postTypes": [
+      "page"
+    ]
+  }
+}
