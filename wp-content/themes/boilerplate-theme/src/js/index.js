@@ -11,14 +11,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
   /** 
    *       Animate on Enter.
    */
-  const aoes = document.querySelectorAll('.animate-on-enter');
-  [...aoes].forEach(aoe => new AnimateOnEnter(aoe));
+  // const aoes = document.querySelectorAll('.animate-on-enter');
+  // [...aoes].forEach(aoe => new AnimateOnEnter(aoe));
 
   /** 
    *       Share Links.
    */
-  const shareLinks = document.querySelectorAll('.share');
-  [...shareLinks].forEach(shareLink => new Share(shareLink));
+  // const shareLinks = document.querySelectorAll('.share');
+  // [...shareLinks].forEach(shareLink => new Share(shareLink));
   
     
   document.documentElement.classList.remove('no-js');
