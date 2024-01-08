@@ -10,8 +10,12 @@
 <body <?php body_class(); ?>>
   <div class="body-wrap">
 
-  <header class="site-header">
-    SITE HEADER
+  <header id="body-wrap" class="site-header">
+    <div class="container">
+      
+      SITE HEADER
+    
+    </div>
   </header>
   
   <main id="site-content" role="main">
