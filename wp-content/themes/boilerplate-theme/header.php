@@ -13,7 +13,13 @@
   <header id="body-wrap" class="site-header">
     <div class="container">
       
-      SITE HEADER
+      <div class="site-header__logo">
+        <?php
+          if ( function_exists( 'the_custom_logo' ) ) {
+            the_custom_logo();
+          }
+        ?>
+      </div>
     
     </div>
   </header>
