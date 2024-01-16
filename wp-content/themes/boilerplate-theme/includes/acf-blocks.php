@@ -49,6 +49,12 @@ function register_acf_blocks() {
    *  Register block specific scripts.
    */
   //wp_register_script('block-template', get_template_directory_uri() . '/dist/js/template.bundle.js', array('jquery'), '', true);
+
+  // Localise AJAX dependent scripts.
+  // wp_localize_script('block-template', 'ajax_params', array(
+  //   'ajaxurl' => admin_url('admin-ajax.php'),
+  //   'current_page' => get_query_var('paged') ? get_query_var('paged') : 1
+  // ));
   
   /**
    *  Register custom blocks.
