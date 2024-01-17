@@ -19,14 +19,21 @@ function theme_clean() {
     wp_register_script('jquery', false);
   }
 }
+
 add_action( 'wp_enqueue_scripts', 'remove_block_css', 100 );
 function remove_block_css(){
   wp_dequeue_style( 'wp-block-library' );
   wp_dequeue_style( 'wp-block-library-theme' );
 }
+
 add_action( 'wp_footer', 'my_deregister_scripts' );
 function my_deregister_scripts(){
   wp_deregister_script( 'wp-embed' );
+}
+
+add_action( 'wp_print_styles', 'wps_deregister_styles', 100 );
+function wps_deregister_styles() {
+    wp_deregister_style( 'contact-form-7' );
 }
 
 /**
