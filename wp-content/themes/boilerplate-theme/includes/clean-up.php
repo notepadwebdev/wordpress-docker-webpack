@@ -12,6 +12,12 @@ function theme_clean() {
   remove_action('wp_head', 'index_rel_link');
   add_filter( 'emoji_svg_url', '__return_false' );
   //add_filter( 'gform_enable_field_label_visibility_settings', '__return_true' );
+
+  // Remove jQuery from front end.
+  if (!is_admin() && ($GLOBALS['pagenow'] !== 'wp-login.php')) {
+    wp_deregister_script('jquery');
+    wp_register_script('jquery', false);
+  }
 }
 add_action( 'wp_enqueue_scripts', 'remove_block_css', 100 );
 function remove_block_css(){

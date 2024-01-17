@@ -1,38 +1,37 @@
-(function($){
+document.addEventListener("DOMContentLoaded", () => { 
     
-    var initializeBlock = function( $block ) {
-        
-      const block = ($block.hasClass('temlpate')) ? $block.get(0) : $block.find('.temlpate').get(0);
+  const initializeBlock = (block) => {
       
-      const container = block.querySelector('.container');
-      if (container) {        
-        
-        // Do something with thing.
-        console.log('temlpate', container);
-        
-        // // Timeline.
-        // var blockTL = gsap.timeline({paused: true});
+    const container = block.querySelector('.container');
+    if (container) {        
+      
+      // Do something with thing.
+      console.log('template', container);
+      
+      // // Timeline.
+      // var blockTL = gsap.timeline({paused: true});
 
-        // // Observer.
-        // const blockObserver = new IntersectionObserver((entries) => {
-        //   (entries[0].isIntersecting) ? blockTL.play() : blockTL.pause();
-        // }, {
-        //   threshold: 0
-        // });
-        // blockObserver.observe(thing);
-      }
+      // // Observer.
+      // const blockObserver = new IntersectionObserver((entries) => {
+      //   (entries[0].isIntersecting) ? blockTL.play() : blockTL.pause();
+      // }, {
+      //   threshold: 0
+      // });
+      // blockObserver.observe(thing);
     }
+  }
 
-    // Initialize each block on page load (front end).
-    $(document).ready(function(){
-        $('.temlpate').each(function(){
-            initializeBlock( $(this) );
-        });
+  // Initialize all block instances (Front end).
+  const blocks = document.querySelectorAll('.template');
+  [...blocks].forEach(block => {
+    initializeBlock(block);
+  });
+
+  // Initialize block preview (CMS).
+  if( window.acf ) {
+    window.acf.addAction( 'render_block_preview/type=template', ($block) => {
+      initializeBlock($block.get(0));
     });
+  }
 
-    // Initialize dynamic block preview (editor).
-    if( window.acf ) {
-        window.acf.addAction( 'render_block_preview/type=temlpate', initializeBlock );
-    }
-
-})(jQuery);
+});
