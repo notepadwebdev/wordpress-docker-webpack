@@ -1,16 +1,5 @@
 <?php
 
-// Register Ajax script.
-add_action( 'wp_enqueue_scripts', 'jf_ajax_load_posts' );
-function jf_ajax_load_posts() { 
-	global $wp_query; 
-	wp_register_script('module-ajax-load-posts', get_template_directory_uri() . '/dist/js/ajax-load-posts.bundle.js', array('jquery'));
-	wp_localize_script('module-ajax-load-posts', 'ajax_load_posts_params', array(
-		'ajaxurl' => admin_url('admin-ajax.php'),
-		'current_page' => get_query_var('paged') ? get_query_var('paged') : 1
-	));
-}
-
 /** 
  *  Posts.
  */
