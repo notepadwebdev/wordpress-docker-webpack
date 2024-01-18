@@ -1,5 +1,5 @@
 <?php
-  $className = 'temlpate block';
+  $className = 'template block';
   
   if (!empty($block['align'])) {
     $className .= ' block--'.$block['align'].'-width';
