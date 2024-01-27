@@ -83,4 +83,7 @@ function theme_allowed_block_types( $allowed_blocks ) {
   );
 }
 
+// Ensure block scripts are only loaded on pages where the block is present.
+add_filter( 'should_load_separate_core_block_assets', '__return_true' );
+
 ?>
