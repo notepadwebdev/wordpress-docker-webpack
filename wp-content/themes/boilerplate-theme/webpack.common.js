@@ -29,7 +29,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, './dist'),
     filename: 'js/[name].bundle.js',
-    assetModuleFilename: 'fonts/[hash][ext][query]'
+    assetModuleFilename: 'assets/[hash][ext][query]'
   },
   module: {
     rules: [
@@ -54,23 +54,18 @@ module.exports = {
         ],
       },
       {
-        test: /\.(pdf|gif|png|jpe?g|svg)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name].[ext]',
-              outputPath: 'images/',
-            },
-          },
-        ],
+        test: /\.(png|svg|jpg|gif)$/,
+        type: "asset/resource",
+        generator: {
+          filename: 'assets/[name][ext]', 
+        },
       },
       {
         test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
         type: 'asset/resource',
         dependency: { not: ['url'] },
         generator: {
-          filename: 'fonts/[hash][ext][query]'
+          filename: 'assets/[hash][ext][query]'
         }
       },
     ],
@@ -83,7 +78,7 @@ module.exports = {
     new CleanWebpackPlugin(), 
     new CopyWebpackPlugin({
       patterns: [
-        { from: './src/images/', to: 'images/' },
+        { from: './src/assets/', to: 'assets/' },
       ],
     }),  
   ],

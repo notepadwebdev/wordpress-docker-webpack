@@ -8,9 +8,9 @@
     <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
-  <div class="body-wrap">
+  <div id="body-wrap" class="body-wrap">
 
-  <header id="body-wrap" class="site-header">
+  <header id="site-header" class="site-header">
     <div class="container">
       
       <div class="site-header__logo">
@@ -20,6 +20,18 @@
           }
         ?>
       </div>
+
+      <button id="hamburger" class="site-header__hamburger hamburger" aria-label="Toggle menu">
+        <i></i><i></i><i></i>
+      </button>
+
+      <nav class="site-header__menu primary-nav">  
+        <?php 
+          wp_nav_menu(array(
+            'menu' => 'Primary Navigation'
+          )); 
+        ?>
+      </nav>
     
     </div>
   </header>
