@@ -14,6 +14,7 @@ include_once('includes/custom-post-types.php');
 // include_once('includes/taxonomies.php');
 include_once('includes/enqueue.php');
 include_once('includes/images.php');
+// include_once('includes/custom-logo.php');
 include_once('includes/menus.php');
 include_once('includes/tiny-mce.php');
 include_once('includes/admin-styles.php');
