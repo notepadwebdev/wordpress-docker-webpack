@@ -9,7 +9,7 @@
     "content"
   ],
   "supports": {
-    "anchor": false,
+    "anchor": true,
     "align": false,
     "alignContent": false,
     "alignText": false,

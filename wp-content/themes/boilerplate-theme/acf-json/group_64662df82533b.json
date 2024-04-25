@@ -3,6 +3,36 @@
     "title": "Clone Fields",
     "fields": [
         {
+            "key": "field_6602f9dc2de26",
+            "label": "Theme Colours",
+            "name": "theme_colours",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "white": "White",
+                "red": "Red",
+                "green": "green",
+                "blue": "Blue"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "placeholder": "",
+            "allow_null": 1,
+            "ui": 0,
+            "ajax": 0,
+            "allow_custom": 0,
+            "search_placeholder": ""
+        },
+        {
             "key": "field_64662ed4e6535",
             "label": "Block Padding",
             "name": "block_padding",
@@ -18,7 +48,7 @@
             },
             "choices": {
                 "block-pad--quarter": "Quarter (top and bottom)",
-                "block-pad__half": "Half (top and bottom)",
+                "block-pad--half": "Half (top and bottom)",
                 "block-pad": "Default (top and bottom)",
                 "block-pad--double": "Double (top and bottom)",
                 "block-pad--triple": "Triple (top and bottom)",

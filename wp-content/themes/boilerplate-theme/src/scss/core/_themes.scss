@@ -1,0 +1,19 @@
+[data-theme] {
+  color: var(--c-text);
+  background-color: var(--c-bg);
+}
+
+[data-theme="red"] {
+  --c-text: white;
+  --c-bg: var(--c-red);
+}
+
+[data-theme="green"] {
+  --c-text: white;
+  --c-bg: var(--c-green);
+}
+
+[data-theme="blue"] {
+  --c-text: white;
+  --c-bg: var(--c-blue);
+}

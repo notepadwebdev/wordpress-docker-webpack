@@ -1,8 +1,8 @@
 .btn {
   --font-size: 1.125rem;
   --text-color: white;
-  --bg-color: var(--c-brand-a);
-  --border-color: var(--c-brand-a);
+  --bg-color: var(--c-red);
+  --border-color: var(--c-red);
 
   display: inline-flex;
   align-items: center;
@@ -40,27 +40,27 @@
   **/
   &--brand-a {
     --text-color: white;
-    --bg-color: var(--c-brand-a);
-    --border-color: var(--c-brand-a);
+    --bg-color: var(--c-red);
+    --border-color: var(--c-red);
 
     // &:hover,
     // &:focus {
-    //   --text-color: var(--c-brand-a);
+    //   --text-color: var(--c-red);
     //   --bg-color: white;
     //   --border-color: white;
     // }
 
     // &:active {
     //   --text-color: white;
-    //   --bg-color: var(--c-brand-a);
-    //   --border-color: var(--c-brand-a);
+    //   --bg-color: var(--c-red);
+    //   --border-color: var(--c-red);
     // }
   }
 
   &--white {
-    --text-color: var(--c-brand-a);
+    --text-color: var(--c-red);
     --bg-color: white;
-    --border-color: var(--c-brand-a);
+    --border-color: var(--c-red);
   }
 
   /**

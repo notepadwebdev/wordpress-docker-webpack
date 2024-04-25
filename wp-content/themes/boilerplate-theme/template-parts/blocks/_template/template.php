@@ -1,4 +1,8 @@
 <?php
+  // Block Pad.
+  $blockPadArray = get_field('block_pad') ?: array('block_padding' => array('block-pad'));
+  $blockPad = implode(' ', $blockPadArray['block_padding']);
+
   $className = 'template block';
   
   if (!empty($block['align'])) {
@@ -18,15 +22,20 @@
 
 <section 
   <?php if (array_key_exists('anchor', $block)) { echo "id='{$block['anchor']}'"; } ?>
-  class="<?php echo esc_attr($className); ?> body-pad block-pad"
+  class="<?php echo esc_attr($className); ?> body-pad <?php echo $blockPad; ?>" 
+  <?php if (get_field('theme')) : ?>
+    data-theme="<?php the_field('theme'); ?>"
+  <?php endif; ?>
 >
   <div class="container">
 
-    <?php if (get_field('block_title')) : ?>
+    <?php if ((get_field('include_block_header') && get_field('block_header_wysiwyg')) ) : ?>
 
-      <?php if (get_field('block_title')) : ?>
-        <h2><?php the_field('block_title'); ?></h2>
-      <?php endif; ?>
+      <?php
+        if (get_field('include_block_header')) : 
+          get_template_part('template-parts/components/block-header');
+        endif;
+      ?>
 
     <?php else: ?>
 

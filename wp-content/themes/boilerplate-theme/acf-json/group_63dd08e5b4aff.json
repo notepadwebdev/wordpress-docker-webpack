@@ -42,15 +42,32 @@
                 "id": ""
             },
             "choices": {
-                "full": "Full"
+                "full": "Full",
+                "## Resizes": "## Resizes",
+                "2560w": "Full bleed",
+                "1312w": "12 cols",
+                "1200w": "11 cols",
+                "1088w": "10 cols",
+                "976w": "9 cols",
+                "864w": "8 cols",
+                "752w": "7 cols",
+                "640w": "6 cols",
+                "528w": "5 cols",
+                "416w": "4 cols",
+                "304w": "3 cols",
+                "192w": "2 cols",
+                "## Crops": "## Crops",
+                "640x640": "6 cols (1:1)"
             },
-            "default_value": "full",
+            "default_value": "192w",
             "return_format": "value",
             "multiple": 0,
             "allow_null": 0,
             "ui": 0,
             "ajax": 0,
-            "placeholder": ""
+            "placeholder": "",
+            "allow_custom": 0,
+            "search_placeholder": ""
         },
         {
             "key": "field_63dd099eea8e2",
