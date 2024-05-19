@@ -1,11 +1,11 @@
-/******/ (function() { // webpackBootstrap
+/******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./src/advanced-custom-fields-pro/assets/src/js/_acf-compatibility.js":
 /*!****************************************************************************!*\
   !*** ./src/advanced-custom-fields-pro/assets/src/js/_acf-compatibility.js ***!
   \****************************************************************************/
-/***/ (function() {
+/***/ (() => {
 
 (function ($, undefined) {
   /**
@@ -706,7 +706,7 @@
 /*!******************************************************************************!*\
   !*** ./src/advanced-custom-fields-pro/assets/src/js/_acf-condition-types.js ***!
   \******************************************************************************/
-/***/ (function() {
+/***/ (() => {
 
 (function ($, undefined) {
   var __ = acf.__;
@@ -1134,7 +1134,7 @@
 /*!************************************************************************!*\
   !*** ./src/advanced-custom-fields-pro/assets/src/js/_acf-condition.js ***!
   \************************************************************************/
-/***/ (function() {
+/***/ (() => {
 
 (function ($, undefined) {
   // vars
@@ -1171,7 +1171,6 @@
       // the field which we query against
       rule: {} // the rule [field, operator, value]
     },
-
     events: {
       change: 'change',
       keyup: 'change',
@@ -1385,7 +1384,7 @@
 /*!*************************************************************************!*\
   !*** ./src/advanced-custom-fields-pro/assets/src/js/_acf-conditions.js ***!
   \*************************************************************************/
-/***/ (function() {
+/***/ (() => {
 
 (function ($, undefined) {
   // vars
@@ -1538,7 +1537,6 @@
       // Reference used during "change" event.
       groups: [] // The groups of condition instances.
     },
-
     setup: function (field) {
       // data
       this.data.field = field;
@@ -1592,7 +1590,7 @@
 
       // loop
       this.getGroups().map(function (group) {
-        // igrnore this group if another group passed
+        // ignore this group if another group passed
         if (pass) return;
 
         // find passed
@@ -1675,7 +1673,7 @@
 /*!******************************************************************************!*\
   !*** ./src/advanced-custom-fields-pro/assets/src/js/_acf-field-accordion.js ***!
   \******************************************************************************/
-/***/ (function() {
+/***/ (() => {
 
 (function ($, undefined) {
   var i = 0;
@@ -1906,7 +1904,7 @@
 /*!*********************************************************************************!*\
   !*** ./src/advanced-custom-fields-pro/assets/src/js/_acf-field-button-group.js ***!
   \*********************************************************************************/
-/***/ (function() {
+/***/ (() => {
 
 (function ($, undefined) {
   var Field = acf.Field.extend({
@@ -1950,7 +1948,7 @@
 /*!*****************************************************************************!*\
   !*** ./src/advanced-custom-fields-pro/assets/src/js/_acf-field-checkbox.js ***!
   \*****************************************************************************/
-/***/ (function() {
+/***/ (() => {
 
 (function ($, undefined) {
   var Field = acf.Field.extend({
@@ -2054,7 +2052,7 @@
 /*!*********************************************************************************!*\
   !*** ./src/advanced-custom-fields-pro/assets/src/js/_acf-field-color-picker.js ***!
   \*********************************************************************************/
-/***/ (function() {
+/***/ (() => {
 
 (function ($, undefined) {
   var Field = acf.Field.extend({
@@ -2124,7 +2122,7 @@
 /*!********************************************************************************!*\
   !*** ./src/advanced-custom-fields-pro/assets/src/js/_acf-field-date-picker.js ***!
   \********************************************************************************/
-/***/ (function() {
+/***/ (() => {
 
 (function ($, undefined) {
   var Field = acf.Field.extend({
@@ -2277,7 +2275,7 @@
 /*!*************************************************************************************!*\
   !*** ./src/advanced-custom-fields-pro/assets/src/js/_acf-field-date-time-picker.js ***!
   \*************************************************************************************/
-/***/ (function() {
+/***/ (() => {
 
 (function ($, undefined) {
   var Field = acf.models.DatePickerField.extend({
@@ -2374,7 +2372,7 @@
 /*!*************************************************************************!*\
   !*** ./src/advanced-custom-fields-pro/assets/src/js/_acf-field-file.js ***!
   \*************************************************************************/
-/***/ (function() {
+/***/ (() => {
 
 (function ($, undefined) {
   var Field = acf.models.ImageField.extend({
@@ -2489,7 +2487,7 @@
 /*!*******************************************************************************!*\
   !*** ./src/advanced-custom-fields-pro/assets/src/js/_acf-field-google-map.js ***!
   \*******************************************************************************/
-/***/ (function() {
+/***/ (() => {
 
 (function ($, undefined) {
   var Field = acf.Field.extend({
@@ -3041,7 +3039,7 @@
 /*!**************************************************************************!*\
   !*** ./src/advanced-custom-fields-pro/assets/src/js/_acf-field-image.js ***!
   \**************************************************************************/
-/***/ (function() {
+/***/ (() => {
 
 (function ($, undefined) {
   var Field = acf.Field.extend({
@@ -3217,7 +3215,7 @@
 /*!*************************************************************************!*\
   !*** ./src/advanced-custom-fields-pro/assets/src/js/_acf-field-link.js ***!
   \*************************************************************************/
-/***/ (function() {
+/***/ (() => {
 
 (function ($, undefined) {
   var Field = acf.Field.extend({
@@ -3394,7 +3392,7 @@
 /*!***************************************************************************!*\
   !*** ./src/advanced-custom-fields-pro/assets/src/js/_acf-field-oembed.js ***!
   \***************************************************************************/
-/***/ (function() {
+/***/ (() => {
 
 (function ($, undefined) {
   var Field = acf.Field.extend({
@@ -3538,7 +3536,7 @@
 /*!******************************************************************************!*\
   !*** ./src/advanced-custom-fields-pro/assets/src/js/_acf-field-page-link.js ***!
   \******************************************************************************/
-/***/ (function() {
+/***/ (() => {
 
 (function ($, undefined) {
   var Field = acf.models.SelectField.extend({
@@ -3553,7 +3551,7 @@
 /*!********************************************************************************!*\
   !*** ./src/advanced-custom-fields-pro/assets/src/js/_acf-field-post-object.js ***!
   \********************************************************************************/
-/***/ (function() {
+/***/ (() => {
 
 (function ($, undefined) {
   var Field = acf.models.SelectField.extend({
@@ -3568,7 +3566,7 @@
 /*!**************************************************************************!*\
   !*** ./src/advanced-custom-fields-pro/assets/src/js/_acf-field-radio.js ***!
   \**************************************************************************/
-/***/ (function() {
+/***/ (() => {
 
 (function ($, undefined) {
   var Field = acf.Field.extend({
@@ -3633,7 +3631,7 @@
 /*!**************************************************************************!*\
   !*** ./src/advanced-custom-fields-pro/assets/src/js/_acf-field-range.js ***!
   \**************************************************************************/
-/***/ (function() {
+/***/ (() => {
 
 (function ($, undefined) {
   var Field = acf.Field.extend({
@@ -3674,7 +3672,7 @@
 /*!*********************************************************************************!*\
   !*** ./src/advanced-custom-fields-pro/assets/src/js/_acf-field-relationship.js ***!
   \*********************************************************************************/
-/***/ (function() {
+/***/ (() => {
 
 (function ($, undefined) {
   var Field = acf.Field.extend({
@@ -3686,7 +3684,8 @@
       'click .choices-list .acf-rel-item': 'onClickAdd',
       'keypress .choices-list .acf-rel-item': 'onKeypressFilter',
       'keypress .values-list .acf-rel-item': 'onKeypressFilter',
-      'click [data-name="remove_item"]': 'onClickRemove'
+      'click [data-name="remove_item"]': 'onClickRemove',
+      'touchstart .values-list .acf-rel-item': 'onTouchStartValues'
     },
     $control: function () {
       return this.$('.acf-relationship');
@@ -3858,6 +3857,10 @@
       // trigger change
       this.$input().trigger('change');
     },
+    onTouchStartValues: function (e, $el) {
+      $(this.$listItems('values')).removeClass('relationship-hover');
+      $el.addClass('relationship-hover');
+    },
     maybeFetch: function () {
       // vars
       var timeout = this.get('timeout');
@@ -4020,7 +4023,7 @@
 /*!***************************************************************************!*\
   !*** ./src/advanced-custom-fields-pro/assets/src/js/_acf-field-select.js ***!
   \***************************************************************************/
-/***/ (function() {
+/***/ (() => {
 
 (function ($, undefined) {
   var Field = acf.Field.extend({
@@ -4081,7 +4084,7 @@
 /*!************************************************************************!*\
   !*** ./src/advanced-custom-fields-pro/assets/src/js/_acf-field-tab.js ***!
   \************************************************************************/
-/***/ (function() {
+/***/ (() => {
 
 (function ($, undefined) {
   // vars
@@ -4095,15 +4098,34 @@
       duplicateField: 'onDuplicate'
     },
     findFields: function () {
-      let filter = '.acf-field';
-      if (this.get('key') === 'acf_field_settings_tabs') {
-        filter = '.acf-field-settings-main';
-      }
-      if (this.get('key') === 'acf_field_group_settings_tabs') {
-        filter = '.field-group-settings-tab';
-      }
-      if (this.get('key') === 'acf_browse_fields_tabs') {
-        filter = '.acf-field-types-tab';
+      let filter;
+
+      /**
+       * Tabs in the admin UI that can be extended by third
+       * parties have the child settings wrapped inside an extra div,
+       * so we need to look for that instead of an adjacent .acf-field.
+       */
+      switch (this.get('key')) {
+        case 'acf_field_settings_tabs':
+          filter = '.acf-field-settings-main';
+          break;
+        case 'acf_field_group_settings_tabs':
+          filter = '.field-group-settings-tab';
+          break;
+        case 'acf_browse_fields_tabs':
+          filter = '.acf-field-types-tab';
+          break;
+        case 'acf_post_type_tabs':
+          filter = '.acf-post-type-advanced-settings';
+          break;
+        case 'acf_taxonomy_tabs':
+          filter = '.acf-taxonomy-advanced-settings';
+          break;
+        case 'acf_ui_options_page_tabs':
+          filter = '.acf-ui-options-page-advanced-settings';
+          break;
+        default:
+          filter = '.acf-field';
       }
       return this.$el.nextUntil('.acf-field-tab', filter);
     },
@@ -4553,7 +4575,7 @@
 /*!*****************************************************************************!*\
   !*** ./src/advanced-custom-fields-pro/assets/src/js/_acf-field-taxonomy.js ***!
   \*****************************************************************************/
-/***/ (function() {
+/***/ (() => {
 
 (function ($, undefined) {
   var Field = acf.Field.extend({
@@ -4837,7 +4859,7 @@
 /*!********************************************************************************!*\
   !*** ./src/advanced-custom-fields-pro/assets/src/js/_acf-field-time-picker.js ***!
   \********************************************************************************/
-/***/ (function() {
+/***/ (() => {
 
 (function ($, undefined) {
   var Field = acf.models.DatePickerField.extend({
@@ -4912,7 +4934,7 @@
 /*!*******************************************************************************!*\
   !*** ./src/advanced-custom-fields-pro/assets/src/js/_acf-field-true-false.js ***!
   \*******************************************************************************/
-/***/ (function() {
+/***/ (() => {
 
 (function ($, undefined) {
   var Field = acf.Field.extend({
@@ -4996,7 +5018,7 @@
 /*!************************************************************************!*\
   !*** ./src/advanced-custom-fields-pro/assets/src/js/_acf-field-url.js ***!
   \************************************************************************/
-/***/ (function() {
+/***/ (() => {
 
 (function ($, undefined) {
   var Field = acf.Field.extend({
@@ -5056,7 +5078,7 @@
 /*!*************************************************************************!*\
   !*** ./src/advanced-custom-fields-pro/assets/src/js/_acf-field-user.js ***!
   \*************************************************************************/
-/***/ (function() {
+/***/ (() => {
 
 (function ($, undefined) {
   var Field = acf.models.SelectField.extend({
@@ -5081,7 +5103,7 @@
 /*!****************************************************************************!*\
   !*** ./src/advanced-custom-fields-pro/assets/src/js/_acf-field-wysiwyg.js ***!
   \****************************************************************************/
-/***/ (function() {
+/***/ (() => {
 
 (function ($, undefined) {
   var Field = acf.Field.extend({
@@ -5176,7 +5198,7 @@
 /*!********************************************************************!*\
   !*** ./src/advanced-custom-fields-pro/assets/src/js/_acf-field.js ***!
   \********************************************************************/
-/***/ (function() {
+/***/ (() => {
 
 (function ($, undefined) {
   // vars
@@ -5414,6 +5436,9 @@
       if (changed) {
         this.prop('hidden', false);
         acf.doAction('show_field', this, context);
+        if (context === 'conditional_logic') {
+          this.setFieldSettingsLastVisible();
+        }
       }
 
       // return
@@ -5427,10 +5452,21 @@
       if (changed) {
         this.prop('hidden', true);
         acf.doAction('hide_field', this, context);
+        if (context === 'conditional_logic') {
+          this.setFieldSettingsLastVisible();
+        }
       }
 
       // return
       return changed;
+    },
+    setFieldSettingsLastVisible: function () {
+      // Ensure this conditional logic trigger has happened inside a field settings tab.
+      var $parents = this.$el.parents('.acf-field-settings-main');
+      if (!$parents.length) return;
+      var $fields = $parents.find('.acf-field');
+      $fields.removeClass('acf-last-visible');
+      $fields.not('.acf-hidden').last().addClass('acf-last-visible');
     },
     enable: function (lockKey, context) {
       // enable field and store result
@@ -5669,7 +5705,7 @@
 /*!*********************************************************************!*\
   !*** ./src/advanced-custom-fields-pro/assets/src/js/_acf-fields.js ***!
   \*********************************************************************/
-/***/ (function() {
+/***/ (() => {
 
 (function ($, undefined) {
   /**
@@ -6036,6 +6072,17 @@
     onChange: function () {
       // preview hack allows post to save with no title or content
       $('#_acf_changed').val(1);
+      if (acf.isGutenbergPostEditor()) {
+        try {
+          wp.data.dispatch('core/editor').editPost({
+            meta: {
+              _acf_changed: 1
+            }
+          });
+        } catch (error) {
+          console.log('ACF: Failed to update _acf_changed meta', error);
+        }
+      }
     }
   });
   var duplicateFieldsManager = new acf.Model({
@@ -6069,7 +6116,7 @@
 /*!**********************************************************************!*\
   !*** ./src/advanced-custom-fields-pro/assets/src/js/_acf-helpers.js ***!
   \**********************************************************************/
-/***/ (function() {
+/***/ (() => {
 
 (function ($, undefined) {
   /**
@@ -6443,7 +6490,7 @@
 /*!********************************************************************!*\
   !*** ./src/advanced-custom-fields-pro/assets/src/js/_acf-media.js ***!
   \********************************************************************/
-/***/ (function() {
+/***/ (() => {
 
 (function ($, undefined) {
   /**
@@ -7199,7 +7246,7 @@
 /*!**********************************************************************!*\
   !*** ./src/advanced-custom-fields-pro/assets/src/js/_acf-postbox.js ***!
   \**********************************************************************/
-/***/ (function() {
+/***/ (() => {
 
 (function ($, undefined) {
   /**
@@ -7416,7 +7463,7 @@
 /*!*********************************************************************!*\
   !*** ./src/advanced-custom-fields-pro/assets/src/js/_acf-screen.js ***!
   \*********************************************************************/
-/***/ (function() {
+/***/ (() => {
 
 (function ($, undefined) {
   acf.screen = new acf.Model({
@@ -7819,7 +7866,7 @@
     wait: 'prepare',
     initialize: function () {
       // Bail early if not Gutenberg.
-      if (!acf.isGutenberg()) {
+      if (!acf.isGutenbergPostEditor()) {
         return;
       }
 
@@ -7964,7 +8011,7 @@
 /*!**********************************************************************!*\
   !*** ./src/advanced-custom-fields-pro/assets/src/js/_acf-select2.js ***!
   \**********************************************************************/
-/***/ (function() {
+/***/ (() => {
 
 (function ($, undefined) {
   /**
@@ -7994,6 +8041,7 @@
       ajaxResults: function (json) {
         return json;
       },
+      escapeMarkup: false,
       templateSelection: false,
       templateResult: false,
       dropdownCssClass: '',
@@ -8254,17 +8302,12 @@
         allowClear: this.get('allowNull'),
         placeholder: this.get('placeholder'),
         multiple: this.get('multiple'),
+        escapeMarkup: this.get('escapeMarkup'),
         templateSelection: this.get('templateSelection'),
         templateResult: this.get('templateResult'),
         dropdownCssClass: this.get('dropdownCssClass'),
         suppressFilters: this.get('suppressFilters'),
-        data: [],
-        escapeMarkup: function (markup) {
-          if (typeof markup !== 'string') {
-            return markup;
-          }
-          return acf.escHtml(markup);
-        }
+        data: []
       };
 
       // Clear empty templateSelections, templateResults, or dropdownCssClass.
@@ -8283,7 +8326,7 @@
         if (!options.templateSelection) {
           options.templateSelection = function (selection) {
             var $selection = $('<span class="acf-selection"></span>');
-            $selection.html(acf.escHtml(selection.text));
+            $selection.html(options.escapeMarkup(selection.text));
             $selection.data('element', selection.element);
             return $selection;
           };
@@ -8291,6 +8334,19 @@
       } else {
         delete options.templateSelection;
         delete options.templateResult;
+      }
+
+      // Use a default, filterable escapeMarkup if not provided.
+      if (!options.escapeMarkup) {
+        options.escapeMarkup = function (markup) {
+          if (typeof markup !== 'string') {
+            return markup;
+          }
+          if (this.suppressFilters) {
+            return acf.strEscape(markup);
+          }
+          return acf.applyFilters('select2_escape_markup', acf.strEscape(markup), markup, $select, this.data, field || false, this);
+        };
       }
 
       // multiple
@@ -8322,7 +8378,6 @@
       }
 
       // filter for 3rd party customization
-      //options = acf.applyFilters( 'select2_args', options, $select, this );
       if (!options.suppressFilters) {
         var field = this.get('field');
         options = acf.applyFilters('select2_args', options, $select, this.data, field || false, this);
@@ -8753,7 +8808,7 @@
 /*!**********************************************************************!*\
   !*** ./src/advanced-custom-fields-pro/assets/src/js/_acf-tinymce.js ***!
   \**********************************************************************/
-/***/ (function() {
+/***/ (() => {
 
 (function ($, undefined) {
   acf.tinymce = {
@@ -9132,7 +9187,7 @@
 /*!*********************************************************************!*\
   !*** ./src/advanced-custom-fields-pro/assets/src/js/_acf-unload.js ***!
   \*********************************************************************/
-/***/ (function() {
+/***/ (() => {
 
 (function ($, undefined) {
   acf.unload = new acf.Model({
@@ -9187,7 +9242,7 @@
 /*!*************************************************************************!*\
   !*** ./src/advanced-custom-fields-pro/assets/src/js/_acf-validation.js ***!
   \*************************************************************************/
-/***/ (function() {
+/***/ (() => {
 
 (function ($, undefined) {
   /**
@@ -9422,6 +9477,11 @@
           target: this.$el
         });
         this.set('notice', notice);
+      }
+
+      // If in a modal, don't try to scroll.
+      if (this.$el.parents('.acf-popup-box').length) {
+        return;
       }
 
       // if no $scrollTo, set to message
@@ -9829,6 +9889,12 @@
 
     // front end form
     var $wrap = $form.find('.acf-form-submit');
+    if ($wrap.length) {
+      return $wrap;
+    }
+
+    // ACF 6.2 options page modal
+    var $wrap = $('#acf-create-options-page-form .acf-actions');
     if ($wrap.length) {
       return $wrap;
     }
@@ -10286,7 +10352,7 @@
           }
         }).then(function () {
           return savePost.apply(_this, _args);
-        }).catch(function (err) {
+        }, err => {
           // Nothing to do here, user is alerted of validation issues.
         });
       };
@@ -10324,49 +10390,49 @@
 /******/ 	
 /************************************************************************/
 /******/ 	/* webpack/runtime/compat get default export */
-/******/ 	!function() {
+/******/ 	(() => {
 /******/ 		// getDefaultExport function for compatibility with non-harmony modules
-/******/ 		__webpack_require__.n = function(module) {
+/******/ 		__webpack_require__.n = (module) => {
 /******/ 			var getter = module && module.__esModule ?
-/******/ 				function() { return module['default']; } :
-/******/ 				function() { return module; };
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
 /******/ 			__webpack_require__.d(getter, { a: getter });
 /******/ 			return getter;
 /******/ 		};
-/******/ 	}();
+/******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/define property getters */
-/******/ 	!function() {
+/******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
-/******/ 		__webpack_require__.d = function(exports, definition) {
+/******/ 		__webpack_require__.d = (exports, definition) => {
 /******/ 			for(var key in definition) {
 /******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
 /******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
 /******/ 				}
 /******/ 			}
 /******/ 		};
-/******/ 	}();
+/******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
-/******/ 	!function() {
-/******/ 		__webpack_require__.o = function(obj, prop) { return Object.prototype.hasOwnProperty.call(obj, prop); }
-/******/ 	}();
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
-/******/ 	!function() {
+/******/ 	(() => {
 /******/ 		// define __esModule on exports
-/******/ 		__webpack_require__.r = function(exports) {
+/******/ 		__webpack_require__.r = (exports) => {
 /******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
 /******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
 /******/ 			}
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
-/******/ 	}();
+/******/ 	})();
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be in strict mode.
-!function() {
+(() => {
 "use strict";
 /*!*******************************************************************!*\
   !*** ./src/advanced-custom-fields-pro/assets/src/js/acf-input.js ***!
@@ -10486,7 +10552,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-}();
+})();
+
 /******/ })()
 ;
 //# sourceMappingURL=acf-input.js.map

@@ -86,12 +86,14 @@ function acf_handle_json_block_registration( $settings, $metadata ) {
 	);
 
 	// Add default ACF 'uses_context' settings.
-	$settings['uses_context'] = array_unique(
-		array_merge(
-			$settings['uses_context'],
-			array(
-				'postId',
-				'postType',
+	$settings['uses_context'] = array_values(
+		array_unique(
+			array_merge(
+				$settings['uses_context'],
+				array(
+					'postId',
+					'postType',
+				)
 			)
 		)
 	);
@@ -136,7 +138,7 @@ function acf_handle_json_block_registration( $settings, $metadata ) {
  * @since 6.0.0
  *
  * @param array $metadata The raw block metadata array.
- * @return bool
+ * @return boolean
  */
 function acf_is_acf_block_json( $metadata ) {
 	return ( isset( $metadata['acf'] ) && $metadata['acf'] );
@@ -229,7 +231,7 @@ function acf_register_block( $block ) {
  * @since   5.7.12
  *
  * @param   string $name The block type name.
- * @return  bool
+ * @return  boolean
  */
 function acf_has_block_type( $name ) {
 	return acf_get_store( 'block-types' )->has( $name );
@@ -369,11 +371,6 @@ function acf_validate_block_type( $block ) {
 		)
 	);
 
-	// Restrict keywords to 3 max to avoid JS error in older versions.
-	if ( acf_version_compare( 'wp', '<', '5.2' ) ) {
-		$block['keywords'] = array_slice( $block['keywords'], 0, 3 );
-	}
-
 	// Generate name with prefix.
 	if ( $block['name'] ) {
 		$block['name'] = 'acf/' . acf_slugify( $block['name'] );
@@ -427,6 +424,18 @@ function acf_prepare_block( $block ) {
 	if ( ! $block_type ) {
 		return false;
 	}
+
+	// Prevent protected attributes being overridden.
+	$protected = array(
+		'render_template',
+		'render_callback',
+		'enqueue_script',
+		'enqueue_style',
+		'enqueue_assets',
+		'post_types',
+		'use_post_meta',
+	);
+	$block     = array_diff_key( $block, array_flip( $protected ) );
 
 	// Generate default attributes.
 	$attributes = array();
@@ -485,8 +494,8 @@ function acf_get_block_back_compat_attribute_key_array() {
  * @since   5.9.2
  *
  * @param   array    $attributes The block attributes.
- * @param   string   $content The block content.
- * @param   WP_Block $wp_block The block instance (since WP 5.5).
+ * @param   string   $content    The block content.
+ * @param   WP_Block $wp_block   The block instance (since WP 5.5).
  * @return  string The block HTML.
  */
 function acf_render_block_callback( $attributes, $content = '', $wp_block = null ) {
@@ -496,6 +505,11 @@ function acf_render_block_callback( $attributes, $content = '', $wp_block = null
 	// Set preview flag to true when rendering for the block editor.
 	if ( is_admin() && acf_is_block_editor() ) {
 		$is_preview = true;
+	}
+
+	// If ACF's block save method hasn't been called yet, try to initialize a default block.
+	if ( empty( $attributes['name'] ) && ! empty( $wp_block->name ) ) {
+		$attributes['name'] = $wp_block->name;
 	}
 
 	// Return rendered block HTML.
@@ -509,11 +523,11 @@ function acf_render_block_callback( $attributes, $content = '', $wp_block = null
  * @since   5.7.13
  *
  * @param   array    $attributes The block attributes.
- * @param   string   $content The block content.
- * @param   bool     $is_preview Whether or not the block is being rendered for editing preview.
- * @param   int      $post_id The current post being edited or viewed.
- * @param   WP_Block $wp_block The block instance (since WP 5.5).
- * @param   array    $context The block context array.
+ * @param   string   $content    The block content.
+ * @param   boolean  $is_preview Whether or not the block is being rendered for editing preview.
+ * @param   integer  $post_id    The current post being edited or viewed.
+ * @param   WP_Block $wp_block   The block instance (since WP 5.5).
+ * @param   array    $context    The block context array.
  * @return  string   The block HTML.
  */
 function acf_rendered_block( $attributes, $content = '', $is_preview = false, $post_id = 0, $wp_block = null, $context = false ) {
@@ -536,10 +550,8 @@ function acf_rendered_block( $attributes, $content = '', $is_preview = false, $p
 				if ( $cached_block['form'] ) {
 					return $cached_block['html'];
 				}
-			} else {
-				if ( ! $cached_block['form'] ) {
+			} elseif ( ! $cached_block['form'] ) {
 					return $cached_block['html'];
-				}
 			}
 		}
 	}
@@ -548,7 +560,6 @@ function acf_rendered_block( $attributes, $content = '', $is_preview = false, $p
 
 	if ( $form ) {
 		// Load the block form since we're in edit mode.
-
 		// Set flag for post REST cleanup of media enqueue count during preloads.
 		acf_set_data( 'acf_did_render_block_form', true );
 
@@ -614,11 +625,11 @@ function acf_rendered_block( $attributes, $content = '', $is_preview = false, $p
  * @since   5.7.12
  *
  * @param   array    $attributes The block attributes.
- * @param   string   $content The block content.
- * @param   bool     $is_preview Whether or not the block is being rendered for editing preview.
- * @param   int      $post_id The current post being edited or viewed.
- * @param   WP_Block $wp_block The block instance (since WP 5.5).
- * @param   array    $context The block context array.
+ * @param   string   $content    The block content.
+ * @param   boolean  $is_preview Whether or not the block is being rendered for editing preview.
+ * @param   integer  $post_id    The current post being edited or viewed.
+ * @param   WP_Block $wp_block   The block instance (since WP 5.5).
+ * @param   array    $context    The block context array.
  * @return  void|string
  */
 function acf_render_block( $attributes, $content = '', $is_preview = false, $post_id = 0, $wp_block = null, $context = false ) {
@@ -733,7 +744,14 @@ function acf_enqueue_block_assets() {
 	);
 
 	// Get block types.
-	$block_types = acf_get_block_types();
+	$block_types = array_map(
+		function ( $block ) {
+			// Render Callback may contain a incompatible class for JSON encoding. Turn it into a boolean for the frontend.
+			$block['render_callback'] = ! empty( $block['render_callback'] );
+			return $block;
+		},
+		acf_get_block_types()
+	);
 
 	// Localize data.
 	acf_localize_data(
@@ -746,11 +764,7 @@ function acf_enqueue_block_assets() {
 	// Enqueue script.
 	$min = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 
-	if ( acf_version_compare( 'wp', '<', '5.6' ) ) {
-		$blocks_js_path = acf_get_url( "assets/build/js/pro/acf-pro-blocks-legacy{$min}.js" );
-	} else {
-		$blocks_js_path = acf_get_url( "assets/build/js/pro/acf-pro-blocks{$min}.js" );
-	}
+	$blocks_js_path = acf_get_url( "assets/build/js/pro/acf-pro-blocks{$min}.js" );
 
 	wp_enqueue_script( 'acf-blocks', $blocks_js_path, array( 'acf-input', 'wp-blocks' ), ACF_VERSION, true );
 
@@ -1023,7 +1037,7 @@ function acf_parse_save_blocks_callback( $matches ) {
  * @since 6.0.0
  *
  * @param array $attributes A block attributes array.
- * @param array $context The block context array, defaults to an empty array.
+ * @param array $context    The block context array, defaults to an empty array.
  * @return string A block ID.
  */
 function acf_get_block_id( $attributes, $context = array() ) {
