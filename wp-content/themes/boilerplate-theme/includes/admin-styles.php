@@ -8,6 +8,7 @@ add_action('admin_head', 'theme_admin_styles');
 function theme_admin_styles() {
  echo '<style>
   html :where(.wp-block) {
+		max-width: none !important;
     margin: 0 !important;
   }
   .editor-styles-wrapper {
