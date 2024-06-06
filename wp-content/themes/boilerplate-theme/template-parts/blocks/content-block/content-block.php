@@ -1,4 +1,6 @@
 <?php
+  $layout = 'layout-1';
+
   // Block Pad.
   $blockPadArray = get_field('block_pad') ?: array('block_padding' => array('block-pad'));
   $blockPad = implode(' ', $blockPadArray['block_padding']);
