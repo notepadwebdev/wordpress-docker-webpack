@@ -6,75 +6,63 @@ body .block-editor-block-list__layout {
 }
 
 h1,
-.h1,
 h2,
-.h2,
 h3,
-.h3,
 h4,
-.h4,
 h5,
-.h5,
-h6,
-.h6 {
-  margin: 0.8em 0 0.6em;
-  font-weight: 100;
-  line-height: 1;
-  color: var(--c-red);
+h6 {
+  margin: 0 0 0.4em;
+  font-size: 2em;
+  font-weight: 400;
+  line-height: 1.2;
   text-wrap: balance;
 }
 
-h1,
-.h1,
-h2,
-.h2 {
-  font-family: var(--f-title);
+/**
+*   Title.
+*/
+[class^='f-title'], 
+[class*=' f-title'] {
+  margin: 0 0 0.4em;
+  font-family: var(--f-title), sans-serif;
+  font-weight: 400;
+  line-height: 1.02;
+  text-wrap: balance;
+}
+
+/**
+*   Body.
+*/
+[class^='f-body'], 
+[class*=' f-body'] {
+  font-family: var(--f-body), sans-serif;
   font-weight: 400;
 }
 
-h1,
-.h1 {
-  font-size: var(--f-h1-size);
-}
-
-h2,
-.h2 {
-  font-size: var(--f-h2-size);
-}
-
-h3,
-.h3 {
-  font-size: var(--f-h3-size);
-}
-
-h4,
-.h4 {
-  font-size: var(--f-h4-size);
-}
-
-h5,
-.h5 {
-  font-size: var(--f-h5-size);
-}
-
-h6,
-.h6 {
-  font-size: var(--f-h6-size);
+/**
+*   Typography sizing classes.
+*/
+@each $label, $size in $typography {
+  [class$='#{$label}'], 
+  [class*=' f-title-#{$label}'], 
+  [class*=' f-body-#{$label}'] {
+    font-size: var(--f-#{$label});
+  }
 }
 
 p,
 address,
 table,
-li {
-  font-size: var(--f-body-size);     // 15px -> 24px
-  
-  .lede &,
-  &.lede {
-    font-size: var(--f-lede-size);
-  }
+li,
+button {
+  font-size: var(--f-body-md);
 }
 
 small,
 .small {
-  font-size: var(--f-small-size);
+  font-size: var(--f-body-xs);
+}
+
+.f-caps {
+  text-transform: uppercase;
 }

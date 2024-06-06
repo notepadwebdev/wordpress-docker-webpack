@@ -4,10 +4,19 @@
  */
 
 // Site wide styles/JS.
-add_action( 'wp_enqueue_scripts', 'theme_styles' );
-function theme_styles() {
-  wp_enqueue_style('style', get_template_directory_uri().'/dist/css/styles.css'); 
-  wp_enqueue_script('script', get_template_directory_uri().'/dist/js/main.bundle.js');
+add_action( 'wp_enqueue_scripts', 'theme_scripts' );
+function theme_scripts() {
+
+  // CSS / JS versioning based on last time files was updated (only on staging site).
+  $ver = null;
+  if (strpos($_SERVER['SERVER_NAME'], 'staging') !== false) {
+    $parentDir = realpath(__DIR__ . '/..');
+    $cssVer = filemtime( $parentDir . '/dist/css/styles.css' );
+    $jsVer = filemtime( $parentDir . '/dist/js/main.bundle.js' );
+  }
+
+  wp_enqueue_style('style', get_template_directory_uri().'/dist/css/styles.css', array(), $cssVer);
+  wp_enqueue_script('script', get_template_directory_uri().'/dist/js/main.bundle.js', array(), $jsVer);
 }
 
 // CMS JS.

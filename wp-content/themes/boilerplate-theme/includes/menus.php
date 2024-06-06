@@ -7,6 +7,9 @@ function register_menus() {
   register_nav_menu('primary-navigation',__( 'Primary Navigation' ));
 }
 
+// Nav Walkers.
+require get_template_directory().'/includes/primary-nav-walker.php';
+
 /**
  * Remove items from the Admin Menu.
  */

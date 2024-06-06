@@ -1,8 +1,8 @@
 <?php
 
 function add_query_vars_filter( $vars ){
-  // $vars[] = "term";
-  // $vars[] = "tag";
+  $vars[] = "category";
+  $vars[] = "tag";
   return $vars;
 }
 

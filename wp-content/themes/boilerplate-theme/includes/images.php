@@ -13,6 +13,20 @@ if ( function_exists( 'add_image_size' ) ) {
 
   // Resizes.
   // add_image_size( "hero",                   2560, 0, false);
+
+  // Image Component. (1440px max-width)
+  add_image_size( "2560w",    2560, 0, false);  // Full bleed.
+  add_image_size( "1440w",    1440, 0, false);  // 12 col.
+  add_image_size( "1319w",    1319, 0, false);  // 11 col.
+  add_image_size( "1197w",    1197, 0, false);  // 10 col.
+  add_image_size( "1075w",    1075, 0, false);  // 9 col.
+  add_image_size( "954w",     954, 0, false);   // 8 col.
+  add_image_size( "832w",     832, 0, false);   // 7 col.
+  add_image_size( "710w",     710, 0, false);   // 6 col.
+  add_image_size( "589w",     589, 0, false);   // 5 col.
+  add_image_size( "467w",     467, 0, false);   // 4 col.
+  add_image_size( "345w",     345, 0, false);   // 3 col.
+  add_image_size( "224w",     224, 0, false);   // 2 col.
   
 }
 

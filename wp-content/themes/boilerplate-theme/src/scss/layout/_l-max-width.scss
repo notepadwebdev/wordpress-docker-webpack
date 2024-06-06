@@ -1,0 +1,17 @@
+.l-max-width {
+  
+  @each $col, $max in $column-widths {
+    &-#{$col} {
+      max-width: $max;
+    }
+  }
+  
+}
+
+[class^='l-max-width'], 
+[class*=' l-max-width'] {
+  &[style*="text-align: center"],
+  [style*="text-align: center"] & {
+    margin-inline: auto;
+  }
+}

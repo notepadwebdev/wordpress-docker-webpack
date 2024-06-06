@@ -1,0 +1,48 @@
+.block-header {
+
+  &--align-center {
+    --text-align: center;
+
+    [class^='l-max-width'], 
+    [class*=' l-max-width'] {
+      margin: auto;
+    }
+  }
+
+  &--align-right {
+    --text-align: right;
+
+    [class^='l-max-width'], 
+    [class*=' l-max-width'] {
+      margin-inline: auto 0;
+    }
+  }
+
+  text-align: var(--text-align, left);
+  margin-bottom: calc(0.5 * var(--l-block-pad));
+
+  * {
+    text-wrap: balance;
+  }
+
+
+  
+
+  
+  /**
+  *     Mobile.
+  */
+  @media (max-width: $mq-mobile-max) {
+    &--align-left-mobile {
+      --text-align: left;
+    }
+
+    &--align-center-mobile {
+      --text-align: center;
+    }
+  
+    &--align-right-mobile {
+      --text-align: right;
+    }
+  }
+}

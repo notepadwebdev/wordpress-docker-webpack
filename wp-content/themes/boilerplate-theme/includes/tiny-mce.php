@@ -6,46 +6,155 @@ function my_mce_before_init_insert_formats($init_array) {
 
   $style_formats = array(
     array(
-      'title' => 'Typography Sizes',
+      'title' => 'Typography',
       'items' => array(
         array(
-          'title' => 'H1',
-          'selector' => 'h1,h2,h3,h4,h5,h6,p,div',
-          'classes' => 'h1'
+          'title' => 'Title',
+          'items' => array(
+            array(
+              'title' => '3xl',
+              'selector' => 'h1,h2,h3,h4,h5,h6,p,div',
+              'classes' => array('f-title-3xl')
+            ),
+            array(
+              'title' => '2xl',
+              'selector' => 'h1,h2,h3,h4,h5,h6,p,div',
+              'classes' => array('f-title-2xl')
+            ),
+            array(
+              'title' => 'xl',
+              'selector' => 'h1,h2,h3,h4,h5,h6,p,div',
+              'classes' => array('f-title-xl')
+            ),
+            array(
+              'title' => 'lg',
+              'selector' => 'h1,h2,h3,h4,h5,h6,p,div',
+              'classes' => array('f-title-lg')
+            ),
+            array(
+              'title' => 'md',
+              'selector' => 'h1,h2,h3,h4,h5,h6,p,div',
+              'classes' => array('f-title-md')
+            ),
+            array(
+              'title' => 'sm',
+              'selector' => 'h1,h2,h3,h4,h5,h6,p,div',
+              'classes' => array('f-title-sm')
+            ),
+            array(
+              'title' => 'xs',
+              'selector' => 'h1,h2,h3,h4,h5,h6,p,div',
+              'classes' => array('f-title-xs')
+            ),
+            array(
+              'title' => '2xs',
+              'selector' => 'h1,h2,h3,h4,h5,h6,p,div',
+              'classes' => array('f-title-2xs')
+            ),
+          ),
         ),
         array(
-          'title' => 'H2',
-          'selector' => 'h1,h2,h3,h4,h5,h6,p,div',
-          'classes' => 'h2'
+          'title' => 'Body',
+          'items' => array(
+            array(
+              'title' => '2xl',
+              'selector' => 'h1,h2,h3,h4,h5,h6,p,div',
+              'classes' => array('f-body-2xl')
+            ),
+            array(
+              'title' => 'xl',
+              'selector' => 'h1,h2,h3,h4,h5,h6,p,div',
+              'classes' => array('f-body-xl')
+            ),
+            array(
+              'title' => 'lg',
+              'selector' => 'h1,h2,h3,h4,h5,h6,p,div',
+              'classes' => array('f-body-lg')
+            ),
+            array(
+              'title' => 'md',
+              'selector' => 'h1,h2,h3,h4,h5,h6,p,div',
+              'classes' => array('f-body-md')
+            ),
+            array(
+              'title' => 'sm',
+              'selector' => 'h1,h2,h3,h4,h5,h6,p,div',
+              'classes' => array('f-body-sm')
+            ),
+            array(
+              'title' => 'xs',
+              'selector' => 'h1,h2,h3,h4,h5,h6,p,div',
+              'classes' => array('f-body-xs')
+            ),
+            array(
+              'title' => '2xs',
+              'selector' => 'h1,h2,h3,h4,h5,h6,p,div',
+              'classes' => array('f-body-2xs')
+            ),
+          ),
         ),
         array(
-          'title' => 'H3',
+          'title' => 'Caps Text',
           'selector' => 'h1,h2,h3,h4,h5,h6,p,div',
-          'classes' => 'h3'
-        ),
-        array(
-          'title' => 'H4',
-          'selector' => 'h1,h2,h3,h4,h5,h6,p,div',
-          'classes' => 'h4'
-        ),
-        array(
-          'title' => 'H5',
-          'selector' => 'h1,h2,h3,h4,h5,h6,p,div',
-          'classes' => 'h5'
-        ),
-        array(
-          'title' => 'H6',
-          'selector' => 'h1,h2,h3,h4,h5,h6,p,div',
-          'classes' => 'h6'
-        ),
-        array(
-          'title' => 'Lede',
-          'block' => 'div',
-          'classes' => 'lede',
-          'wrapper' => true,
+          'classes' => array('f-caps')
         ),
       )
-    )
+      ),
+    array(
+      'title' => 'Container',
+      'items' => array(
+        array(
+          'title' => '11 cols',
+          'selector' => 'h1,h2,h3,h4,h5,h6,p,div',
+          'classes' => array('l-max-width-11')
+        ),
+        array(
+          'title' => '10 cols',
+          'selector' => 'h1,h2,h3,h4,h5,h6,p,div',
+          'classes' => array('l-max-width-10')
+        ),
+        array(
+          'title' => '9 cols',
+          'selector' => 'h1,h2,h3,h4,h5,h6,p,div',
+          'classes' => array('l-max-width-9')
+        ),
+        array(
+          'title' => '8 cols',
+          'selector' => 'h1,h2,h3,h4,h5,h6,p,div',
+          'classes' => array('l-max-width-8')
+        ),
+        array(
+          'title' => '7 cols',
+          'selector' => 'h1,h2,h3,h4,h5,h6,p,div',
+          'classes' => array('l-max-width-7')
+        ),
+        array(
+          'title' => '6 cols',
+          'selector' => 'h1,h2,h3,h4,h5,h6,p,div',
+          'classes' => array('l-max-width-6')
+        ),
+        array(
+          'title' => '5 cols',
+          'selector' => 'h1,h2,h3,h4,h5,h6,p,div',
+          'classes' => array('l-max-width-5')
+        ),
+        array(
+          'title' => '4 cols',
+          'selector' => 'h1,h2,h3,h4,h5,h6,p,div',
+          'classes' => array('l-max-width-4')
+        ),
+        array(
+          'title' => '3 cols',
+          'selector' => 'h1,h2,h3,h4,h5,h6,p,div',
+          'classes' => array('l-max-width-3')
+        ),
+        array(
+          'title' => '2 cols',
+          'selector' => 'h1,h2,h3,h4,h5,h6,p,div',
+          'classes' => array('l-max-width-2')
+        )
+      )
+    ),
   );
   $init_array['style_formats'] = json_encode($style_formats);
   return $init_array;

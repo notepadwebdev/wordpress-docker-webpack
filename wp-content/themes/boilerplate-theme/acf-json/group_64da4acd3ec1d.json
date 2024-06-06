@@ -103,7 +103,7 @@
                         "class": "",
                         "id": ""
                     },
-                    "message": "<img src=\"\/wp-content\/themes\/sovereign-talent\/template-parts\/blocks\/content-block\/examples\/layout_1_col\/layout-1.png\" alt=\"\" \/>",
+                    "message": "<img src=\"\/wp-content\/themes\/boilerplate-theme\/template-parts\/blocks\/content-block\/examples\/layout_1_col\/layout-1.png\" alt=\"\" \/>",
                     "new_lines": "wpautop",
                     "esc_html": 0
                 },
@@ -129,7 +129,7 @@
                         "class": "",
                         "id": ""
                     },
-                    "message": "<img src=\"\/wp-content\/themes\/sovereign-talent\/template-parts\/blocks\/content-block\/examples\/layout_1_col\/layout-2.png\" alt=\"\" \/>",
+                    "message": "<img src=\"\/wp-content\/themes\/boilerplate-theme\/template-parts\/blocks\/content-block\/examples\/layout_1_col\/layout-2.png\" alt=\"\" \/>",
                     "new_lines": "wpautop",
                     "esc_html": 0
                 },
@@ -155,7 +155,7 @@
                         "class": "",
                         "id": ""
                     },
-                    "message": "<img src=\"\/wp-content\/themes\/sovereign-talent\/template-parts\/blocks\/content-block\/examples\/layout_1_col\/layout-3.png\" alt=\"\" \/>",
+                    "message": "<img src=\"\/wp-content\/themes\/boilerplate-theme\/template-parts\/blocks\/content-block\/examples\/layout_1_col\/layout-3.png\" alt=\"\" \/>",
                     "new_lines": "wpautop",
                     "esc_html": 0
                 },
@@ -181,7 +181,7 @@
                         "class": "",
                         "id": ""
                     },
-                    "message": "<img src=\"\/wp-content\/themes\/sovereign-talent\/template-parts\/blocks\/content-block\/examples\/layout_1_col\/layout-4.png\" alt=\"\" \/>",
+                    "message": "<img src=\"\/wp-content\/themes\/boilerplate-theme\/template-parts\/blocks\/content-block\/examples\/layout_1_col\/layout-4.png\" alt=\"\" \/>",
                     "new_lines": "wpautop",
                     "esc_html": 0
                 }
@@ -286,7 +286,7 @@
                         "class": "",
                         "id": ""
                     },
-                    "message": "<img src=\"\/wp-content\/themes\/sovereign-talent\/template-parts\/blocks\/content-block\/examples\/layout_2_col\/layout-1-l2r.png\" alt=\"\" \/>",
+                    "message": "<img src=\"\/wp-content\/themes\/boilerplate-theme\/template-parts\/blocks\/content-block\/examples\/layout_2_col\/layout-1-l2r.png\" alt=\"\" \/>",
                     "new_lines": "wpautop",
                     "esc_html": 0
                 },
@@ -317,7 +317,7 @@
                         "class": "",
                         "id": ""
                     },
-                    "message": "<img src=\"\/wp-content\/themes\/sovereign-talent\/template-parts\/blocks\/content-block\/examples\/layout_2_col\/layout-1-r2l.png\" alt=\"\" \/>",
+                    "message": "<img src=\"\/wp-content\/themes\/boilerplate-theme\/template-parts\/blocks\/content-block\/examples\/layout_2_col\/layout-1-r2l.png\" alt=\"\" \/>",
                     "new_lines": "wpautop",
                     "esc_html": 0
                 }
@@ -399,7 +399,7 @@
                         "class": "",
                         "id": ""
                     },
-                    "message": "<img src=\"\/wp-content\/themes\/sovereign-talent\/template-parts\/blocks\/content-block\/examples\/layout_3_col\/layout-1.png\" alt=\"\" \/>",
+                    "message": "<img src=\"\/wp-content\/themes\/boilerplate-theme\/template-parts\/blocks\/content-block\/examples\/layout_3_col\/layout-1.png\" alt=\"\" \/>",
                     "new_lines": "wpautop",
                     "esc_html": 0
                 }

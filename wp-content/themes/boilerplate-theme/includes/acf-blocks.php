@@ -45,10 +45,17 @@ function register_acf_blocks() {
 
   $parentDir = realpath(__DIR__ . '/..');
 
+  // JS versioning based on last time main.bundle was updated (only on staging site).
+  $ver = null;
+  if (strpos($_SERVER['SERVER_NAME'], 'staging') !== false) {
+    $parentDir = realpath(__DIR__ . '/..');
+    $jsVer = filemtime( $parentDir . '/dist/js/main.bundle.js' );
+  }
+
   /**
    *  Register block specific scripts.
    */
-  // wp_register_script('block-template', get_template_directory_uri() . '/dist/js/template.bundle.js', array('jquery'), '', true);
+  // wp_register_script('block-template', get_template_directory_uri() . '/dist/js/template.bundle.js', array('jquery'), $jsVer, true);
 
   /**
    *  Localise AJAX dependent scripts.

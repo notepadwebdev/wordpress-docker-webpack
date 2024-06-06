@@ -14,6 +14,14 @@ function theme_admin_styles() {
   .editor-styles-wrapper {
     background-color: white !important;
   }
+	.mce-container iframe {
+		width: 100%;
+	}
+
+	/* Fix for broken Categories height flex in ACF side panel. */
+  .components-flex:has(.editor-post-taxonomies__hierarchical-terms-list) {
+    height: auto;
+  }
  </style>';
 }
 

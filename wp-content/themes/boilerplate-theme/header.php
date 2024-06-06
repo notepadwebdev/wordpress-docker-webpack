@@ -21,17 +21,18 @@
         ?>
       </div>
 
-      <button id="hamburger" class="site-header__hamburger hamburger" aria-label="Toggle menu">
-        <i></i><i></i><i></i>
-      </button>
-
       <nav class="site-header__menu primary-nav">  
         <?php 
           wp_nav_menu(array(
-            'menu' => 'Primary Navigation'
+            'menu' => 'Primary Navigation',
+            'walker' => new Walker_Primary_Nav()
           )); 
         ?>
       </nav>
+
+      <button id="hamburger" class="site-header__hamburger hamburger" aria-label="Toggle menu">
+        <i></i><i></i><i></i>
+      </button>
     
     </div>
   </header>

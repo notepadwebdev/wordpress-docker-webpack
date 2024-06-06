@@ -7,20 +7,39 @@ $mq-desktop-min: 1024px;
 $mq-desktop-large-min: 1200px;
 $mq-desktop-huge-min: 1400px;
 
+$typography: (
+  3xl: unquote("clamp(2.4883rem, 2.2183rem + 1.3499vi, 3.4332rem)"),     // 54.93px
+  2xl: unquote("clamp(2.0736rem, 1.8813rem + 0.9614vi, 2.7466rem)"),     // 43.95px
+  xl: unquote("clamp(1.728rem, 1.5939rem + 0.6704vi, 2.1973rem)"),       // 35.16px
+  lg: unquote("clamp(1.44rem, 1.3492rem + 0.454vi, 1.7578rem)"),         // 28.13px
+  md: unquote("clamp(1.2rem, 1.1411rem + 0.2946vi, 1.4063rem)"),         // 22.5px   
+  sm: unquote("clamp(1rem, 0.9643rem + 0.1786vi, 1.125rem)"),            // 18px
+  xs: unquote("clamp(0.8333rem, 0.8143rem + 0.0952vi, 0.9rem)"),         // 14.4px
+  2xs: unquote("clamp(0.6944rem, 0.6871rem + 0.0365vi, 0.72rem)")        // 11.52px
+);
+
+$column-widths: (
+  11: 1319px,
+  10: 1197px,
+  9:  1075px,
+  8:  954px,
+  7:  832px,
+  6:  710px,
+  5:  589px,
+  4:  467px,
+  3:  345px,
+  2:  224px
+);
+
 :root {
-  // FONTS
+  // Typography families.
   --f-title: Arial, sans-serif;
   --f-body: Arial, sans-serif;
-  --f-h1-size: clamp(2.25rem, calc(1rem + 2.64vw), 3.375rem); // 36px -> 54px
-  --f-h2-size: clamp(1.875rem, calc(1rem + 2.08vw), 2.875rem); // 30px -> 46px
-  --f-h3-size: clamp(1.5rem, calc(1rem + 1.39vw), 2.25rem); // 24px -> 36px
-  --f-h4-size: clamp(1.25rem, calc(1rem + 0.42vw), 1.875rem); // 20px -> 30px
-  --f-h5-size: clamp(1.125rem, calc(1rem + 0.416vw), 1.375rem); // 18px -> 22px
-  --f-h6-size: clamp(1rem, calc(1rem + 0vw), 1rem); // 16px -> 16px
-  --f-body-size: clamp(1rem, calc(1rem + 0.14vw), 1.875rem); // 16px -> 18px
-  --f-lede-size: clamp(1.125rem, calc(1rem + 0.556vw), 2rem); // 18px -> 24px
-  --f-small-size: clamp(0.625rem, calc(0.625rem + 0.139vw), 0.75rem); // 10px -> 12px
-  
+  // Typography sizing.
+  @each $label, $size in $typography {
+    --f-#{$label}: #{$size};
+  }
+
   // COLOURS
   --c-text: #222A41;    // Text colour.
   --c-bg: #fff;    // Background colour.
@@ -41,4 +60,5 @@ $mq-desktop-huge-min: 1400px;
   --s-box-shadow: 5px 5px 20px rgba(0,0,0,0.2);
   --s-filter-light: brightness(0) invert(1);
   --s-filter-dark: brightness(10%) saturate(0);
+  --s-bezier-1: cubic-bezier(.24,.84,.37,.99);
 }
