@@ -26,7 +26,7 @@
   }
 
   // Append a hash to the link?
-  if ($args['target_id']) {
+  if (isset($args['target_id'])) {
     $url .= '#'.$args['target_id'];
   }
   
@@ -38,7 +38,7 @@
 <a 
   href="<?php echo $url; ?>" 
   class="<?php echo $class; ?>" 
-  <?php if ($args['new_tab']) : ?>
+  <?php if (isset($args['new_tab'])) : ?>
     target="_blank" 
   <?php endif; ?>
 >
