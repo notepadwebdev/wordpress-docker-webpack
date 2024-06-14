@@ -8,6 +8,7 @@
     <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
+  <a href="#site-content" class="skip-to-main">Skip to main content</a>
   <div id="body-wrap" class="body-wrap">
 
   <header id="site-header" class="site-header">
