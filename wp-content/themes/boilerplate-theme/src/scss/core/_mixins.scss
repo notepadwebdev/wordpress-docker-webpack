@@ -89,6 +89,11 @@
 		opacity: 0;
 		transform: translateY($amount);
 	}
+
+	@starting-style {
+		opacity: 0;
+		transform: translateY($amount);
+	}
 }
 
 @mixin fade-in($speed: 1.5s) {
@@ -96,6 +101,10 @@
 	transition: opacity $speed;
 
 	&.animate-on-enter {
+		opacity: 0;
+	}
+
+	@starting-style {
 		opacity: 0;
 	}
 }
@@ -107,6 +116,10 @@
 	&.animate-on-enter {
 		transform: translateY($amount);
 	}
+
+	@starting-style {
+		transform: translateY($amount);
+	}
 } 
 
 @mixin slide-left($amount: 20vw) {
@@ -114,6 +127,10 @@
 	transition: transform 1s cubic-bezier(.24,.84,.37,.99);
 
 	&.animate-on-enter {
+		transform: translateX($amount);
+	}
+
+	@starting-style {
 		transform: translateX($amount);
 	}
 }
