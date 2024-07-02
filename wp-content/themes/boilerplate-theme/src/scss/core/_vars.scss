@@ -8,14 +8,14 @@ $mq-desktop-large-min: 1200px;
 $mq-desktop-huge-min: 1400px;
 
 $typography: (
-  3xl: unquote("clamp(2.4883rem, 2.2183rem + 1.3499vi, 3.4332rem)"),     // 54.93px
-  2xl: unquote("clamp(2.0736rem, 1.8813rem + 0.9614vi, 2.7466rem)"),     // 43.95px
-  xl: unquote("clamp(1.728rem, 1.5939rem + 0.6704vi, 2.1973rem)"),       // 35.16px
-  lg: unquote("clamp(1.44rem, 1.3492rem + 0.454vi, 1.7578rem)"),         // 28.13px
-  md: unquote("clamp(1.2rem, 1.1411rem + 0.2946vi, 1.4063rem)"),         // 22.5px   
-  sm: unquote("clamp(1rem, 0.9643rem + 0.1786vi, 1.125rem)"),            // 18px
-  xs: unquote("clamp(0.8333rem, 0.8143rem + 0.0952vi, 0.9rem)"),         // 14.4px
-  2xs: unquote("clamp(0.6944rem, 0.6871rem + 0.0365vi, 0.72rem)")        // 11.52px
+  3xl: clamp(2.4883rem, calc(2.2183rem + 1.3499vw), 3.4332rem),     // 54.93px
+  2xl: clamp(2.0736rem, calc(1.8813rem + 0.9614vw), 2.7466rem),     // 43.95px
+  xl: clamp(1.728rem, calc(1.5939rem + 0.6704vw), 2.1973rem),       // 35.16px
+  lg: clamp(1.44rem, calc(1.3492rem + 0.454vw), 1.7578rem),         // 28.13px
+  md: clamp(1.2rem, calc(1.1411rem + 0.2946vw), 1.4063rem),         // 22.5px   
+  sm: clamp(1rem, calc(0.9643rem + 0.1786vw), 1.125rem),            // 18px
+  xs: clamp(0.8333rem, calc(0.8143rem + 0.0952vw), 0.9rem),         // 14.4px
+  2xs: clamp(0.6944rem, calc(0.6871rem + 0.0365vw), 0.72rem)        // 11.52px
 );
 
 $column-widths: (

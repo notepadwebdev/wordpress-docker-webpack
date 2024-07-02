@@ -8,7 +8,8 @@ add_action( 'wp_enqueue_scripts', 'theme_scripts' );
 function theme_scripts() {
 
   // CSS / JS versioning based on last time files was updated (only on staging site).
-  $ver = null;
+  $cssVer = null;
+  $jsVer = null;
   if (strpos($_SERVER['SERVER_NAME'], 'staging') !== false) {
     $parentDir = realpath(__DIR__ . '/..');
     $cssVer = filemtime( $parentDir . '/dist/css/styles.css' );

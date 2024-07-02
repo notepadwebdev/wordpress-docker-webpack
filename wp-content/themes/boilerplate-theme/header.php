@@ -26,7 +26,7 @@
         <?php 
           wp_nav_menu(array(
             'menu' => 'Primary Navigation',
-            'walker' => new Walker_Primary_Nav()
+            // 'walker' => new Walker_Primary_Nav()
           )); 
         ?>
       </nav>
