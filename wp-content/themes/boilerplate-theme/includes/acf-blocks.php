@@ -4,10 +4,7 @@
  */
 
 add_theme_support('align-wide');
-add_theme_support( 'editor-styles' );
 remove_theme_support('core-block-patterns');
-add_editor_style( 'dist/css/styles.css' );
-add_editor_style( 'admin.css' );
 
 
 /**
@@ -46,7 +43,7 @@ function register_acf_blocks() {
   $parentDir = realpath(__DIR__ . '/..');
 
   // JS versioning based on last time main.bundle was updated (only on staging site).
-  $ver = null;
+  $jsVer = null;
   if (strpos($_SERVER['SERVER_NAME'], 'staging') !== false) {
     $parentDir = realpath(__DIR__ . '/..');
     $jsVer = filemtime( $parentDir . '/dist/js/main.bundle.js' );
@@ -55,20 +52,21 @@ function register_acf_blocks() {
   /**
    *  Register block specific scripts.
    */
-  // wp_register_script('block-template', get_template_directory_uri() . '/dist/js/template.bundle.js', array('jquery'), $jsVer, true);
+  wp_register_script('block-posts-archive', get_template_directory_uri() . '/dist/js/posts-archive.bundle.js', array('jquery'), $jsVer, true);
 
   /**
    *  Localise AJAX dependent scripts.
    */
-  // wp_localize_script('block-template', 'ajax_params', array(
-  //   'ajaxurl' => admin_url('admin-ajax.php'),
-  //   'current_page' => get_query_var('paged') ? get_query_var('paged') : 1
-  // ));
+  wp_localize_script('block-posts-archive', 'ajax_params', array(
+    'ajaxurl' => admin_url('admin-ajax.php'),
+    'current_page' => get_query_var('page') ? get_query_var('page') : 1
+  ));
   
   /**
    *  Register custom blocks.
    */ 
   register_block_type( $parentDir . '/template-parts/blocks/content-block' );
+  register_block_type( $parentDir . '/template-parts/blocks/posts-archive' );
 }
 
 
@@ -87,6 +85,7 @@ function theme_allowed_block_types( $allowed_blocks ) {
   return array(
     'core/block', // Required for reusable blocks functionality.
     'acf/content-block',
+    'acf/posts-archive',
   );
 }
 

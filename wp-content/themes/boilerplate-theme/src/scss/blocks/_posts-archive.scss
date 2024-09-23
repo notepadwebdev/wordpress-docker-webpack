@@ -1,0 +1,9 @@
+.posts-archive {
+
+  .theme-grid {
+    @media (min-width: $mq-desktop-min) {
+      --grid-cols: repeat(3, 1fr);
+    }
+  }
+
+}

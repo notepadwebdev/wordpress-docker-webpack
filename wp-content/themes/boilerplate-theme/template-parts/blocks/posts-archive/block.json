@@ -1,0 +1,26 @@
+{
+  "name": "posts-archive",
+  "title": "Posts Archive",
+  "description": "",
+  "renderTemplate": "file:./template-parts/blocks/posts-archive/posts-archive.php",
+  "category": "archive-blocks",
+  "icon": "portfolio",
+  "keywords": [
+    "content"
+  ],
+  "supports": {
+    "anchor": true,
+    "align": false,
+    "alignContent": false,
+    "alignText": false,
+    "multiple": true
+  },
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "posts-archive.php",
+    "postTypes": [
+      "page"
+    ]
+  },
+  "script": [ "block-posts-archive" ]
+}
