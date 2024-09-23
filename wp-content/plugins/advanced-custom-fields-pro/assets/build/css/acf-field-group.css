@@ -1055,6 +1055,7 @@ html[dir=rtl] .acf-field-object.open > .handle {
   order: 2;
   display: block;
   align-items: center;
+  max-width: 550px !important;
   margin-top: 2px;
   margin-bottom: 0;
   margin-left: 12px;
@@ -2441,7 +2442,8 @@ html[dir=rtl] .acf-field-object.open > .handle {
 .acf-taxonomy-select-id,
 .acf-relationship-select-id,
 .acf-post_object-select-id,
-.acf-page_link-select-id {
+.acf-page_link-select-id,
+.acf-user-select-id {
   color: #98A2B3;
   padding-left: 10px;
 }

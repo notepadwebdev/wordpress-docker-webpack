@@ -67,6 +67,7 @@ function acf_handle_json_block_registration( $settings, $metadata ) {
 			'acf_block_version' => 2,
 			'api_version'       => 2,
 			'validate'          => true,
+			'validate_on_load'  => true,
 			'use_post_meta'     => false,
 		)
 	);
@@ -110,6 +111,7 @@ function acf_handle_json_block_registration( $settings, $metadata ) {
 		'blockVersion'   => 'acf_block_version',
 		'postTypes'      => 'post_types',
 		'validate'       => 'validate',
+		'validateOnLoad' => 'validate_on_load',
 		'usePostMeta'    => 'use_post_meta',
 	);
 	$textdomain        = ! empty( $metadata['textdomain'] ) ? $metadata['textdomain'] : 'acf';
@@ -513,6 +515,7 @@ function acf_get_block_back_compat_attribute_key_array() {
  * @return  string The block HTML.
  */
 function acf_render_block_callback( $attributes, $content = '', $wp_block = null ) {
+
 	$is_preview = false;
 	$post_id    = get_the_ID();
 
@@ -589,7 +592,7 @@ function acf_rendered_block( $attributes, $content = '', $is_preview = false, $p
 		acf_setup_meta( $block['data'], $block['id'], true );
 
 		if ( ! empty( $block['validate'] ) ) {
-			$validation = acf_get_block_validation_state( $block );
+			$validation = acf_get_block_validation_state( $block, false, false, true );
 		}
 
 		$fields = acf_get_block_fields( $block );
@@ -615,7 +618,7 @@ function acf_rendered_block( $attributes, $content = '', $is_preview = false, $p
 			$block = acf_add_block_meta_values( $block, $post_id );
 			acf_setup_meta( $block['data'], $block['id'], true );
 			if ( ! empty( $block['validate'] ) ) {
-				$validation = acf_get_block_validation_state( $block );
+				$validation = acf_get_block_validation_state( $block, false, false, true );
 			}
 		}
 	}
@@ -680,6 +683,7 @@ function acf_rendered_block( $attributes, $content = '', $is_preview = false, $p
  * @return  void|string
  */
 function acf_render_block( $attributes, $content = '', $is_preview = false, $post_id = 0, $wp_block = null, $context = false ) {
+
 	// Prepare block ensuring all settings and attributes exist.
 	$block = acf_prepare_block( $attributes );
 	if ( ! $block ) {
@@ -732,6 +736,8 @@ function acf_block_render_template( $block, $content, $is_preview, $post_id, $wp
 	// Include template.
 	if ( file_exists( $path ) ) {
 		include $path;
+	} elseif ( $is_preview ) {
+		echo acf_esc_html( apply_filters( 'acf/blocks/template_not_found_message', '<p>' . __( 'The render template for this ACF Block was not found', 'acf' ) . '</p>' ) );
 	}
 }
 
@@ -784,6 +790,8 @@ function acf_enqueue_block_assets() {
 			'Switch to Edit'           => __( 'Switch to Edit', 'acf' ),
 			'Switch to Preview'        => __( 'Switch to Preview', 'acf' ),
 			'Change content alignment' => __( 'Change content alignment', 'acf' ),
+			'Error previewing block'   => __( 'An error occurred when loading the preview for this block.', 'acf' ),
+			'Error loading block form' => __( 'An error occurred when loading the block in edit mode.', 'acf' ),
 
 			/* translators: %s: Block type title */
 			'%s settings'              => __( '%s settings', 'acf' ),
@@ -881,6 +889,21 @@ function acf_ajax_fetch_block() {
 		)
 	);
 
+	// Verify capability.
+	if ( ! empty( $args['post_id'] ) && is_numeric( $args['post_id'] ) ) {
+		// Editing a normal post - we can verify if the user has access to that post.
+		if ( ! acf_current_user_can_edit_post( (int) $args['post_id'] ) ) {
+			wp_send_json_error();
+		}
+	} else {
+		// Could be editing a widget, using the site editor, etc.
+		$render_capability = apply_filters( 'acf/blocks/render_capability', 'edit_theme_options', $args['post_id'] );
+
+		if ( ! current_user_can( $render_capability ) ) {
+			wp_send_json_error();
+		}
+	}
+
 	$args['block']   = isset( $_REQUEST['block'] ) ? $_REQUEST['block'] : false; //phpcs:ignore -- requires auth; designed to contain unescaped html.
 	$args['context'] = isset( $_REQUEST['context'] ) ? $_REQUEST['context'] : array(); //phpcs:ignore -- requires auth; designed to contain unescaped html.
 
@@ -945,9 +968,19 @@ function acf_ajax_fetch_block() {
 	// Vars.
 	$response = array( 'clientId' => $client_id );
 
+	// Check if we've recieved serialised form data
+	$use_post_data = false;
+	if ( ! empty( $block['data'] ) && is_array( $block['data'] ) ) {
+		// Ensure we've got field keys posted.
+		$valid_field_keys = array_filter( array_keys( $block['data'] ), 'acf_is_field_key' );
+		if ( ! empty( $valid_field_keys ) ) {
+			$use_post_data = true;
+		}
+	}
+
 	$query['validate'] = ( ! empty( $query['validate'] ) && ( $query['validate'] === 'true' || $query['validate'] === true ) );
 	if ( ! empty( $query['validate'] ) || ! empty( $block['validate'] ) ) {
-		$response['validation'] = acf_get_block_validation_state( $block, $first_preview, true );
+		$response['validation'] = acf_get_block_validation_state( $block, $first_preview, $use_post_data );
 	}
 
 	// Query form.
@@ -1016,7 +1049,15 @@ function acf_get_empty_block_form_html( $block_name ) {
 
 	$message = apply_filters( 'acf/blocks/no_fields_assigned_message', $message, $block_name );
 
-	return empty( $message ) ? '' : acf_esc_html( '<div class="acf-block-fields acf-fields acf-empty-block-fields">' . $message . '</div>' );
+	if ( ! is_string( $message ) ) {
+		$message = '';
+	}
+
+	if ( empty( $message ) ) {
+		return acf_esc_html( '<div class="acf-empty-block-fields"></div>' );
+	} else {
+		return acf_esc_html( '<div class="acf-block-fields acf-fields acf-empty-block-fields">' . $message . '</div>' );
+	}
 }
 
 /**
@@ -1108,6 +1149,9 @@ function acf_parse_save_blocks_callback( $matches ) {
  * @return string A block ID.
  */
 function acf_get_block_id( $attributes, $context = array(), $force = false ) {
+	$context = is_array( $context ) ? $context : array();
+
+	ksort( $context );
 	$attributes['_acf_context'] = $context;
 	if ( empty( $attributes['id'] ) || $force ) {
 		unset( $attributes['id'] );
@@ -1176,26 +1220,35 @@ function acf_serialize_block_attributes( $block_attributes ) {
 /**
  * Handle validating a block's fields and return the validity, and any errors.
  *
- * This function uses the values loaded into Local Meta, which means they have to be
- * converted back to the data format because they can be validated.
+ * This function can use values loaded into Local Meta, which means they have to be
+ * converted back to the data format before they can be validated.
  *
  * @since 6.3
  *
  * @param array   $block          An array of the block's data attribute.
  * @param boolean $using_defaults True if the block is currently being generated with default values. Default false.
  * @param boolean $use_post_data  True if we should validate the POSTed data rather than local meta values. Default false.
+ * @param boolean $on_load        True if we're validating as part of a render. This is essentially the same as a first load. Default false.
  * @return array An array containing a valid boolean, and an errors array.
  */
-function acf_get_block_validation_state( $block, $using_defaults = false, $use_post_data = false ) {
+function acf_get_block_validation_state( $block, $using_defaults = false, $use_post_data = false, $on_load = false ) {
 	$block_id = $block['id'];
 
-	if ( $use_post_data ) {
+	if ( $on_load && empty( $block['validate_on_load'] ) ) {
+		// If we're in a page load render, and validate on load is false, skip validation.
+		$errors = false;
+	} elseif ( $use_post_data ) {
 		$errors = acf_validate_block_from_post_data( $block );
 	} elseif ( $using_defaults || empty( $block['data'] ) ) {
 		// If data is empty or it's first preview, load the default fields for this block so we can get a required validation state from the current field set.
-		$errors = acf_validate_block_from_local_meta( $block_id, acf_get_block_fields( $block ) );
+		// Treat as "on load" if it's the first render of a block.
+		if ( empty( $block['validate_on_load'] ) ) {
+			$errors = false;
+		} else {
+			$errors = acf_validate_block_from_local_meta( $block_id, acf_get_block_fields( $block ), true );
+		}
 	} else {
-		$errors = acf_validate_block_from_local_meta( $block_id, get_field_objects( $block_id, false ) );
+		$errors = acf_validate_block_from_local_meta( $block_id, get_field_objects( $block_id, false ), false );
 	}
 
 	return array(
@@ -1227,28 +1280,44 @@ function acf_validate_block_from_post_data( $block ) {
  *
  * @since 6.3.1
  *
- * @param string $block_id      The block ID
- * @param array  $field_objects The field objects in local meta to be validated.
+ * @param string  $block_id       The block ID.
+ * @param array   $field_objects  The field objects in local meta to be validated.
+ * @param boolean $using_defaults True if this is the first load of the block, when special validation may apply.
  * @return array|boolean An array containing the validation errors, or false if there are no errors.
  */
-function acf_validate_block_from_local_meta( $block_id, $field_objects ) {
+function acf_validate_block_from_local_meta( $block_id, $field_objects, $using_defaults = false ) {
 	if ( empty( $field_objects ) ) {
 		return false;
 	}
 
-	$skip_conditional_fields = false;
+	$using_loaded_meta = false;
 	if ( acf_get_data( $block_id . '_loaded_meta_values' ) ) {
-		$skip_conditional_fields = true;
+		$using_loaded_meta = true;
 	}
 
 	acf_reset_validation_errors();
 	foreach ( $field_objects as $field ) {
-		/**
-		 * Skips validation of conditional fields in post meta blocks when
-		 * preloading or during the first AJAX render if preloading is disabled.
-		 */
-		if ( $skip_conditional_fields && ! empty( $field['conditional_logic'] ) ) {
+		// Skip for nested fields - these don't work correctly on initial load of a saved block.
+		if ( ! empty( $field['sub_fields'] ) ) {
 			continue;
+		}
+
+		// If we're using default values, or loaded meta we may have values which are about to be populated at field render, so shouldn't raise errors here.
+		if ( $using_defaults || $using_loaded_meta ) {
+			// Fields with conditional logic applied shouldn't be validated during first load as conditionals aren't respected.
+			if ( ! empty( $field['conditional_logic'] ) ) {
+				continue;
+			}
+
+			// If we've got a empty value with a default value set and it's first load, don't produce a validation error as it will be substituted on render.
+			if ( $field['required'] && empty( $field['value'] ) && ! empty( $field['default_value'] ) ) {
+				continue;
+			}
+
+			// If we're loading a few radio or select-like fields, without allow null, HTML will automatically select the first value on render, so skip here.
+			if ( $field['required'] && in_array( $field['type'], array( 'radio', 'button_group', 'select' ), true ) && ! $field['allow_null'] ) {
+				continue;
+			}
 		}
 
 		$key   = $field['key'];

@@ -777,6 +777,7 @@
       ajaxData: function (data) {
         ajaxData.paged = data.paged;
         ajaxData.s = data.s;
+        ajaxData.conditional_logic = true;
         ajaxData.include = $.isNumeric(data.s) ? Number(data.s) : '';
         return acf.prepareForAjax(ajaxData);
       },
@@ -3736,8 +3737,6 @@
     type: 'icon_picker',
     wait: 'load',
     events: {
-      removeField: 'onRemove',
-      duplicateField: 'onDuplicate',
       showField: 'scrollToSelectedDashicon',
       'input .acf-icon_url': 'onUrlChange',
       'click .acf-icon-picker-dashicon': 'onDashiconClick',
@@ -4466,15 +4465,15 @@
       this.set('timeout', setTimeout(callback, 300));
     },
     search: function (url) {
-      // ajax
-      var ajaxData = {
+      const ajaxData = {
         action: 'acf/fields/oembed/search',
         s: url,
-        field_key: this.get('key')
+        field_key: this.get('key'),
+        nonce: this.get('nonce')
       };
 
       // clear existing timeout
-      var xhr = this.get('xhr');
+      let xhr = this.get('xhr');
       if (xhr) {
         xhr.abort();
       }
@@ -4483,7 +4482,7 @@
       this.showLoading();
 
       // query
-      var xhr = $.ajax({
+      xhr = $.ajax({
         url: acf.get('ajaxurl'),
         data: acf.prepareForAjax(ajaxData),
         type: 'post',
@@ -4894,6 +4893,7 @@
       // extra
       ajaxData.action = 'acf/fields/relationship/query';
       ajaxData.field_key = this.get('key');
+      ajaxData.nonce = this.get('nonce');
 
       // Filter.
       ajaxData = acf.applyFilters('relationship_ajax_data', ajaxData, this);
@@ -5675,7 +5675,8 @@
         // ajax
         var ajaxData = {
           action: 'acf/fields/taxonomy/add_term',
-          field_key: field.get('key')
+          field_key: field.get('key'),
+          nonce: field.get('nonce')
         };
 
         // get HTML
@@ -5726,6 +5727,7 @@
         var ajaxData = {
           action: 'acf/fields/taxonomy/add_term',
           field_key: field.get('key'),
+          nonce: field.get('nonce'),
           term_name: $name.val(),
           term_parent: $parent.length ? $parent.val() : 0
         };
@@ -6111,16 +6113,6 @@
     type: 'user'
   });
   acf.registerFieldType(Field);
-  acf.addFilter('select2_ajax_data', function (data, args, $input, field, select2) {
-    if (!field || 'user' !== field.get('type')) {
-      return data;
-    }
-    const query_nonce = field.get('queryNonce');
-    if (query_nonce && query_nonce.toString().length) {
-      data.user_query_nonce = query_nonce;
-    }
-    return data;
-  });
 })(jQuery);
 
 /***/ }),
@@ -9247,6 +9239,9 @@
       var field = this.get('field');
       if (field) {
         ajaxData.field_key = field.get('key');
+        if (field.get('nonce')) {
+          ajaxData.nonce = field.get('nonce');
+        }
       }
 
       // callback
@@ -10680,7 +10675,7 @@
       // ajax
       $.ajax({
         url: acf.get('ajaxurl'),
-        data: acf.prepareForAjax(data),
+        data: acf.prepareForAjax(data, true),
         type: 'post',
         dataType: 'json',
         context: this,
@@ -11313,7 +11308,7 @@
               const acfBlockState = acf.blockInstances[selectedBlockId];
               if (acfBlockState.validation_errors) {
                 // Deselect the block to show the error and lock the save.
-                console.log('Rejecting save because the block editor has a invalid ACF block selected.');
+                acf.debug('Rejecting save because the block editor has a invalid ACF block selected.');
                 notices.createErrorNotice(acf.__('An ACF Block on this page requires attention before you can save.'), {
                   id: 'acf-validation',
                   isDismissible: true
