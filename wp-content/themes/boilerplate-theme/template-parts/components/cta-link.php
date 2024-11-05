@@ -26,7 +26,7 @@
   }
 
   // Append a hash to the link?
-  if (isset($args['target_id'])) {
+  if (isset($args['target_id']) && $args['target_id']) {
     $url .= '#'.$args['target_id'];
   }
   
