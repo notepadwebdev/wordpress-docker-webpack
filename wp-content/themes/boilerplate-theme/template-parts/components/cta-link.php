@@ -38,7 +38,7 @@
 <a 
   href="<?php echo $url; ?>" 
   class="<?php echo $class; ?>" 
-  <?php if (isset($args['new_tab'])) : ?>
+  <?php if (isset($args['new_tab']) && $args['new_tab']) : ?>
     target="_blank" 
   <?php endif; ?>
 >
