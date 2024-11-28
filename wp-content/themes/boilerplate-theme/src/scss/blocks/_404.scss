@@ -1,0 +1,42 @@
+._404 {
+
+  &__container {
+    @include max-centered(600px);
+    min-height: 70vh;
+    padding-top: var(--l-v-pad);
+    padding-bottom: var(--l-v-pad);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    text-align: center;
+
+    > * {
+      margin: 0;
+    }
+  }
+
+  &__title {
+    color: var(--c-blue);
+    font-family: var(--f-display);
+    font-size: 10vw;
+    line-height: 1;
+    font-weight: 100;
+  }
+
+  &__subtitle {
+    font-size: var(--f-title-xl);
+  }
+
+  &__content {
+    > * {
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__cta {
+    margin-top: 1rem;
+  }
+}
