@@ -4,8 +4,8 @@ Donate link: https://yoa.st/1up
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 Tags: SEO, XML sitemap, Content analysis, Readability, Schema
-Tested up to: 6.6
-Stable tag: 23.4
+Tested up to: 6.7
+Stable tag: 23.9
 Requires PHP: 7.2.5
 
 Improve your WordPress SEO: Write better content and have a fully optimized WordPress site using the Yoast SEO plugin.
@@ -32,7 +32,7 @@ Yoast SEO offers comprehensive analysis tools that help elevate your content's S
 
 **Premium Yoast AI features** Get suggestions for your titles and descriptions at the click of a button. The [Yoast AI features](https://yoa.st/51c) save you time and optimize for higher click-through-rates.
 
-* Yoast AI Generate enables users to generate meta descriptions and titles for your pages, blog posts and social posts. Great! Even better, when you also have [Yoast WooCommerce SEO](https://yoa.st/3rh), you can recieve suggestions for product SEO titles and descriptions too! The best part, if you don't like the 5 suggestions, you can generate five more at a click. 
+* Yoast AI Generate enables users to generate meta descriptions and titles for your pages, blog posts and social posts. Great! Even better, when you also have [Yoast WooCommerce SEO](https://yoa.st/3rh), you can receive suggestions for product SEO titles and descriptions too! The best part, if you don't like the 5 suggestions, you can generate five more at a click.
 * Yoast AI Optimize helps you optimize existing content for search engines. Optimize three of the assessments in the Yoast SEO Analysis; Keyphrase in introduction, Keyphrase distribution and Keyphrase density, with easy dismiss or apply options.
 
 
@@ -274,45 +274,46 @@ Your question has most likely been answered on our help center: [yoast.com/help/
 
 == Changelog ==
 
-= 23.4 =
+= 23.9 =
 
-Release date: 2024-09-03
+Release date: 2024-11-19
 
-Yoast SEO 23.4 brings more enhancements and bugfixes. [Find more information about our software releases and updates here](https://yoa.st/release-3-9-24).
+Yoast SEO 23.9 brings enhancements to the Yoast SEO Semrush integration and various bug fixes. Find more about Yoast SEO 23.9 in [our release post](https://yoa.st/release-19-11-24)!
 
 #### Enhancements
 
-* Adds support for discarding the changes when switching to a post, using the Top bar feature in Elementor.
-* Adds _так_ to the words recognized by the _transition words_ assessment in Russian. Props to @pavelmai83.
-* Improves the schema output by following the specification for the _SearchAction_ more strictly.
-* Re-enables the script concatenation that was disabled to prevent a bug with WordPress 5.5.
-* Improves the look of the Yoast SEO metabox in the block editor by centering it and making it stand out more by using a background color.
+* Adds a maximum width to the problems and notifications sections on the _General_ page.
+* Adds _Intent_ and _Difficulty_ to the metrics shown in the Semrush integration.
+* Improves the compatibility of the Yoast blocks with WordPress 6.7.
 
 #### Bugfixes
 
-* Fixes a bug where an image caption inside a classic block would be considered the introduction when using the _keyphrase in introduction_ assessment in the default editor.
-* Fixes a bug where the first tag instead of the primary tag would be shown in a permalink when adding a link in the Classic editor.
-* Fixes a bug where the Yoast tab would disappear when opening and closing the Site Settings in Elementor.
-* Fixes a bug where the Yoast user settings would be wiped out after a user profile update when the respective global settings were disabled.
-* Fixes a bug where two admin links would not be resolvable when using a custom admin URL.
+* Fixes a bug where a fatal error is triggered in PHP 8.x when a user's additional contact methods have been improperly set to `null`. Props to [PhilETaylor](https://github.com/PhilETaylor).
+* Fixes a bug where the _First time configuration_ would have a double separator for the title and content.
+* Fixes a bug where the _First time configuration_ would not resize properly on smaller width screens.
 
 #### Other
 
-* Adds a learn more link to the primary category picker.
-* Deprecates some functions in the `Yoast_Input_Validation` class.
-* Deprecates the `Disable_Concatenate_Scripts_Integration` class.
-* Deprecates the `Duplicate_Post_Integration` class.
-* Deprecates the `WPSEO_Admin_User_Profile::user_profile()` method and the `admin/views/user-profile.php` file.
+* Stops PHP notices on WordPress 6.7 about `_load_textdomain_just_in_time` loading incorrectly.
 
-= 23.3 =
+= 23.8 =
 
-Release date: 2024-08-20
+Release date: 2024-11-05
 
-Yoast SEO 23.3 brings more enhancements and bugfixes. [Find more information about our software releases and updates here](https://yoa.st/release-20-8-24).
+Yoast SEO 23.8 brings more enhancements and bugfixes. [Find more information about our software releases and updates here](https://yoa.st/release-5-11-24).
+
+#### Enhancements
+
+* Introduces a new, redesigned General page.
+* Adds a notification to inform the user when an error occurs while changing the visibility of a notification or a problem.
+
+#### Bugfixes
+
+* Fixes a bug in our Elementor integration where previously saved slug values of drafts would be ignored.
 
 #### Other
 
-* This release only contains non-user-facing maintenance changes.
+* Sets the _WordPress tested up to_ version to 6.7.
 
 = Earlier versions =
 For the changelog of earlier versions, please refer to [the changelog on yoast.com](https://yoa.st/yoast-seo-changelog).
