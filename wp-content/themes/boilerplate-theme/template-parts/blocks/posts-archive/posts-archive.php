@@ -8,7 +8,7 @@
       $categories = get_field('filter_by_category') ?: 'all'; 
       // $category = get_query_var('category', 'all');
       $ppp = get_field('ppp') ?: get_option('posts_per_page');
-      $paged = (get_query_var('page')) ? get_query_var('page') : 1; 
+      $paged = (get_query_var('paged')) ? get_query_var('paged') : 1; 
       $big = 999999999;
       $paginationBase = str_replace( $big, '%#%', esc_url(get_pagenum_link($big)));
 
@@ -116,7 +116,7 @@
                 echo paginate_links( array(
                     'base'         => str_replace( 999999999, '%#%', esc_url( get_pagenum_link( 999999999 ) ) ),
                     'total'        => $wp_query->max_num_pages,
-                    'current'      => max( 1, get_query_var( 'page' ) ),
+                    'current'      => max( 1, get_query_var( 'paged' ) ),
                     'format'       => '?paged=%#%',
                     'show_all'     => false,
                     'type'         => 'list',
