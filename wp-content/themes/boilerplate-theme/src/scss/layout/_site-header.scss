@@ -1,8 +1,10 @@
+@use "../core/mixins";
+
 
 .site-header {
   
   .container {
-    @include body-pad;
+    @include mixins.body-pad;
   }
 
 }

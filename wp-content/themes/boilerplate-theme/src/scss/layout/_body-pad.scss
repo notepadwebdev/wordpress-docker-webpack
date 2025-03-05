@@ -1,4 +1,6 @@
+@use "../core/mixins";
+
 // Horizontal spacing.
 .body-pad {
-  @include body-pad;
+  @include mixins.body-pad;
 }

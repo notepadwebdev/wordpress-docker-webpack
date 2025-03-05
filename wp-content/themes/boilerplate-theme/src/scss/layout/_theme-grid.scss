@@ -1,3 +1,5 @@
+@use "../core/mixins";
+
 .theme-grid {
-  @include theme-grid;
+  @include mixins.theme-grid;
 }

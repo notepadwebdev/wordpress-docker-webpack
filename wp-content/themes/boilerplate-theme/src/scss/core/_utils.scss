@@ -1,3 +1,5 @@
+@use "mixins";
+
 
 .no-widows {
 	white-space: nowrap;
@@ -14,5 +16,5 @@
 }
 
 .visually-hidden {
-	@include visually-hidden;
+	@include mixins.visually-hidden;
 } 

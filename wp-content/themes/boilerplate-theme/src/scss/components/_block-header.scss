@@ -1,4 +1,8 @@
+@use "../core/vars";
+
 .block-header {
+  text-align: var(--text-align, left);
+  margin-bottom: calc(0.5 * var(--l-block-pad));
 
   &--align-center {
     --text-align: center;
@@ -18,9 +22,6 @@
     }
   }
 
-  text-align: var(--text-align, left);
-  margin-bottom: calc(0.5 * var(--l-block-pad));
-
   * {
     text-wrap: balance;
   }
@@ -32,7 +33,7 @@
   /**
   *     Mobile.
   */
-  @media (max-width: $mq-mobile-max) {
+  @media (max-width: vars.$mq-mobile-max) {
     &--align-left-mobile {
       --text-align: left;
     }

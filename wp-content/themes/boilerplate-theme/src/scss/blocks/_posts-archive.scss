@@ -1,7 +1,9 @@
+@use "../core/vars";
+
 .posts-archive {
 
   .theme-grid {
-    @media (min-width: $mq-desktop-min) {
+    @media (min-width: vars.$mq-desktop-min) {
       --grid-cols: repeat(3, 1fr);
     }
   }

@@ -1,3 +1,5 @@
+@use "../core/mixins";
+
 
 .block {
   > .container {
@@ -8,13 +10,13 @@
 
   &--center-width {
     > .container {
-      @include max-centered(660px);
+      @include mixins.max-centered(660px);
     }
   }
   
   &--wide-width {
     > .container {
-      @include max-centered(1360px);
+      @include mixins.max-centered(1360px);
     }
   }
   

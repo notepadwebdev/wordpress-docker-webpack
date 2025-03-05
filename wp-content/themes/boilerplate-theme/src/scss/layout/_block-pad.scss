@@ -1,5 +1,9 @@
+@use "../core/mixins";
+
 // Vertical spacing.
 .block-pad {
+  // Default.
+  @include mixins.block-pad;
 
   // Quarter.
   &--quarter {
@@ -12,9 +16,6 @@
     padding-top: calc(0.5 * var(--l-block-pad));
     padding-bottom: calc(0.5 * var(--l-block-pad));
   }
-
-  // Default.
-  @include block-pad;
 
   // Double.
   &--double {

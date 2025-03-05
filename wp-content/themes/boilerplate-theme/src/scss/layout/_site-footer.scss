@@ -1,8 +1,10 @@
+@use "../core/mixins";
+
 
 .site-footer {
   
   .container {
-    @include max-centered(var(--l-max-width));
+    @include mixins.max-centered(var(--l-max-width));
   }
 
 }

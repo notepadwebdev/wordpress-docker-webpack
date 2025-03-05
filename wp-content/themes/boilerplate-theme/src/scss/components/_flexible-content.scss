@@ -1,3 +1,5 @@
+@use "../core/mixins";
+
 .flexible-content {
   display: grid;
   gap: 1em;
@@ -12,11 +14,11 @@
 
       &__image,
       &__video {
-        @include fade-in();
+        @include mixins.fade-in();
       }
 
       &__cta {
-        @include fade-up();
+        @include mixins.fade-up();
       }
       
       &__wysiwyg {
@@ -26,7 +28,7 @@
             transform: translateY(0);
             transition: opacity .3s, transform 0.6s cubic-bezier(.24,.84,.37,.99);
 
-            @include delay-children(40, 0.1s);
+            @include mixins.delay-children(40, 0.1s);
           }
         }
 
