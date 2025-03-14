@@ -8,17 +8,20 @@
 @use "core/themes";
 
 @use "layout/layout";
+@use "layout/theme-grid";
 @use "layout/block-pad";
 @use "layout/body-pad";
-@use "layout/theme-grid";
-@use "layout/site-header";
-@use "layout/site-footer";
+@use "layout/l-max-width";
+
+@use "partials/site-header";
+@use "partials/site-footer";
 
 @use "components/address";
 @use "components/block-header";
 @use "components/btn";
 @use "components/flexible-content";
 @use "components/hamburger";
+@use "components/image"; 
 @use "components/scroll-pixel";
 @use "components/skip-to-main";
 @use "components/social-links";

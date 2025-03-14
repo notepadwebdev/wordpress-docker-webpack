@@ -1,8 +1,10 @@
+@use '../core/vars';
+
 .l-max-width {
   
-  @each $col, $max in $column-widths {
+  @each $col, $max in vars.$column-widths {
     &-#{$col} {
-      max-width: $max;
+      max-width: #{$max}px;
     }
   }
   

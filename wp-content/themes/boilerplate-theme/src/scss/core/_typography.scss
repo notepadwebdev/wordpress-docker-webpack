@@ -1,6 +1,5 @@
 @use "vars";
 
-
 body,
 body .block-editor-block-list__layout {
   font: 100 100%/1.5 var(--f-body) !important;
@@ -32,6 +31,31 @@ h6 {
   text-wrap: balance;
 }
 
+.f-title-3xl {
+  font-size: var(--f-3xl);
+}
+.f-title-2xl {
+  font-size: var(--f-2xl);
+}
+.f-title-xl {
+  font-size: var(--f-xl);
+}
+.f-title-lg {
+  font-size: var(--f-lg);
+}
+.f-title-md {
+  font-size: var(--f-md);
+}
+.f-title-sm {
+  font-size: var(--f-sm);
+}
+.f-title-xs {
+  font-size: var(--f-xs);
+}
+.f-title-2xs {
+  font-size: var(--f-2xs);
+}
+
 /**
 *   Body.
 */
@@ -41,15 +65,29 @@ h6 {
   font-weight: 400;
 }
 
-/**
-*   Typography sizing classes.
-*/
-@each $label, $size in vars.$typography {
-  [class$='#{$label}'], 
-  [class*=' f-title-#{$label}'], 
-  [class*=' f-body-#{$label}'] {
-    font-size: var(--f-#{$label});
-  }
+.f-body-3xl {
+  font-size: var(--f-3xl);
+}
+.f-body-2xl {
+  font-size: var(--f-2xl);
+}
+.f-body-xl {
+  font-size: var(--f-xl);
+}
+.f-body-lg {
+  font-size: var(--f-lg);
+}
+.f-body-md {
+  font-size: var(--f-md);
+}
+.f-body-sm {
+  font-size: var(--f-sm);
+}
+.f-body-xs {
+  font-size: var(--f-xs);
+}
+.f-body-2xs {
+  font-size: var(--f-2xs);
 }
 
 p,

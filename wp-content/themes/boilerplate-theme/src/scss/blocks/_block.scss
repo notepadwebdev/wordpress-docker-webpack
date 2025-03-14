@@ -1,6 +1,5 @@
 @use "../core/mixins";
 
-
 .block {
   > .container {
     max-width: var(--l-max-width);
@@ -57,6 +56,5 @@
     margin: 0;
     padding: var(--l-block-pad);
     text-align: center;
-    color: var(--c-purple);
   }
 }

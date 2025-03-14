@@ -1,0 +1,24 @@
+@use '../core/vars';
+
+.image {
+
+  img {
+    display: block;
+    width: 100%;
+  }
+
+  &--border-radius {
+    border-radius: var(--s-border-radius);
+    overflow: hidden;
+
+    img {
+      border-radius: var(--s-border-radius);
+    }
+  }
+
+  @each $col, $max in vars.$column-widths {
+    &[data-cols="#{$max}w"] {
+      max-width: #{$max}px;
+    }
+  }
+}
