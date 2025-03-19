@@ -180,11 +180,15 @@ function my_toolbars( $toolbars )
 	// die;
 	//
 
-	// Add a new toolbar called "Very Simple"
-	// - this toolbar has only 1 row of buttons
+	// Add a new toolbar called "Headings"
 	$toolbars['Headings' ] = array();
 	$toolbars['Headings' ][1] = array('formatselect', 'alignleft', 'aligncenter', 'alignright', 'wp_adv');
   $toolbars['Headings' ][2] = array('styleselect');
+
+  // Add a new toolbar called "Style Formats Only"
+	$toolbars['Style Formats Only' ] = array();
+	$toolbars['Style Formats Only' ][1] = array('wp_adv');
+  $toolbars['Style Formats Only' ][2] = array('styleselect');
 
 	// Edit the "Full" toolbar and remove 'code'
 	// - delet from array code from http://stackoverflow.com/questions/7225070/php-array-delete-by-value-not-key
