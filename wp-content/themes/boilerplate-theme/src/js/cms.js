@@ -35,5 +35,18 @@ window.addEventListener(`load`, () => {
   //     wp.blocks.unregisterBlockVariation('core/embed', blockVariation.name);
   //   }
   // });
+
+	// Fix for Pattern editor max widths.
+	const iframes = document.querySelectorAll('.block-editor-iframe__container iframe');
+	iframes.forEach(iframe => {
+		var style = document.createElement('style');
+		style.textContent =
+			`html :where(.wp-block) {
+				max-width: none !important;
+				margin: 0 !important;
+			}`
+		;
+		iframe.contentDocument.head.appendChild(style);
+	});
 	
 });
