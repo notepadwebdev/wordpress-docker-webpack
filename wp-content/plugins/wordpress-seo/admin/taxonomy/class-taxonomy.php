@@ -42,6 +42,20 @@ class WPSEO_Taxonomy {
 	private $analysis_inclusive_language;
 
 	/**
+	 * Whether the insights feature is enabled.
+	 *
+	 * @var bool
+	 */
+	protected $is_insights_enabled;
+
+	/**
+	 * Whether the cornerstone content feature is enabled.
+	 *
+	 * @var bool
+	 */
+	protected $is_cornerstone_enabled;
+
+	/**
 	 * Class constructor.
 	 */
 	public function __construct() {
@@ -57,6 +71,8 @@ class WPSEO_Taxonomy {
 		$this->analysis_seo                = new WPSEO_Metabox_Analysis_SEO();
 		$this->analysis_readability        = new WPSEO_Metabox_Analysis_Readability();
 		$this->analysis_inclusive_language = new WPSEO_Metabox_Analysis_Inclusive_Language();
+		$this->is_insights_enabled         = WPSEO_Options::get( 'enable_metabox_insights', false, [ 'wpseo' ] );
+		$this->is_cornerstone_enabled      = WPSEO_Options::get( 'enable_cornerstone_content', false, [ 'wpseo' ] );
 	}
 
 	/**
@@ -138,18 +154,20 @@ class WPSEO_Taxonomy {
 		}
 
 		$asset_manager = new WPSEO_Admin_Asset_Manager();
-		$asset_manager->enqueue_style( 'scoring' );
 		$asset_manager->enqueue_style( 'monorepo' );
 
 		$tag_id = $this::get_tag_id();
 
 		if (
 			self::is_term_edit( $pagenow )
-			&& ! is_null( $tag_id )
+			&& $tag_id !== null
 		) {
 			wp_enqueue_media(); // Enqueue files needed for upload functionality.
 
 			$asset_manager->enqueue_style( 'metabox-css' );
+			if ( $this->analysis_readability->is_enabled() ) {
+				$asset_manager->enqueue_style( 'scoring' );
+			}
 			$asset_manager->enqueue_style( 'ai-generator' );
 			$asset_manager->enqueue_script( 'term-edit' );
 
@@ -184,14 +202,14 @@ class WPSEO_Taxonomy {
 				'metabox'               => $this->localize_term_scraper_script( $tag_id ),
 				'isTerm'                => true,
 				'postId'                => $tag_id,
-				'termType'              => $this->get_taxonomy(),
+				'postType'              => $this->get_taxonomy(),
 				'usedKeywordsNonce'     => wp_create_nonce( 'wpseo-keyword-usage' ),
 			];
 
 			/**
 			 * The website information repository.
 			 *
-			 * @var $repo Website_Information_Repository
+			 * @var Website_Information_Repository $repo
 			 */
 			$repo             = YoastSEO()->classes->get( Website_Information_Repository::class );
 			$term_information = $repo->get_term_site_information();
@@ -199,11 +217,15 @@ class WPSEO_Taxonomy {
 			$script_data = array_merge_recursive( $term_information->get_legacy_site_information(), $script_data );
 
 			$asset_manager->localize_script( 'term-edit', 'wpseoScriptData', $script_data );
-			$asset_manager->enqueue_user_language_script();
+
+			if ( $this->analysis_readability->is_enabled() || $this->analysis_inclusive_language->is_enabled() || $this->analysis_seo->is_enabled() || $this->is_insights_enabled || $this->is_cornerstone_enabled ) {
+				$asset_manager->enqueue_user_language_script();
+			}
 		}
 
 		if ( self::is_term_overview( $pagenow ) ) {
 			$asset_manager->enqueue_script( 'edit-page' );
+			$asset_manager->enqueue_style( 'edit-page' );
 		}
 	}
 

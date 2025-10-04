@@ -207,8 +207,8 @@ class acfe_module_form_front{
         // restore save post action
         remove_filter('acf/pre_update_value', '__return_false', 99);
         
-        // unset files to avoid duplicate upload
-        unset($_FILES);
+        // reset files to avoid duplicate upload
+        $_FILES = array();
         
         // remove shortcode temporarly
         // https://github.com/elementor/elementor/issues/10998
@@ -358,6 +358,11 @@ class acfe_module_form_front{
             $form['map'] = array();
         }
         
+        // add map default
+        if(!isset($form['map_default'])){
+            $form['map_default'] = $form['map'];
+        }
+        
         return $form;
     
     }
@@ -375,6 +380,9 @@ class acfe_module_form_front{
         if(!$form){
             return false;
         }
+        
+        // backup map without actions injecting values
+        $form['map_default'] = $form['map'];
         
         // update context
         acfe_add_context('form', $form);
