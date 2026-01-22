@@ -5,44 +5,47 @@
   switch($dataSource) {
     
     case 'dynamic':
-      $categories = get_field('filter_by_category') ?: 'all'; 
-      // $category = get_query_var('category', 'all');
+      $postTypes = get_field('post_types');
+      $cpt = $postTypes ? array_map(function($post_type) { return is_object($post_type) ? $post_type->name : $post_type; }, $postTypes) : array();
       $ppp = get_field('ppp') ?: get_option('posts_per_page');
       $paged = (get_query_var('paged')) ? get_query_var('paged') : 1; 
       $big = 999999999;
       $paginationBase = str_replace( $big, '%#%', esc_url(get_pagenum_link($big)));
+      $filterByTerms = get_field('filter_results_by_terms') ?: 'all'; 
 
       // Get most recent posts.
       $args = array(
-        'post_type' => 'post',
+        'post_type' => $cpt,
         'orderby'=> 'post_date', 
         'order' => 'DESC',
         'post_status' => array( 'publish' ),
         'posts_per_page'   => $ppp,
         'paged' => $paged,
-        'tax_query' => array(
-          'relation' => 'OR',
-        )
+        'tax_query' => array()
       );
 
-      // Category.
-      if ($categories && $categories !== 'all') {
-        array_push($args['tax_query'], array(
-          'taxonomy' => 'category',
-          'field'    => 'term_id',
-          'terms'    => $categories,
-        ));
+      // Restrict results by terms.
+      if ($filterByTerms && $filterByTerms !== 'all') {
+        $tax_query = array('relation' => 'OR');
+        
+        foreach ($filterByTerms as $term) {
+          $tax_query[] = array(
+            'taxonomy' => $term->taxonomy,
+            'field'    => 'term_id',
+            'terms'    => $term->term_id,
+            'operator' => 'IN',
+          );
+        }
+        
+        if (count($tax_query) > 1) {
+          $args['tax_query'] = optimize_tax_query($tax_query);
+        }
       }
-
-      // echo '<pre>';
-      // print_r($args);
-      // echo '</pre>';
 
       $wp_query = new WP_Query($args);
       
       $postsCount = count($wp_query->posts);
       $postIds = wp_list_pluck( $wp_query->posts, 'ID' );
-      // Only use the first set (based upon $ppp number).
       $postIds = array_slice($postIds, 0, $ppp);
       wp_reset_query();
       break;
@@ -91,11 +94,45 @@
         endif;
       ?>
 
+      <?php 
+        if (have_rows('taxonomy_filters')) : 
+          while (have_rows('taxonomy_filters')) : the_row(); 
+            if (get_sub_field('include_filters')) : 
+              $menuStructure = get_sub_field('menu_structure');
+              ?>
+            
+              <div 
+                class="posts-archive__taxonomy-filters" 
+                data-structure="<?php echo esc_attr($menuStructure); ?>"
+              >                
+                <?php 
+                  get_template_part("template-parts/blocks/posts-archive/taxonomy-filters/{$menuStructure}");
+                ?>
+              </div>
+
+              <?php 
+            endif;
+          endwhile;
+        endif; 
+      ?>
+
       <div 
         class="posts-archive__ajax-container" 
-        data-ppp="<?php echo $ppp; ?>" 
-        data-paged="<?php echo $paged; ?>" 
-        data-url-base="<?php echo $paginationBase; ?>"
+        <?php if ($dataSource === 'dynamic') : ?>
+          data-cpt="<?php echo implode(',', $cpt); ?>" 
+          data-ppp="<?php echo $ppp; ?>" 
+          data-paged="<?php echo $paged; ?>" 
+          data-url-base="<?php echo $paginationBase; ?>" 
+          data-include-pagination="<?php echo get_field('include_pagination') ? 1 : 0; ?>" 
+          <?php if ($filterByTerms && $filterByTerms !== 'all') : ?>
+            data-filter-by-terms="<?php echo esc_attr(json_encode(array_map(function($term) { 
+              return array('term_id' => $term->term_id, 'taxonomy' => $term->taxonomy); 
+            }, $filterByTerms))); ?>" 
+          <?php endif; ?>
+          <?php if (get_field('update_url_on_change')) : ?>
+            data-update-url="1" 
+          <?php endif; ?>
+        <?php endif; ?>
       >
         <div class="posts-archive__posts theme-grid">
           <?php 
@@ -111,26 +148,22 @@
 
         <?php if (get_field('include_pagination')) : ?>
           <div class="posts-archive__pagination pagination">
-            <div class="container u--text-center">
-              <?php 
-                echo paginate_links( array(
-                    'base'         => str_replace( 999999999, '%#%', esc_url( get_pagenum_link( 999999999 ) ) ),
-                    'total'        => $wp_query->max_num_pages,
-                    'current'      => max( 1, get_query_var( 'paged' ) ),
-                    'format'       => '?paged=%#%',
-                    'show_all'     => false,
-                    'type'         => 'list',
-                    'end_size'     => 3,
-                    'mid_size'     => 3,
-                    'prev_next'    => true,
-                    'prev_text'    => sprintf( '<i></i> %1$s', __( 'Newer posts', 'text-domain' ) ),
-                    'next_text'    => sprintf( '%1$s <i></i>', __( 'Older posts', 'text-domain' ) ),
-                    'add_args'     => false,
-                    'add_fragment' => '',
-                ));
-              ?>
-            </div>
+            <?php 
+              get_template_part('template-parts/components/pagination', null, array(
+                'total' => $wp_query->max_num_pages,
+                'current' => max(1, get_query_var('paged'))
+              ));
+            ?>
           </div>
+        <?php endif; ?>
+
+        <?php if ($dataSource == 'manual') : ?>
+          <?php 
+            $ctas = get_field('footer_cta');
+            if ($ctas && is_array($ctas)) :
+              get_template_part('template-parts/components/ctas-list', null, $ctas); 
+            endif;
+          ?>  
         <?php endif; ?>
 
       </div>

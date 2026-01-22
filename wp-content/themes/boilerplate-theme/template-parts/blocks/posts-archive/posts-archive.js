@@ -5,24 +5,24 @@ document.addEventListener("DOMContentLoaded", () => {
     // DOM.
     const ajaxContainer = block.querySelector('.posts-archive__ajax-container');
     const itemsWrap = block.querySelector('.posts-archive__posts');
-    const filters = block.querySelector('.posts-archive__filters');
+    const filters = block.querySelector('.posts-archive__taxonomy-filters');
     const pagination = block.querySelector('.posts-archive__pagination');
 
+    if (!itemsWrap || !ajaxContainer) {
+      return;
+    }
+
     // Props.
-    // const urlBase = block.dataset.urlBase;
+    const cpt = ajaxContainer.dataset.cpt ? ajaxContainer.dataset.cpt.split(',') : ['post'];
+    const filterByTerms = ajaxContainer.dataset.filterByTerms ? JSON.parse(ajaxContainer.dataset.filterByTerms) : null;
     const ppp = ajaxContainer.dataset.ppp;
-    let urlBase = ajaxContainer.dataset.urlBase;
+    const includePagination = ajaxContainer.dataset.includePagination === '1' ? true : false;
+    const urlBase = ajaxContainer.dataset.urlBase;
     let pageNumber = Number(ajaxContainer.dataset.paged);
 
-    // Check the URL for filter settings.
-    const urlParams = new URLSearchParams(window.location.search);
-    let category = urlParams.get('category') || 'all';
-
-    const getTaxonomyParams = () => {
-      let params = '';
-      params += `&category=${category}`;
-      return params;
-    }
+    // // Check the URL for filter settings.
+    // const urlParams = new URLSearchParams(window.location.search);
+    // let category = urlParams.get('category') || 'all';
 
     const updateUrl = () => {
       const url = String(document.location).split('?').shift();
@@ -39,6 +39,35 @@ document.addEventListener("DOMContentLoaded", () => {
       const params = getTaxonomyParams();
       window.history.pushState({}, '', `${pagedUrl}?${params}`);
     }
+
+    const getTaxonomyParams = () => {
+      let params = '';
+      for (const [taxonomy, termIds] of Object.entries(taxonomies)) {
+        if (termIds.length > 0) {
+          params += `&${taxonomy}=${termIds.join(',')}`;
+        }
+      }
+      return params;
+    }
+
+    // Store taxonomies as an object: { taxonomy_name: [term_id1, term_id2, ...], ... }
+    let taxonomies = {};
+
+    // Helper function to set term IDs for a taxonomy.
+    const setTaxonomyTerms = (taxonomyName, termIds) => {
+      // Convert single value to array
+      const termsArray = Array.isArray(termIds) ? termIds : [termIds];
+      
+      // Filter out 'all' values and empty strings.
+      const validTerms = termsArray.filter(id => id && id !== 'all');
+      
+      if (validTerms.length > 0) {
+        taxonomies[taxonomyName] = validTerms;
+      } else {
+        // Remove taxonomy if no valid terms.
+        delete taxonomies[taxonomyName];
+      }
+    }
     
     /**
      * 
@@ -52,40 +81,59 @@ document.addEventListener("DOMContentLoaded", () => {
 
       var formData = new FormData();
       formData.append( 'action', 'ajax_posts' );
+      formData.append( 'cpt', JSON.stringify(cpt) );
       formData.append( 'ppp', ppp );
       formData.append( 'pageNumber', pageNumber );
+      formData.append( 'includePagination', includePagination ? 1 : 0 );
       formData.append( 'urlBase', urlBase );
-      formData.append( 'category', category );
+      formData.append( 'taxonomies', JSON.stringify(taxonomies) );
+      if (filterByTerms) {
+        formData.append( 'filterByTerms', JSON.stringify(filterByTerms) );
+      }
 
       fetch(ajax_params.ajaxurl, {
           method: 'POST',
           body: formData
         })
-        .then(response => response.text())
-        .then(html => {
+        .then(response => response.json())
+        .then(data => {
           
+          if (!data.success) {
+            console.error('AJAX request failed');
+            return;
+          }
+
           if (clearAll) {
             ajaxContainer.innerHTML = '';
           }
 
-          // updateUrl();
+          if (ajaxContainer.dataset.updateUrl === '1') {
+            updateUrl();
+          } 
 
           pagination?.classList.remove('hidden');
           
           const parser = new DOMParser();
-          const doc = parser.parseFromString(html, "text/html");
-          const data = doc.querySelector('.posts-archive__posts');
-          const paginationLinks = doc.querySelector('.posts-archive__pagination');
+          
+          // Parse posts HTML
+          const postsDoc = parser.parseFromString(data.postsHtml, "text/html");
+          const postsElement = postsDoc.querySelector('.posts-archive__posts');
+          
+          ajaxContainer.dataset.maxPages = data.maxPages;
+          ajaxContainer.append(postsElement);
 
-          // We pass data attributes in an extra div via AJAX for pagination purposes.
-          // Pick them up, apply them to the pagination button, then delete the div.
-          const dataDiv = doc.querySelector('.ajax-data');
-          ajaxContainer.dataset.maxPages = dataDiv.dataset.maxPages;
+          // Parse and append pagination if exists
+          if (data.paginationHtml) {
+            const paginationDoc = parser.parseFromString(data.paginationHtml, "text/html");
+            const paginationElement = paginationDoc.querySelector('.posts-archive__pagination');
+            if (paginationElement) {
+              ajaxContainer.append(paginationElement);
+            }
+          }
 
-          ajaxContainer.append(data);
-
-          if (paginationLinks) {
-            ajaxContainer.append(paginationLinks);
+          // Update filters with available terms
+          if (data.availableTerms && filters && filters.dataset.structure === 'multi') {
+            updateFilters(data.availableTerms);
           }
 
           block.classList.remove('is-loading');
@@ -95,7 +143,132 @@ document.addEventListener("DOMContentLoaded", () => {
         
         }).catch(error => {
           console.warn(error);
+          block.classList.remove('is-loading');
         });
+    }
+
+    /**
+     * 
+     *  Filters.
+     * 
+     */
+    const updateFilters = (availableTerms) => {
+      if (!filters) return;
+
+      const structure = filters.dataset.structure;
+
+      switch(structure) {
+        case 'flat':
+          // Update flat list - disable/enable items based on availability
+          const listItems = filters.querySelectorAll('li[data-term-id][data-taxonomy]');
+          
+          listItems.forEach(li => {
+            const termId = li.dataset.termId;
+            const taxonomy = li.dataset.taxonomy;
+            
+            // Skip 'all' reset button
+            if (termId === 'all' || taxonomy === 'all') {
+              return;
+            }
+            
+            // Check if this term is available
+            const taxonomyTerms = availableTerms[taxonomy] || [];
+            const isAvailable = taxonomyTerms.some(term => term.term_id == termId);
+            
+            if (isAvailable) {
+              li.classList.remove('disabled');
+              li.removeAttribute('disabled');
+              const button = li.querySelector('button');
+              if (button) button.disabled = false;
+            } else {
+              li.classList.add('disabled');
+              li.setAttribute('disabled', 'disabled');
+              const button = li.querySelector('button');
+              if (button) button.disabled = true;
+            }
+          });
+          break;
+
+        case 'multi':
+          // Update select dropdowns - disable options and update counts
+          const selects = filters.querySelectorAll('select[data-taxonomy]');
+          
+          selects.forEach(select => {
+            const taxonomy = select.dataset.taxonomy;
+            const taxonomyTerms = availableTerms[taxonomy] || [];
+            const currentValue = select.value;
+            
+            // Get all options except the first one (placeholder/all)
+            const options = select.querySelectorAll('option[value]:not([value="all"])');
+            
+            options.forEach(option => {
+              const termId = option.value;
+              const term = taxonomyTerms.find(t => t.term_id == termId);
+              
+              if (term) {
+                option.disabled = false;
+                // Optionally update the label with count
+                const baseLabel = option.textContent.replace(/\s*\(\d+\)$/, '');
+                option.textContent = `${baseLabel}`; // (${term.count})`;
+              } else {
+                option.disabled = true;
+                // Keep current selection even if disabled
+                if (termId === currentValue) {
+                  option.disabled = false;
+                }
+              }
+            });
+          });
+          break;
+      }
+    }
+
+    if (filters) {
+      const structure = filters.dataset.structure;
+      const resetBtn = filters.querySelector('.posts-archive__taxonomy-filters__reset');
+
+      switch(structure) {
+        
+        case 'flat':
+          filters.addEventListener('click', e => {
+            const li = e.target.closest('li');
+            li.closest('ul').querySelectorAll('li').forEach(item => item.classList.remove('active'));
+            if (li) {
+              e.preventDefault();
+              li.classList.add('active');
+              const taxonomy = li.dataset.taxonomy;
+              const termId = li.dataset.termId;
+              taxonomies = {};
+              setTaxonomyTerms(taxonomy, termId);
+              pageNumber = 1;
+              loadContent(true);
+            }
+          });
+          break;
+
+        case 'multi':
+          const selects = filters.querySelectorAll('select');
+          selects.forEach(select => {
+            select.addEventListener('change', e => {
+              const select = e.target;
+              const taxonomy = select.dataset.taxonomy;
+              const termId = select.value;
+              setTaxonomyTerms(taxonomy, termId);
+              pageNumber = 1;
+              loadContent(true);
+            });
+          });
+          break;
+      }
+
+      resetBtn?.addEventListener('click', e => {
+        e.preventDefault();
+        taxonomies = {};
+        pageNumber = 1;
+        filters.querySelectorAll('li').forEach(item => item.classList.remove('active'));
+        filters.querySelectorAll('select').forEach(select => select.selectedIndex = 0);
+        loadContent(true);
+      });
     }
 
     /**

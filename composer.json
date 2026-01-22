@@ -11,9 +11,7 @@
         "wpackagist-plugin/svg-support": "*",
         "wpackagist-plugin/resizable-editor-sidebar": "*",
         "wpackagist-plugin/acf-extended": "*",
-        "wpackagist-plugin/wp-migrate-db": "*",
-        "gravityforms/gravityforms": "*",
-        "wpackagist-plugin/acf-gravityforms-add-on": "*"
+        "wpackagist-plugin/wp-migrate-db": "*"
     },
     "repositories": [
         {
@@ -23,10 +21,6 @@
         {
           "type": "composer",
           "url": "https://connect.advancedcustomfields.com"
-        },
-        {
-            "type": "composer",
-            "url": "https://packages.gravityforms.com/"
         }
     ],
     "config": {

@@ -43,10 +43,16 @@ function register_acf_blocks() {
   $parentDir = realpath(__DIR__ . '/..');
 
   // JS versioning based on last time main.bundle was updated (only on staging site).
+  $cssVer = null;
   $jsVer = null;
-  if (strpos($_SERVER['SERVER_NAME'], 'staging') !== false) {
-    $parentDir = realpath(__DIR__ . '/..');
-    $jsVer = filemtime( $parentDir . '/dist/js/main.bundle.js' );
+  $server_name = isset($_SERVER['SERVER_NAME']) ? sanitize_text_field($_SERVER['SERVER_NAME']) : '';
+  if (strpos($server_name, 'staging') !== false) {
+    // CSS.
+    $css_path = $parentDir . '/dist/css/styles.css';
+    $cssVer = file_exists($css_path) ? filemtime($css_path) : null;
+    // JS.
+    $js_path = $parentDir . '/dist/js/main.bundle.js';
+    $jsVer = file_exists($js_path) ? filemtime($js_path) : null;
   }
 
   /**
@@ -63,10 +69,17 @@ function register_acf_blocks() {
   ));
   
   /**
-   *  Register custom blocks.
-   */ 
-  register_block_type( $parentDir . '/template-parts/blocks/content-block' );
-  register_block_type( $parentDir . '/template-parts/blocks/posts-archive' );
+   *  Register custom blocks (with directory existence checks).
+   */
+  $content_block_dir = $parentDir . '/template-parts/blocks/content-block';
+  $posts_archive_dir = $parentDir . '/template-parts/blocks/posts-archive';
+
+  if ( is_dir( $content_block_dir ) ) {
+    register_block_type( $content_block_dir );
+  }
+  if ( is_dir( $posts_archive_dir ) ) {
+    register_block_type( $posts_archive_dir );
+  }
 }
 
 
@@ -76,7 +89,7 @@ function register_acf_blocks() {
  * 
  */
 add_filter( 'allowed_block_types_all', 'theme_allowed_block_types' );
-function theme_allowed_block_types( $allowed_blocks ) {
+function theme_allowed_block_types( $allowed_blocks, $editor_context = null ) {
   
   // Dump a list of all block slugs.
   // $registered_block_slugs = array_keys( WP_Block_Type_Registry::get_instance()->get_all_registered() );
