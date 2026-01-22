@@ -1,0 +1,37 @@
+{
+    "name": "notepadwebdevelopment/boilerplate",
+    "description": "WordPress project running in Docker with Composer and ACF Pro setup.",
+    "type": "project",
+    "require": {
+        "wpengine/advanced-custom-fields-pro": "*",
+        "wpackagist-plugin/wordpress-seo": "*",
+        "wpackagist-plugin/duplicate-post": "*",
+        "wpackagist-plugin/enable-media-replace": "*",
+        "wpackagist-plugin/regenerate-thumbnails": "*",
+        "wpackagist-plugin/svg-support": "*",
+        "wpackagist-plugin/resizable-editor-sidebar": "*",
+        "wpackagist-plugin/acf-extended": "*",
+        "wpackagist-plugin/wp-migrate-db": "*",
+        "gravityforms/gravityforms": "*",
+        "wpackagist-plugin/acf-gravityforms-add-on": "*"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://wpackagist.org"
+        },
+        {
+          "type": "composer",
+          "url": "https://connect.advancedcustomfields.com"
+        },
+        {
+            "type": "composer",
+            "url": "https://packages.gravityforms.com/"
+        }
+    ],
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true
+        }
+    }
+}

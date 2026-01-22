@@ -1,0 +1,12 @@
+{
+  "http-basic": {
+    "connect.advancedcustomfields.com": {
+      "username": "your-acf-pro-license-key",
+      "password": "http://localhost:8888"
+    },
+    "packages.gravityforms.com": {
+      "username": "your-gravity-forms-license-key",
+      "password": "http://localhost:8888"
+    }
+  }
+}

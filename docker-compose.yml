@@ -12,10 +12,14 @@ services:
   wordpress:
     depends_on:
       - db
-    image: wordpress:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: the-core-wordpress:latest
     volumes:
       - ./wp-content:/var/www/html/wp-content
       - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+      - ./wordpress-network.ini:/usr/local/etc/php/conf.d/wordpress-network.ini
     ports:
       - 8888:80
     restart: always
@@ -26,7 +30,15 @@ services:
       WORDPRESS_DEBUG: 1 
       WORDPRESS_CONFIG_EXTRA: |
         define('WP_POST_REVISIONS', false);
+        define('WP_MEMORY_LIMIT', '256M');
+        define('WP_DEBUG', true);
+        define('WP_DEBUG_LOG', true);
+        define('WP_DEBUG_DISPLAY', false);
+        define('WP_HTTP_BLOCK_EXTERNAL', false);
+        define('WP_ACCESSIBLE_HOSTS', 'api.wordpress.org,*.wordpress.org');
+        define('WP_AUTO_UPDATE_CORE', false);
         define('WPCF7_AUTOP', false);
+        ini_set('openssl.cafile', '/etc/ssl/certs/ca-certificates.crt');
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     restart: always
@@ -34,5 +46,5 @@ services:
       - 3333:80
     environment:
       PMA_HOST: db
-      MYSQL_ROOT_PASSWORT: somewordpress
+      MYSQL_ROOT_PASSWORD: somewordpress
       UPLOAD_LIMIT: 3000000000

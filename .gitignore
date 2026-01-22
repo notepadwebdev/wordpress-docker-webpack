@@ -1,9 +1,102 @@
-wp-config*
+# WordPress Configuration
+wp-config.php
+wp-config-local.php
+.env
+.env.*
+!.env.example
 
+# WordPress Core Files
+/wp-admin/
+/wp-includes/
+/index.php
+/license.txt
+/readme.html
+/wp-*.php
+/xmlrpc.php
+
+# Database
 db_data/
+*.sql
+*.sql.gz
+*.sqlite
 
-wp-content/uploads
+# Uploads & Cache
+wp-content/uploads/
+wp-content/cache/
+wp-content/backup*/
+wp-content/upgrade/
+wp-content/upgrade-temp-backup/
+
+# Languages (auto-generated)
 wp-content/languages/
+wp-content/languages/plugins/
+wp-content/languages/themes/
+
+# Default/Demo Plugins
 wp-content/plugins/akismet/
 wp-content/plugins/hello.php
+
+# Third-Party Plugins (exclude all, then whitelist custom ones below)
+wp-content/plugins/*
+!wp-content/plugins/.gitkeep
+!wp-content/plugins/REQUIRED-PLUGINS.md
+
+# Whitelist: MU-Plugins (our custom development)
+!wp-content/plugins/../mu-plugins/
+
+# Whitelist: Add your custom plugins here
+# Example:
+# !wp-content/plugins/your-custom-plugin/
+
+# Default Themes
 wp-content/themes/twenty*/
+
+# Node & Build Tools
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+
+# Composer
+vendor/
+composer.lock
+auth.json
+
+# IDE & Editor Files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.DS_Store
+Thumbs.db
+
+# Build & Compiled Files
+*.map
+*.min.js
+*.min.css
+dist/
+build/
+
+# Logs
+*.log
+error_log
+debug.log
+
+# Temporary Files
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+.htaccess.bak
+
+# OS Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
