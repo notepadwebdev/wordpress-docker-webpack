@@ -1,4 +1,5 @@
 @use "../core/mixins";
+@use "../core/vars";
 
 .site-footer {
   
@@ -6,4 +7,31 @@
     @include mixins.max-centered(var(--l-max-width));
   }
 
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  &__logo {
+    img,
+    svg {
+      display: block;
+      height: auto;
+      width: clamp(100px, 100%, 40px);
+    }
+  }
+
+  &__menu {
+    .menu {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 0.5em;
+    }
+  }
+
+  @media (min-width: vars.$mq-desktop-min) {
+    
+  }
 }

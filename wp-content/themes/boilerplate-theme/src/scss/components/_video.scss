@@ -1,0 +1,101 @@
+
+.video {
+  position: relative;
+  display: block;
+
+  /**
+  *
+  *   Self Hosted.
+  *
+  **/
+  &--mp4 {
+    position: relative;
+
+    video {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &__opacity-overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: var(--opacity-overlay);
+  }
+
+
+  /**
+  *
+  *   Embeds
+  *
+  **/
+  &--youtube {
+    --padding-top: 56.25%; /* 16:9 Aspect Ratio */
+
+    .video {
+      &__container {
+        width: 100%;
+        height: 0;
+        position: relative;
+        padding-top: var(--padding-top);
+        transform: translateZ(0);
+        overflow: hidden;
+
+        video,
+        iframe,
+        .video__poster {
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          overflow: hidden;
+        }
+
+        svg {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 30%;
+          aspect-ratio: 1 / 1;
+          pointer-events: none;
+
+          .loaded & {
+            display: none;
+          }
+        }
+      }
+
+      &__poster {
+        cursor: pointer;
+        transition: opacity .2s;
+
+        .loaded & {
+          opacity: 0;
+          pointer-events: none;
+        }
+
+        img {
+          width: 100% !important;
+          height: 100% !important;
+          max-width: none;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+
+
+
+
+  /*
+  *   Transitions.
+  */
+  @media (prefers-reduced-motion: no-preference) {}
+
+}

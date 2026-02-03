@@ -20,10 +20,10 @@ h6 {
 }
 
 /**
-*   Title.
+*   Families.
 */
-[class^='f-title'], 
-[class*=' f-title'] {
+// Title.
+.f-title {
   margin: 0 0 0.4em;
   font-family: var(--f-title), sans-serif;
   font-weight: 400;
@@ -31,62 +31,46 @@ h6 {
   text-wrap: balance;
 }
 
-.f-title-3xl {
-  font-size: var(--f-3xl);
-}
-.f-title-2xl {
-  font-size: var(--f-2xl);
-}
-.f-title-xl {
-  font-size: var(--f-xl);
-}
-.f-title-lg {
-  font-size: var(--f-lg);
-}
-.f-title-md {
-  font-size: var(--f-md);
-}
-.f-title-sm {
-  font-size: var(--f-sm);
-}
-.f-title-xs {
-  font-size: var(--f-xs);
-}
-.f-title-2xs {
-  font-size: var(--f-2xs);
-}
-
-/**
-*   Body.
-*/
-[class^='f-body'], 
-[class*=' f-body'] {
+// Body.
+.f-body {
   font-family: var(--f-body), sans-serif;
   font-weight: 400;
 }
 
-.f-body-3xl {
+/**
+*   Sizes.
+*/
+.f-6xl {
+  font-size: var(--f-6xl);
+}
+.f-5xl {
+  font-size: var(--f-5xl);
+}
+.f-4xl {
+  font-size: var(--f-4xl);
+}
+.f-3xl {
   font-size: var(--f-3xl);
 }
-.f-body-2xl {
+.f-2xl {
   font-size: var(--f-2xl);
 }
-.f-body-xl {
+.f-xl {
   font-size: var(--f-xl);
 }
-.f-body-lg {
+.f-lg {
   font-size: var(--f-lg);
 }
-.f-body-md {
+.f-md {
   font-size: var(--f-md);
 }
-.f-body-sm {
+.f-sm {
   font-size: var(--f-sm);
 }
-.f-body-xs {
+.f-xs {
   font-size: var(--f-xs);
 }
-.f-body-2xs {
+.f-2xs {
   font-size: var(--f-2xs);
 }
 
@@ -95,12 +79,14 @@ address,
 table,
 li,
 button {
-  font-size: var(--f-body-md);
+  font-family: var(--f-body), sans-serif;
+  font-size: var(--f-md);
 }
 
 small,
 .small {
-  font-size: var(--f-body-xs);
+  font-family: var(--f-body), sans-serif;
+  font-size: var(--f-xs);
 }
 
 .f-caps {

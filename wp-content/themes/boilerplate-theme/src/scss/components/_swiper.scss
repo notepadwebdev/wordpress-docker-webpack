@@ -1,0 +1,53 @@
+@use "../core/vars";
+
+.swiper {
+  --swiper-scrollbar-border-radius: 10px;
+  --swiper-scrollbar-top: auto;
+  --swiper-scrollbar-bottom: 22px;
+  --swiper-scrollbar-left: auto;
+  --swiper-scrollbar-right: 4px;
+  --swiper-scrollbar-sides-offset: calc(50% - 100px);
+  --swiper-scrollbar-bg-color: var(--c-swiper-scroll-bg);
+  --swiper-scrollbar-drag-bg-color: var(--c-swiper-scroll-grab);
+  --swiper-scrollbar-size: 4px;
+
+  --swiper-navigation-size: 50px;
+  --swiper-navigation-top-offset: calc(50% - var(--l-v-pad) * 0.5);
+  --swiper-navigation-sides-offset: 0;
+  --swiper-navigation-color: var(--c-swiper-navigation-color);
+
+  &__ui {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+  }
+}
+
+/* 
+  Custom class for swiper navigation styling to prevent swiper 
+  JS bug with multiple instances on a single page when using 
+  .swiper-button-prev and .swiper-button-next
+*/
+[class^="swiper-nav"] {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: var(--c-electric-blue);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 15px 15px;
+  cursor: pointer;
+
+  &.swiper-nav-prev {
+    left: var(--swiper-navigation-sides-offset, 10px);
+    right: auto;
+    background-image: url('data:image/svg+xml,<svg viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path stroke="white" d="M0.499999 13L6.75 6.75L0.5 0.499999"/></svg>') !important;
+  }
+  
+  &.swiper-nav-next {
+    right: var(--swiper-navigation-sides-offset, 10px);
+    left: auto;
+    background-image: url('data:image/svg+xml,<svg viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path stroke="white" d="M6.75 0.5L0.5 6.75L6.75 13"/></svg>') !important;
+  }
+}

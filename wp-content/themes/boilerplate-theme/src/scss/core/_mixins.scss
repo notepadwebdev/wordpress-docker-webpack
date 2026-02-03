@@ -60,6 +60,14 @@
 	border: 0; 
 }
 
+@mixin clearfix {
+	&::after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+}
+
 @mixin hide-scrollbar {
 	scrollbar-width: none;
 	-ms-overflow-style: none;

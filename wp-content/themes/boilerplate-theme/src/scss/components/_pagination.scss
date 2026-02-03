@@ -1,0 +1,14 @@
+.pagination {
+  
+  ul {
+    display: flex;
+    gap: 1em;
+    justify-content: center;
+    padding: 0;
+    list-style: none;
+  }
+
+  a {
+    color: inherit;
+  }
+}

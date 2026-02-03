@@ -49,12 +49,15 @@ $column-widths: (
   --c-red: red;
   --c-green: green;
   --c-blue: blue;
+  --c-white: #fff;
 
   // LAYOUT  
   --l-body-pad: clamp(15px, 5vw, 30px);    // Horizontal spacing.
   --l-block-pad: clamp(2rem, 10vw, 60px);  // Verical spacing.
+  --l-pod-pad: 1.5rem;                     // Padding inside pods/cards.
   --l-gutter-width: min(5vw, 20px);
   --l-max-width: 1440px;
+  --l-header-height: 80px;
   
   // Universal styles.
   --s-border-radius: 5px;
@@ -62,4 +65,10 @@ $column-widths: (
   --s-filter-light: brightness(0) invert(1);
   --s-filter-dark: brightness(10%) saturate(0);
   --s-bezier-1: cubic-bezier(.24,.84,.37,.99);
+}
+
+@media (min-width: $mq-desktop-min) {
+  :root {
+    --l-header-height: 120px;
+  }
 }

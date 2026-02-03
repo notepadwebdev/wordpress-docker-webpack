@@ -55,10 +55,22 @@ function register_acf_blocks() {
     $jsVer = file_exists($js_path) ? filemtime($js_path) : null;
   }
 
+  // Register 3rd Party Libs.
+  // wp_register_script('google-maps', 'https://maps.googleapis.com/maps/api/js?key=ADD_KEY_HERE&callback=Function.prototype', array(), '', true);
+  // wp_register_script('swiper', get_template_directory_uri() . '/dist/js/vendor/swiper.min.js', array(), '', true);
+
+  /**
+   *  Register custom modules.
+   */
+  // wp_register_script('video-youtube', get_template_directory_uri() . '/dist/js/video-youtube.bundle.js', array('jquery'), $cssVer, true);
+  // wp_register_script('video-mp4', get_template_directory_uri() . '/dist/js/video-mp4.bundle.js', array('jquery'), $cssVer, true);
+
   /**
    *  Register block specific scripts.
    */
   wp_register_script('block-posts-archive', get_template_directory_uri() . '/dist/js/posts-archive.bundle.js', array('jquery'), $jsVer, true);
+  // wp_register_script('block-content-block', get_template_directory_uri() . '/dist/js/content-block.bundle.js', array('jquery', 'video-youtube', 'video-mp4'), $jsVer, true);
+  
 
   /**
    *  Localise AJAX dependent scripts.

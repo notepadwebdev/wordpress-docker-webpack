@@ -1,0 +1,21 @@
+.tick-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    display: grid;
+    grid-template-columns: 1.25em 1fr;
+    gap: 1em;
+    margin-bottom: 1em;
+
+    &:before {
+      content: "";
+      width: 1.25em;
+      height: 1.25em;
+      display: block;
+      margin-top: 0.125em;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20"><circle cx="10" cy="9.5" r="9" fill="%23FFFFFF"/><path fill="%23544BFF" fill-rule="evenodd" d="M0 10a10 10 0 1 1 20 0 10 10 0 0 1-20 0Zm9.43 4.28 5.757-7.197-1.04-.832-4.91 6.134L5.76 9.488l-.853 1.024 4.522 3.768Z" clip-rule="evenodd"/></svg>');
+    }
+  }
+}

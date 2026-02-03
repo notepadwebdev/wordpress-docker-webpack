@@ -14,42 +14,42 @@ function my_mce_before_init_insert_formats($init_array) {
             array(
               'title' => '3xl',
               'selector' => 'h1,h2,h3,h4,h5,h6,p,div',
-              'classes' => array('f-title-3xl')
+              'classes' => array('f-title f-3xl')
             ),
             array(
               'title' => '2xl',
               'selector' => 'h1,h2,h3,h4,h5,h6,p,div',
-              'classes' => array('f-title-2xl')
+              'classes' => array('f-title f-2xl')
             ),
             array(
               'title' => 'xl',
               'selector' => 'h1,h2,h3,h4,h5,h6,p,div',
-              'classes' => array('f-title-xl')
+              'classes' => array('f-title f-xl')
             ),
             array(
               'title' => 'lg',
               'selector' => 'h1,h2,h3,h4,h5,h6,p,div',
-              'classes' => array('f-title-lg')
+              'classes' => array('f-title f-lg')
             ),
             array(
               'title' => 'md',
               'selector' => 'h1,h2,h3,h4,h5,h6,p,div',
-              'classes' => array('f-title-md')
+              'classes' => array('f-title f-md')
             ),
             array(
               'title' => 'sm',
               'selector' => 'h1,h2,h3,h4,h5,h6,p,div',
-              'classes' => array('f-title-sm')
+              'classes' => array('f-title f-sm')
             ),
             array(
               'title' => 'xs',
               'selector' => 'h1,h2,h3,h4,h5,h6,p,div',
-              'classes' => array('f-title-xs')
+              'classes' => array('f-title f-xs')
             ),
             array(
               'title' => '2xs',
               'selector' => 'h1,h2,h3,h4,h5,h6,p,div',
-              'classes' => array('f-title-2xs')
+              'classes' => array('f-title f-2xs')
             ),
           ),
         ),
@@ -59,37 +59,37 @@ function my_mce_before_init_insert_formats($init_array) {
             array(
               'title' => '2xl',
               'selector' => 'h1,h2,h3,h4,h5,h6,p,div',
-              'classes' => array('f-body-2xl')
+              'classes' => array('f-body f-2xl')
             ),
             array(
               'title' => 'xl',
               'selector' => 'h1,h2,h3,h4,h5,h6,p,div',
-              'classes' => array('f-body-xl')
+              'classes' => array('f-body f-xl')
             ),
             array(
               'title' => 'lg',
               'selector' => 'h1,h2,h3,h4,h5,h6,p,div',
-              'classes' => array('f-body-lg')
+              'classes' => array('f-body f-lg')
             ),
             array(
               'title' => 'md',
               'selector' => 'h1,h2,h3,h4,h5,h6,p,div',
-              'classes' => array('f-body-md')
+              'classes' => array('f-body f-md')
             ),
             array(
               'title' => 'sm',
               'selector' => 'h1,h2,h3,h4,h5,h6,p,div',
-              'classes' => array('f-body-sm')
+              'classes' => array('f-body f-sm')
             ),
             array(
               'title' => 'xs',
               'selector' => 'h1,h2,h3,h4,h5,h6,p,div',
-              'classes' => array('f-body-xs')
+              'classes' => array('f-body f-xs')
             ),
             array(
               'title' => '2xs',
               'selector' => 'h1,h2,h3,h4,h5,h6,p,div',
-              'classes' => array('f-body-2xs')
+              'classes' => array('f-body f-2xs')
             ),
           ),
         ),
@@ -98,8 +98,13 @@ function my_mce_before_init_insert_formats($init_array) {
           'selector' => 'h1,h2,h3,h4,h5,h6,p,div',
           'classes' => array('f-caps')
         ),
+        array(
+          'title' => 'Tick List',
+          'selector' => 'ul',
+          'classes' => array('tick-list')
+        ),
       )
-      ),
+    ),
     array(
       'title' => 'Container',
       'items' => array(

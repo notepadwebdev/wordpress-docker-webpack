@@ -1,12 +1,19 @@
 @use "../core/mixins";
+@use "../core/vars";
 
 .site-header {
+  position: sticky;
+  top: 0;
+  z-index: 9;
+  background-color: var(--c-white);
   
   .container {
     @include mixins.body-pad;
+    height: var(--l-header-height);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: var(--c-white);
   }
 
   &__logo {
@@ -16,6 +23,19 @@
       height: 100px;
       width: auto;
     }
+  }
+  
+
+  @media (max-width: vars.$mq-desktop-min - 0.1) {
+
+  }
+
+
+  @media (min-width: vars.$mq-desktop-min) {
+    &__hamburger {
+      display: none !important;
+    }
+    
   }
 
 }

@@ -1,0 +1,52 @@
+@use '../core/mixins';
+
+.wysiwyg {
+
+  .f-title {
+    margin-bottom: 0.5em;
+  }
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+
+  img {
+    width: auto;
+    max-width: none;
+    height: auto;
+  }
+
+  p {
+    &:has(> img) {
+      @include mixins.clearfix;
+    }
+  }
+  
+  strong,
+  b {
+    font-weight: 700;
+  }
+
+  ul {
+    margin: 0 0 2em;
+    padding: 0;
+    list-style: none;
+
+    li {
+      display: block;
+      margin-bottom: 0.5em;
+
+      // Pseudo shape.
+      &::before {
+        content: "";
+        display: inline-block;
+        width: 2em;
+        height: 0.8em;
+        margin-right: 0.2em;
+        background-color: var(--c-yellow);
+        clip-path: polygon(0 100%, 50% 0, 100% 0, 50% 100%);
+        transform: translateY(0.1em);
+      }
+    }
+  }
+}
