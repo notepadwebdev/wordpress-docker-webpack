@@ -60,6 +60,7 @@ yarn.lock
 
 # Composer
 vendor/
+!wp-content/themes/techonomy/src/js/vendor
 composer.lock
 auth.json
 
