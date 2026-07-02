@@ -13,6 +13,9 @@ function theme_clean() {
   add_filter( 'emoji_svg_url', '__return_false' );
   //add_filter( 'gform_enable_field_label_visibility_settings', '__return_true' );
 
+  remove_post_type_support( 'post', 'footnotes' );
+  remove_post_type_support( 'page', 'footnotes' );
+
   // Remove jQuery from front end.
   if (!is_admin() && ($GLOBALS['pagenow'] !== 'wp-login.php')) {
     wp_deregister_script('jquery');
