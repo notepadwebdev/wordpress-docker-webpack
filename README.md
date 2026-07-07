@@ -29,12 +29,12 @@ git clone git@github.com:notepadwebdev/wordpress-docker-webpack.git
 
 **First time setup** (builds the custom WordPress image with WP-CLI):
 ```bash
-docker-compose up -d --build
+docker compose up -d --build
 ```
 
 **Subsequent starts**:
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 
 The custom Docker image includes:
@@ -107,7 +107,7 @@ php composer.phar install
 Once plugins have been installed they can all be activated with the following command
 
 ```powershell
-docker-compose exec wordpress wp plugin activate --all --allow-root
+docker compose exec wordpress wp plugin activate --all --allow-root
 ```
 
 ### Rename the theme
@@ -160,14 +160,14 @@ Execute WP-CLI commands in the Docker container:
 
 ```bash
 # Example: List all users
-docker-compose exec wordpress wp user list --allow-root
+docker compose exec wordpress wp user list --allow-root
 
 # Example: Install a plugin
-docker-compose exec wordpress wp plugin install contact-form-7 --activate --allow-root
+docker compose exec wordpress wp plugin install contact-form-7 --activate --allow-root
 
 # Example: Clear cache
-docker-compose exec wordpress wp cache flush --allow-root
+docker compose exec wordpress wp cache flush --allow-root
 
 # Example: Update all plugins
-docker-compose exec wordpress wp plugin update --all --allow-root
+docker compose exec wordpress wp plugin update --all --allow-root
 ```
