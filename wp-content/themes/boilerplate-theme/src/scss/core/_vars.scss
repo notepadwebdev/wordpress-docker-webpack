@@ -7,17 +7,6 @@ $mq-desktop-min: 1024px;
 $mq-desktop-large-min: 1200px;
 $mq-desktop-huge-min: 1400px;
 
-$typography: (
-  3xl: clamp(2.4883rem, calc(2.2183rem + 1.3499vw), 3.4332rem),     // 54.93px
-  2xl: clamp(2.0736rem, calc(1.8813rem + 0.9614vw), 2.7466rem),     // 43.95px
-  xl: clamp(1.728rem, calc(1.5939rem + 0.6704vw), 2.1973rem),       // 35.16px
-  lg: clamp(1.44rem, calc(1.3492rem + 0.454vw), 1.7578rem),         // 28.13px
-  md: clamp(1.2rem, calc(1.1411rem + 0.2946vw), 1.4063rem),         // 22.5px   
-  sm: clamp(1rem, calc(0.9643rem + 0.1786vw), 1.125rem),            // 18px
-  xs: clamp(0.8333rem, calc(0.8143rem + 0.0952vw), 0.9rem),         // 14.4px
-  2xs: clamp(0.6944rem, calc(0.6871rem + 0.0365vw), 0.72rem)        // 11.52px
-);
-
 $column-widths: (
   12: 1440,
   11: 1319,
@@ -36,10 +25,19 @@ $column-widths: (
   // Typography families.
   --f-title: Arial, sans-serif;
   --f-body: Arial, sans-serif;
+  
   // Typography sizing.
-  @each $label, $size in $typography {
-    --f-#{$label}: #{$size};
-  }
+  --f-2xs: clamp(0.625rem, 0.58rem + 0.19vi, 0.75rem);  // 10px : 12px
+  --f-xs: clamp(0.75rem, 0.70rem + 0.19vi, 0.875rem);   // 12px : 14px
+  --f-sm: clamp(0.875rem, 0.83rem + 0.19vi, 1rem);      // 14px : 16px
+  --f-md: clamp(1rem, 0.81rem + 0.76vi, 1.5rem);        // 16px : 24px
+  --f-lg: clamp(1.5rem, 1.31rem + 0.76vi, 2rem);        // 24px : 32px
+  --f-xl: clamp(2rem, 1.81rem + 0.76vi, 2.5rem);        // 32px : 40px
+  --f-2xl: clamp(2.5rem, 2.31rem + 0.76vi, 3rem);       // 40px : 48px
+  --f-3xl: clamp(2.75rem, 2.47rem + 1.14vi, 3.5rem);    // 44px : 56px
+  --f-4xl: clamp(3rem, 2.63rem + 1.52vi, 4rem);         // 48px : 64px
+  --f-5xl: clamp(4rem, 3.81rem + 0.76vi, 4.5rem);       // 64px : 72px
+  --f-6xl: clamp(4.5rem, 4.31rem + 0.76vi, 5rem);       // 72px : 80px
 
   // COLOURS
   --c-text: #222A41;    // Text colour.
@@ -65,6 +63,7 @@ $column-widths: (
   --s-filter-light: brightness(0) invert(1);
   --s-filter-dark: brightness(10%) saturate(0);
   --s-bezier-1: cubic-bezier(.24,.84,.37,.99);
+  --s-bezier-2: cubic-bezier(.04,.84,.77,.99);
 }
 
 @media (min-width: $mq-desktop-min) {

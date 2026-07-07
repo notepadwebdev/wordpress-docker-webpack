@@ -22,12 +22,15 @@
     }
   }
 
-  * {
-    text-wrap: balance;
+  .wysiwyg {
+    * {
+      text-wrap: balance;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
   }
-
-
-  
 
   
   /**

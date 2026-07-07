@@ -34,5 +34,8 @@
     "webpack": "^5.108.3",
     "webpack-cli": "^7.1.0",
     "webpack-merge": "^6.0.1"
+  },
+  "allowScripts": {
+    "@parcel/watcher@2.5.1": true
   }
 }

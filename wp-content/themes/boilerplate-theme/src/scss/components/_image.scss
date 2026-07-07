@@ -7,6 +7,17 @@
     width: 100%;
   }
 
+  // Only present if turned on for specific image in CMS.
+  &__fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-fill);
+    pointer-events: none;
+  }
+
   &--border-radius {
     border-radius: var(--s-border-radius);
     overflow: hidden;

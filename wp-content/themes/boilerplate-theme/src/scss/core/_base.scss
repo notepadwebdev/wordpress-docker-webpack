@@ -40,3 +40,14 @@ blockquote {
 address {
   font-style: normal;
 }
+
+table {
+  border-collapse: collapse;
+  border: 1px solid var(--c-grey);
+
+  th,
+  td {
+    padding: 10px;
+    border: 1px solid var(--c-grey);
+  }
+}
