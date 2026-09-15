@@ -1,5 +1,6 @@
 {
-  "name": "content-block",
+  "name": "acf/content-block",
+  "apiVersion": 3,
   "title": "Content Block",
   "description": "Text and images presented in a range of layout options.",
   "renderTemplate": "file:./template-parts/blocks/content-block/content-block.php",
@@ -19,7 +20,10 @@
     "mode": "preview",
     "renderTemplate": "content-block.php",
     "postTypes": [
-      "page"
+      "page",
+      "case_study"
     ]
-  }
+  },
+  "script" : [ "block-content-block" ],
+  "editorScript": [ "grid-builder", "content-block-cms" ]
 }

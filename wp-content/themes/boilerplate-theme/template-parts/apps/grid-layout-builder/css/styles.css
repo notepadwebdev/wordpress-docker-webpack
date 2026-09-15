@@ -1,0 +1,282 @@
+.glb {
+  grid-row: 1 / -1;
+  grid-column: 1 / -1;
+  /* Prevent Gutenberg from capturing drag events */
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+.glb * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* Prevent all children from being draggable */
+  -webkit-user-drag: none;
+}
+
+/* Specifically prevent draggable behavior on interactive elements */
+.glb svg,
+.glb .grid-container,
+.glb .grid-wrapper {
+  pointer-events: auto !important;
+  -webkit-user-drag: none;
+}
+
+/* Allow SVG interactions to work properly */
+.glb svg * {
+  pointer-events: auto;
+}
+
+.glb body {
+  font-family: Inter, Roboto, Arial, sans-serif;
+  background: #f5f5f5;
+  padding: 20px;
+}
+
+.glb .container {
+  max-width: 100%;
+  margin: 0 auto;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.glb .grid-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: visible;
+  padding: 10px 0;
+}
+
+.glb .grid-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.glb svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.glb .controls {
+  padding: 20px;
+}
+
+.glb .controls h3 {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 12px;
+}
+
+.glb .actions-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.glb .actions-row button {
+  width: 110px;
+}
+
+.glb .button-group {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.glb button {
+  height: 36px;
+  padding-inline: 16px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #0275d8;
+  background: #0275d8;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+
+.glb button:hover {
+  background: #025aa5;
+}
+
+.glb button.secondary {
+  background: white;
+  color: #0275d8;
+}
+
+.glb button:disabled {
+  background: #cccccc;
+  color: #999999;
+  cursor: not-allowed;
+}
+
+.glb button.hidden {
+  display: none;
+}
+
+.glb button.primary {
+  position: relative;
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.glb button.primary.has-changes {
+  background: #ff8c00;
+  border-color: #ff8c00;
+}
+
+.glb button.primary.has-changes:hover {
+  background: #e67e00;
+  border-color: #e67e00;
+}
+
+.glb button.primary.has-changes::after {
+  content: '';
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  background: #fff;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.glb .direction-controls,
+.glb .content-count-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.glb .direction-controls span,
+.glb .content-count-controls span {
+  font-size: 14px;
+  color: #333;
+  font-weight: 500;
+}
+
+.glb .increment-button-group {
+  display: flex;
+  gap: 0;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid #0275d8;
+}
+
+.glb .increment-button-group .icon-button {
+  background: white;
+  color: #0275d8;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+  width: auto;
+  min-width: 40px;
+}
+
+.glb .increment-button-group .icon-button.minus {
+  border-right: 1px solid #0275d8;
+  font-size: 24px;
+}
+
+.glb .increment-button-group .icon-button:hover:not(:disabled) {
+  background: #f0f7ff;
+}
+
+.glb .increment-button-group .icon-button:disabled {
+  background: #f5f5f5;
+  color: #cccccc;
+  cursor: not-allowed;
+  border-color: #e0e0e0;
+}
+
+.glb .radio-button-group,
+.radio-button-group {
+  display: flex;
+  gap: 0;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid #0275d8;
+}
+
+.glb .radio-button-group input[type="radio"],
+.radio-button-group input[type="radio"] {
+  display: none;
+}
+
+.glb .radio-button-group label,
+.radio-button-group label {
+  padding: 8px 16px;
+  background: white;
+  color: #0275d8;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s;
+  border-right: 1px solid #0275d8;
+}
+
+.glb .radio-button-group label:last-child,
+.radio-button-group label:last-child {
+  border-right: none;
+}
+
+.glb .radio-button-group input[type="radio"]:checked + label,
+.radio-button-group input[type="radio"]:checked + label {
+  background: #0275d8;
+  color: white;
+}
+
+.glb .radio-button-group label:hover,
+.radio-button-group label:hover {
+  background: #f0f7ff;
+}
+
+.glb .radio-button-group input[type="radio"]:checked + label:hover,
+.radio-button-group input[type="radio"]:checked + label:hover {
+  background: #025aa5;
+}
+
+.glb .output {
+  margin-top: 20px;
+  padding: 12px;
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  color: black;
+  font-family: monospace;
+  font-size: 12px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  max-height: 800px;
+  overflow-y: auto;
+  display: none;
+}
+
+.glb .output.visible {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .glb body {
+    padding: 10px;
+  }
+
+  .glb .container {
+    padding: 15px;
+  }
+}

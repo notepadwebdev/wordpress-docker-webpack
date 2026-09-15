@@ -1,11 +1,5 @@
 <?php
 
-/** 
- *  Posts.
- */
-add_action('wp_ajax_ajax_posts', 'ajax_posts');
-add_action('wp_ajax_nopriv_ajax_posts', 'ajax_posts');
-
 /**
  * Get available terms for a taxonomy based on current filters
  * 
@@ -134,8 +128,15 @@ function get_available_terms_for_taxonomy($target_taxonomy, $all_taxonomies, $cp
   return $results;
 }
 
+/** 
+ *  Posts.
+ */
+add_action('wp_ajax_ajax_posts', 'ajax_posts');
+add_action('wp_ajax_nopriv_ajax_posts', 'ajax_posts');
+
 function ajax_posts() { 
   $cpt = (isset($_POST['cpt'])) ? json_decode(stripslashes($_POST['cpt']), true) : array('post');
+  $blockClass = (isset($_POST['blockClass'])) ? $_POST['blockClass'] : 'posts-archive';
   $urlBase = (isset($_POST['urlBase'])) ? $_POST['urlBase'] : '';
   $pageNumber = (isset($_POST['pageNumber'])) ? $_POST['pageNumber'] : 0;
   $includePagination = (isset($_POST['includePagination'])) ? $_POST['includePagination'] : 0;
@@ -241,11 +242,11 @@ function ajax_posts() {
 	$loop = new WP_Query($args);
   
   // Build posts HTML
-  $postsHtml = '<div class="posts-archive__posts theme-grid">';
+  $postsHtml = '<div class="'.$blockClass.'__posts theme-grid">';
 
-  $listingTemplatePath = "template-parts/content/post-listing";
   if ($loop->have_posts()) :  while ($loop->have_posts()) : $loop->the_post();
     ob_start();
+    $listingTemplatePath = "template-parts/content/" . $loop->post->post_type . "-listing";
     get_template_part($listingTemplatePath, null, array()); 
     $postsHtml .= ob_get_clean();
   endwhile;
@@ -256,7 +257,7 @@ function ajax_posts() {
   // Build pagination HTML
   $paginationHtml = '';
   if ($includePagination && $loop->max_num_pages > 1) :
-    $paginationHtml .= '<div class="posts-archive__pagination pagination">';
+    $paginationHtml .= '<div class="'.$blockClass.'__pagination pagination">';
                
     $max_page = isset( $loop->max_num_pages ) ? $loop->max_num_pages : 1;
     

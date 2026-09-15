@@ -1,5 +1,6 @@
 {
   "name": "posts-archive",
+  "apiVersion": 3,
   "title": "Posts Archive",
   "description": "",
   "renderTemplate": "file:./template-parts/blocks/posts-archive/posts-archive.php",

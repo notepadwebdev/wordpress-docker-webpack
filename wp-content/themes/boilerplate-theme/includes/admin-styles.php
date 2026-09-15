@@ -22,6 +22,15 @@ function theme_admin_styles() {
   .components-flex:has(.editor-post-taxonomies__hierarchical-terms-list) {
     height: auto;
   }
+
+	/* 
+		Content Block: 
+		Hide Layout code field in ACF as the value is managed via the Grid Layout Builder interface. 
+	*/
+	.acf-field.acf-field-number.acf-field-691de5e0ba491,
+	.acf-field.acf-field-acfe-code-editor.acf-field-691de566ba490 {
+		display: none;
+	}
  </style>';
 }
 

@@ -71,6 +71,11 @@ function register_acf_blocks() {
   wp_register_script('block-posts-archive', get_template_directory_uri() . '/dist/js/posts-archive.bundle.js', array('jquery'), $jsVer, true);
   // wp_register_script('block-content-block', get_template_directory_uri() . '/dist/js/content-block.bundle.js', array('jquery', 'video-youtube', 'video-mp4'), $jsVer, true);
   
+  // CMS only bundles.
+  $gridBuilderJsPath = $parentDir . '/template-parts/apps/grid-layout-builder/js/grid-builder.js';
+  $contentBlockCmsJsPath = $parentDir . '/template-parts/blocks/content-block/content-block-cms.js';
+  wp_register_script('grid-builder', get_template_directory_uri() . '/template-parts/apps/grid-layout-builder/js/grid-builder.js', array(), filemtime($gridBuilderJsPath), true);
+  wp_register_script('content-block-cms', get_template_directory_uri() . '/template-parts/blocks/content-block/content-block-cms.js', array('wp-blocks', 'wp-element', 'wp-block-editor'), filemtime($contentBlockCmsJsPath), true);
 
   /**
    *  Localise AJAX dependent scripts.
@@ -83,15 +88,8 @@ function register_acf_blocks() {
   /**
    *  Register custom blocks (with directory existence checks).
    */
-  $content_block_dir = $parentDir . '/template-parts/blocks/content-block';
-  $posts_archive_dir = $parentDir . '/template-parts/blocks/posts-archive';
-
-  if ( is_dir( $content_block_dir ) ) {
-    register_block_type( $content_block_dir );
-  }
-  if ( is_dir( $posts_archive_dir ) ) {
-    register_block_type( $posts_archive_dir );
-  }
+  register_block_type( $parentDir . '/template-parts/blocks/content-block' );
+  register_block_type( $parentDir . '/template-parts/blocks/posts-archive' );
 }
 
 
@@ -116,5 +114,29 @@ function theme_allowed_block_types( $allowed_blocks, $editor_context = null ) {
 
 // Ensure block scripts are only loaded on pages where the block is present.
 add_filter( 'should_load_separate_core_block_assets', '__return_true' );
+
+
+/**
+ * Ensure ACF Local JSON is saved/loaded from the active theme directory.
+ */
+add_filter('acf/settings/save_json', function($path) {
+	$path = trailingslashit(get_stylesheet_directory()) . 'acf-json';
+
+	if (!is_dir($path)) {
+		wp_mkdir_p($path);
+	}
+
+	return $path;
+});
+
+add_filter('acf/settings/load_json', function($paths) {
+	$paths[] = trailingslashit(get_stylesheet_directory()) . 'acf-json';
+
+	if (get_template_directory() !== get_stylesheet_directory()) {
+		$paths[] = trailingslashit(get_template_directory()) . 'acf-json';
+	}
+
+	return array_values(array_unique($paths));
+});
 
 ?>
