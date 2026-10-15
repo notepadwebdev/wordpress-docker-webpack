@@ -3,6 +3,11 @@
   // print_r($args); 
   // echo '</pre>';
 
+  $validCtas = getValidCtas($args);
+  if (!$validCtas) {
+    return;
+  }
+
   $ctas = isset($args['ctas']) && is_array($args['ctas']) ? $args['ctas'] : [];
   $align = isset($args['align']) ? $args['align'] : '';
 ?>
