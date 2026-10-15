@@ -1,5 +1,22 @@
 <?php
 
+
+// Keep all TinyMCE editing canvases legible regardless of front-end theme colours.
+add_filter( 'tiny_mce_before_init', 'theme_mce_editor_colours' );
+add_filter( 'teeny_mce_before_init', 'theme_mce_editor_colours' );
+function theme_mce_editor_colours( $init_array ) {
+  $editor_colour_styles = 'html, body { background-color: #fff !important; color: #000 !important; } body * { color: #000 !important; }';
+
+  if ( ! empty( $init_array['content_style'] ) ) {
+    $init_array['content_style'] = rtrim( $init_array['content_style'] ) . ' ' . $editor_colour_styles;
+  } else {
+    $init_array['content_style'] = $editor_colour_styles;
+  }
+
+  return $init_array;
+}
+
+
 // Editor Formats.
 add_filter( 'tiny_mce_before_init', 'my_mce_before_init_insert_formats' );
 function my_mce_before_init_insert_formats($init_array) {
