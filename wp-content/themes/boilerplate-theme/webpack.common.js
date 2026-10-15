@@ -5,17 +5,17 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 // One bundle per ACF block.
-const blocksJs = glob.sync('./template-parts/blocks/**/*.js').reduce((acc, path) => {
-  const entry = path.split('\\').pop().replace('.js', '')
-  acc[entry] = `./${path}`
+const blocksJs = glob.sync('./template-parts/blocks/**/*.js').reduce((acc, filePath) => {
+  const entry = path.basename(filePath, '.js')
+  acc[entry] = `./${filePath}`
   return acc
 }, {});
 
 // One bundle per shared module.
-const modulesJs = glob.sync('./src/js/modules/*.js').reduce((acc, path) => {
-const entry = path.split('\\').pop().replace('.js', '')
-acc[entry] = `./${path}`
-return acc
+const modulesJs = glob.sync('./src/js/modules/*.js').reduce((acc, filePath) => {
+  const entry = path.basename(filePath, '.js')
+  acc[entry] = `./${filePath}`
+  return acc
 }, {});
 
 module.exports = {
@@ -36,7 +36,24 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: ['babel-loader'],
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: [
+                ['@babel/preset-env'],
+                [
+                  '@babel/preset-react',
+                  {
+                    runtime: 'classic',
+                    pragma: 'wp.element.createElement',
+                    pragmaFrag: 'wp.element.Fragment',
+                  },
+                ],
+              ],
+            },
+          },
+        ],
       },
       {
         test: /\.(scss|css)$/,

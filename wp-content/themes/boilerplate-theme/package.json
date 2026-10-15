@@ -1,5 +1,5 @@
 {
-  "name": "boilerplate-theme",
+  "name": "elevation-recruitment",
   "version": "1.0.0",
   "description": "Simple Webpack implementation for building WordPress themes.",
   "main": "index.js",
@@ -13,6 +13,7 @@
   "devDependencies": {
     "@babel/core": "^7.29.7",
     "@babel/preset-env": "^7.29.7",
+    "@babel/preset-react": "^7.29.7",
     "autoprefixer": "^10.4.14",
     "babel-loader": "^9.1.2",
     "browser-sync": "^2.29.3",
