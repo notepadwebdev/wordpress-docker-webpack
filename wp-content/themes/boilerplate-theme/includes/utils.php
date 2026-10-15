@@ -15,4 +15,13 @@ function splitStringIntoSpans($str) {
   return $result;
 }
 
+function getValidCtas($ctas) {
+  return array_filter($ctas['ctas'] ?? [], function ($row) {
+    $cta = $row['cta'] ?? [];
+
+    return trim($cta['label'] ?? '') !== ''
+      && trim($cta['link'] ?? '') !== '';
+  });
+}
+
 ?>
