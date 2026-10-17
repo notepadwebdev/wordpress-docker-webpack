@@ -219,6 +219,25 @@ function my_toolbars( $toolbars )
 	  unset( $toolbars['Full' ][2][$key]);
 	}
 
+  // Add a new toolbar called "Full No Alignment"
+  $toolbars['Full No Alignment' ] = $toolbars['Full' ];
+  $alignment_buttons = array('alignleft', 'aligncenter', 'alignright');
+  foreach( $toolbars['Full No Alignment' ] as &$toolbar_row )
+  {
+    $toolbar_row = array_values(array_diff($toolbar_row, $alignment_buttons));
+  }
+  unset($toolbar_row);
+
+
+  // Add a new toolbar called "Headings No Alignment"
+  $toolbars['Headings No Alignment' ] = $toolbars['Headings' ];
+  $alignment_buttons = array('alignleft', 'aligncenter', 'alignright');
+  foreach( $toolbars['Headings No Alignment' ] as &$toolbar_row )
+  {
+    $toolbar_row = array_values(array_diff($toolbar_row, $alignment_buttons));
+  }
+  unset($toolbar_row);
+
 	// remove the 'Basic' toolbar completely
 	// unset( $toolbars['Basic' ] );
 
