@@ -47,6 +47,8 @@
                 "id": ""
             },
             "choices": {
+                "block-pad--zero": "Zero (top and bottom)",
+                "block-pad--gutter": "Gutter (top and bottom)",
                 "block-pad--quarter": "Quarter (top and bottom)",
                 "block-pad--half": "Half (top and bottom)",
                 "block-pad": "Default (top and bottom)",
@@ -58,6 +60,10 @@
                 "block-pad--bottom": "Default (bottom)",
                 "block-pad--half-top": "Half (top)",
                 "block-pad--half-bottom": "Half (bottom)",
+                "block-pad--quarter-top": "Quarter (top)",
+                "block-pad--quarter-bottom": "Quarter (bottom)",
+                "block-pad--gutter-top": "Gutter (top)",
+                "block-pad--gutter-bottom": "Gutter (bottom)",
                 "block-pad--zero-top": "Zero (top)",
                 "block-pad--zero-bottom": "Zero (bottom)"
             },
