@@ -24,6 +24,13 @@ function theme_admin_styles() {
   }
 
 	/* 
+		Force height of ACF block-padding field. 
+	*/
+	.acf-field-64662ed4e6535 select {
+		min-height: 340px !important;
+	}
+
+	/* 
 		Content Block: 
 		Hide Layout code field in ACF as the value is managed via the Grid Layout Builder interface. 
 	*/
