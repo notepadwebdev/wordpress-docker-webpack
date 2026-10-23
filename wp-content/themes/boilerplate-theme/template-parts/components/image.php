@@ -15,7 +15,10 @@
 ?>
 
 <?php if (is_array($image)) : ?>
-  <div class="<?php echo $classname; ?>">
+  <div 
+    class="<?php echo $classname; ?>" 
+    data-crop="<?php echo esc_attr($crop); ?>" 
+  >
       <?php echo wp_get_attachment_image($image['id'], $crop, false, ["class" => ""]); ?>
       <?php
         if (isset($args['include_colour_fill']) && $args['include_colour_fill']) :

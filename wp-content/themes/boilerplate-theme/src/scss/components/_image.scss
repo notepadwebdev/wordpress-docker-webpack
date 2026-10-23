@@ -27,8 +27,8 @@
     }
   }
 
-  @each $col, $max in vars.$column-widths {
-    &[data-cols="#{$max}w"] {
+  @each $col, $max in $column-widths {
+    &[data-crop="#{$max}w"] {
       max-width: #{$max}px;
     }
   }

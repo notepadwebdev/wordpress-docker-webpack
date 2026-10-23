@@ -24,4 +24,17 @@ function getValidCtas($ctas) {
   });
 }
 
+function getRepeaterRowFieldsByName() {
+  $rowFields = array();
+
+  foreach (array_keys(get_row()) as $fieldKey) {
+    $field = get_field_object($fieldKey);
+    if ($field && isset($field['name'])) {
+      $rowFields[$field['name']] = get_sub_field($fieldKey);
+    }
+  }
+
+  return $rowFields;
+}
+
 ?>
