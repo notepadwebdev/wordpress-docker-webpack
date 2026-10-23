@@ -7,11 +7,44 @@
       max-width: #{$max}px;
     }
   }
-  
+
+  &-15em {
+    max-width: 15em;
+  }
+  &-20em {
+    max-width: 20em;
+  }
+  &-25em {
+    max-width: 25em;
+  }
+  &-30em {
+    max-width: 30em;
+  }
+  &-35em {
+    max-width: 35em;
+  }
+  &-40em {
+    max-width: 40em;
+  }
+  &-45em {
+    max-width: 45em;
+  }
+  &-50em {
+    max-width: 50em;
+  }
+  &-55em {
+    max-width: 55em;
+  }
+  &-60em {
+    max-width: 60em;
+  }
+
 }
 
 [class^='l-max-width'], 
 [class*=' l-max-width'] {
+  display: block;
+  
   &[style*="text-align: center"],
   [style*="text-align: center"] & {
     margin-inline: auto;

@@ -174,7 +174,62 @@ function my_mce_before_init_insert_formats($init_array) {
           'title' => '2 cols',
           'selector' => 'h1,h2,h3,h4,h5,h6,p,div',
           'classes' => array('l-max-width-2')
-        )
+        ),
+        array(
+          'title' => '10em',
+          'selector' => 'h1,h2,h3,h4,h5,h6,p,div',
+          'classes' => array('l-max-width-10em')
+        ),
+        array(
+          'title' => '15em',
+          'selector' => 'h1,h2,h3,h4,h5,h6,p,div',
+          'classes' => array('l-max-width-15em')
+        ),
+        array(
+          'title' => '20em',
+          'selector' => 'h1,h2,h3,h4,h5,h6,p,div',
+          'classes' => array('l-max-width-20em')
+        ),
+        array(
+          'title' => '25em',
+          'selector' => 'h1,h2,h3,h4,h5,h6,p,div',
+          'classes' => array('l-max-width-25em')
+        ),
+        array(
+          'title' => '30em',
+          'selector' => 'h1,h2,h3,h4,h5,h6,p,div',
+          'classes' => array('l-max-width-30em')
+        ),
+        array(
+          'title' => '35em',
+          'selector' => 'h1,h2,h3,h4,h5,h6,p,div',
+          'classes' => array('l-max-width-35em')
+        ),
+        array(
+          'title' => '40em',
+          'selector' => 'h1,h2,h3,h4,h5,h6,p,div',
+          'classes' => array('l-max-width-40em')
+        ),
+        array(
+          'title' => '45em',
+          'selector' => 'h1,h2,h3,h4,h5,h6,p,div',
+          'classes' => array('l-max-width-45em')
+        ),
+        array(
+          'title' => '50em',
+          'selector' => 'h1,h2,h3,h4,h5,h6,p,div',
+          'classes' => array('l-max-width-50em')
+        ),
+        array(
+          'title' => '55em',
+          'selector' => 'h1,h2,h3,h4,h5,h6,p,div',
+          'classes' => array('l-max-width-55em')
+        ),
+        array(
+          'title' => '60em',
+          'selector' => 'h1,h2,h3,h4,h5,h6,p,div',
+          'classes' => array('l-max-width-60em')
+        ),
       )
     ),
   );
